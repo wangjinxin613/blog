@@ -229,1565 +229,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue%E7%9A%84model%E9%80%89%E9%A1%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/vue/vue%E7%9A%84model%E9%80%89%E9%A1%B9/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>允许一个自定义组件在使用 <code>v-model</code> 时定制 prop 和 event。默认情况下，一个组件上的 <code>v-model</code> 会把 <code>value</code> 用作 prop 且把 <code>input</code> 用作 event，但是一些输入类型比如单选框和复选框按钮可能想使用 <code>value</code> prop 来达到不同的目的。使用 <code>model</code> 选项可以回避这些情况产生的冲突。</p>
-<p>示例</p>
-<pre><code class="javascript">Vue.component(&#39;my-checkbox&#39;, &#123;
-  model: &#123;
-    prop: &#39;checked&#39;,
-    event: &#39;change&#39;
-  &#125;,
-  props: &#123;
-    // this allows using the `value` prop for a different purpose
-    value: String,
-    // use `checked` as the prop which take the place of `value`
-    checked: &#123;
-      type: Number,
-      default: 0
-    &#125;
-  &#125;,
-  // ...
-&#125;)
-</code></pre>
-<pre><code class="html">&lt;my-checkbox v-model=&quot;foo&quot; value=&quot;some value&quot;&gt;&lt;/my-checkbox&gt;
-</code></pre>
-<p>相当于：</p>
-<pre><code class="html">&lt;my-checkbox
-  :checked=&quot;foo&quot;
-  @change=&quot;val =&gt; &#123; foo = val &#125;&quot;
-  value=&quot;some value&quot;&gt;
-&lt;/my-checkbox&gt;
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue%E6%94%AF%E6%8C%81tsx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/vue/vue%E6%94%AF%E6%8C%81tsx/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用vuecl3创建的项目，集成tsx</p>
-<pre><code>vue add tsx-support
-</code></pre>
-<h2 id="导入和配置"><a href="#导入和配置" class="headerlink" title="导入和配置"></a>导入和配置</h2><p>安装 vue-tsx-support 包</p>
-<pre><code class="shell">npm install vue-tsx-support --save
-</code></pre>
-<p>导入TS声明，有两种方式</p>
-<p>编辑tsconfig.js</p>
-<pre><code>&quot;include&quot;: [
-    &quot;node_modules/vue-tsx-support/enable-check.d.ts&quot;, 
-    &quot;src/**/*.ts&quot;,
-    &quot;src/**/*.tsx&quot;,
-    &quot;src/**/*.vue&quot;,
-    &quot;tests/**/*.ts&quot;,
-    &quot;tests/**/*.tsx&quot;
-  ],
-  
- // 注意：将exclude内的 &quot;node_modules&quot; 删掉，不然永远也无法被引用到了
-</code></pre>
-<p>或者在main.js中 import</p>
-<pre><code>import &quot;vue-tsx-support/enable-check&quot;;
-</code></pre>
-<h2 id="创建视图组件"><a href="#创建视图组件" class="headerlink" title="创建视图组件"></a>创建视图组件</h2><p>来创建个按钮组件：</p>
-<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<pre><code> 1 import &#123; Component, Prop &#125; from &quot;vue-property-decorator&quot;;
- 2 import * as tsx from &quot;vue-tsx-support&quot;;
- 3 
- 4 export enum ButtonType &#123;
- 5   default = &quot;default&quot;,
- 6   primary = &quot;primary&quot;
- 7 &#125;
- 8 
- 9 export enum ButtonSize &#123;
-10   large = &quot;large&quot;,
-11   small = &quot;small&quot;
-12 &#125;
-13 export interface IButtonProps &#123;
-14   type?: ButtonType;
-15   size?: ButtonSize;
-16   num: number;
-17 &#125;
-18 
-19 @Component
-20 export default class Button extends tsx.Component&lt;IButtonProps&gt; &#123;
-21   @Prop() public type!: ButtonType;
-22   @Prop() public size!: ButtonSize;
-23   @Prop(&#123; default: 0 &#125;) public num!: number;
-24 
-25   protected render() &#123;
-26     return (
-27       &lt;div&gt;
-28         &lt;p&gt;id:&#123;this.num&#125;&lt;/p&gt;
-29         &#123;this.type &amp;&amp; &lt;p&gt;type:&#123;this.type&#125;&lt;/p&gt;&#125;
-30         &#123;this.size &amp;&amp; &lt;p&gt;size:&#123;this.size&#125;&lt;/p&gt;&#125;
-31       &lt;/div&gt;
-32     );
-33   &#125;
-34 &#125;
-</code></pre>
-<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<p>再创建Container 用TSX引用组件Button：</p>
-<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<pre><code>import &#123; Component, Prop &#125; from &quot;vue-property-decorator&quot;;
-import &#123; Component as tsc &#125; from &quot;vue-tsx-support&quot;;
-import Button, &#123; ButtonType, ButtonSize &#125; from &quot;./button&quot;;
-
-interface IContainerProps &#123;
-  name?: string;
-&#125;
-
-@Component
-export default class Container extends tsc&lt;IContainerProps&gt; &#123;
-  @Prop() public name!: string;
-
-  protected render() &#123;
-    return (
-      &lt;div&gt;
-        &lt;p&gt;container Name:&#123;this.name&#125;&lt;/p&gt;
-        &lt;p&gt;&#123;this.$slots.default&#125;&lt;/p&gt;
-        &lt;p&gt;
-          button:
-          &lt;Button num=&#123;9&#125; type=&#123;ButtonType.primary&#125; size=&#123;ButtonSize.large&#125; /&gt;
-        &lt;/p&gt;
-      &lt;/div&gt;
-    );
-  &#125;
-&#125;
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/webpack/HTMLPlugin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/webpack/HTMLPlugin/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h3><p>这个plugin曝光率很高，他主要有两个作用</p>
-<ul>
-<li>为html文件中引入的外部资源如script、link动态添加每次compile后的hash，防止引用缓存的外部文件问题</li>
-<li>可以生成创建html入口文件，比如单页面可以生成一个html文件入口，配置N个html-webpack-plugin可以生成N个页面入口<br> <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/jantimon/html-webpack-plugin">github</a>上有些关于htmlwebpackplugin的属性介绍</li>
-</ul>
-<h4 id="title"><a href="#title" class="headerlink" title="title"></a>title</h4><p>生成html文件的标题</p>
-<h4 id="filename"><a href="#filename" class="headerlink" title="filename"></a>filename</h4><p>输出的html的文件名称</p>
-<h4 id="template"><a href="#template" class="headerlink" title="template"></a>template</h4><p>html模板所在的文件路径<br> 根据自己的指定的模板文件来生成特定的 html 文件。这里的模板类型可以是任意你喜欢的模板，可以是 html, jade, ejs, hbs, 等等，但是要注意的是，使用自定义的模板文件时，需要提前安装对应的 loader， 否则webpack不能正确解析。<br> 如果你设置的 title 和 filename于模板中发生了冲突，那么以你的title 和 filename 的配置值为准。</p>
-<h4 id="inject"><a href="#inject" class="headerlink" title="inject"></a>inject</h4><p>注入选项。有四个选项值 true, body, head, false.</p>
-<ol>
-<li>true：默认值，script标签位于html文件的 body 底部</li>
-<li>body：script标签位于html文件的 body 底部（同 true）</li>
-<li>head：script 标签位于 head 标签内</li>
-<li>false：不插入生成的 js 文件，只是单纯的生成一个 html 文件</li>
-</ol>
-<h4 id="favicon"><a href="#favicon" class="headerlink" title="favicon"></a>favicon</h4><p>给生成的 html 文件生成一个 favicon。属性值为 favicon 文件所在的路径名</p>
-<h4 id="minify"><a href="#minify" class="headerlink" title="minify"></a>minify</h4><p>minify 的作用是对 html 文件进行压缩，minify 的属性值是一个压缩选项或者 false 。默认值为false, 不对生成的 html 文件进行压缩。<br> 下面罗列了一些常用的配置：</p>
-<pre><code class="javascript">plugins:[
-        new HtmlWebpackPlugin(&#123;
-//部分省略，具体看minify的配置
-minify: &#123;
-     //是否对大小写敏感，默认false
-    caseSensitive: true,
-    
-    //是否简写boolean格式的属性如：disabled=&quot;disabled&quot; 简写为disabled  默认false
-    collapseBooleanAttributes: true,
-    
-    //是否去除空格，默认false
-    collapseWhitespace: true,
-    
-    //是否压缩html里的css（使用clean-css进行的压缩） 默认值false；
-    minifyCSS: true,
-    
-    //是否压缩html里的js（使用uglify-js进行的压缩）
-    minifyJS: true,
-    
-    //Prevents the escaping of the values of attributes
-    preventAttributesEscaping: true,
-    
-    //是否移除属性的引号 默认false
-    removeAttributeQuotes: true,
-    
-    //是否移除注释 默认false
-    removeComments: true,
-    
-    //从脚本和样式删除的注释 默认false
-    removeCommentsFromCDATA: true,
-    
-    //是否删除空属性，默认false
-    removeEmptyAttributes: true,
-    
-    //  若开启此项，生成的html中没有 body 和 head，html也未闭合
-    removeOptionalTags: false, 
-    
-    //删除多余的属性
-    removeRedundantAttributes: true, 
-    
-    //删除script的类型属性，在h5下面script的type默认值：text/javascript 默认值false
-    removeScriptTypeAttributes: true,
-    
-    //删除style的类型属性， type=&quot;text/css&quot; 同上
-    removeStyleLinkTypeAttributes: true,
-    
-    //使用短的文档类型，默认false
-    useShortDoctype: true,
-    &#125;
-    &#125;),
-]
-</code></pre>
-<h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><p>hash选项的作用是 给生成的 js 文件一个独特的 hash 值，该 hash 值是该次 webpack 编译的 hash 值。默认值为 false 。同样看一个例子。</p>
-<pre><code class="javascript">plugins: [
-    new HtmlWebpackPlugin(&#123;
-        hash: true
-    &#125;)
-]
-</code></pre>
-<p>编译打包后</p>
-<pre><code class="html">&lt;script type=text/javascript src=bundle.js?22b9692e22e7be37b57e&gt;&lt;/script&gt;
-</code></pre>
-<p>执行 webpack 命令后，你会看到你的生成的 html 文件的 script 标签内引用的 js 文件，是不是有点变化了。<br> bundle.js 文件后跟的一串 hash 值就是此次 webpack 编译对应的 hash 值。</p>
-<h4 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h4><p>默认是true的，表示内容变化的时候生成一个新的文件。</p>
-<h4 id="showErrors"><a href="#showErrors" class="headerlink" title="showErrors"></a>showErrors</h4><p>这个我们自运行项目的时候经常会用到，showErrors 的作用是，如果 webpack 编译出现错误，webpack会将错误信息包裹在一个 pre 标签内，属性的默认值为 true ，也就是显示错误信息。<br> 开启这个，方便定位错误</p>
-<h4 id="chunks"><a href="#chunks" class="headerlink" title="chunks"></a>chunks</h4><p>chunks主要用于多入口文件，当你有多个入口文件，那就回编译后生成多个打包后的文件，那么chunks 就能选择你要使用那些js文件</p>
-<pre><code class="javascript">entry: &#123;
-    index: path.resolve(__dirname, &#39;./src/index.js&#39;),
-    devor: path.resolve(__dirname, &#39;./src/devor.js&#39;),
-    main: path.resolve(__dirname, &#39;./src/main.js&#39;)
-&#125;
-
-plugins: [
-    new httpWebpackPlugin(&#123;
-        chunks: [&#39;index&#39;,&#39;main&#39;]
-    &#125;)
-]
-</code></pre>
-<p>那么编译后：</p>
-<pre><code class="javascript">&lt;script type=text/javascript src=&quot;index.js&quot;&gt;&lt;/script&gt;
-&lt;script type=text/javascript src=&quot;main.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<p>而如果没有指定 chunks 选项，默认会全部引用。</p>
-<h4 id="excludeChunks"><a href="#excludeChunks" class="headerlink" title="excludeChunks"></a>excludeChunks</h4><p>排除掉一些js,</p>
-<pre><code class="javascript">entry: &#123;
-    index: path.resolve(__dirname, &#39;./src/index.js&#39;),
-    devor: path.resolve(__dirname, &#39;./src/devor.js&#39;),
-    main: path.resolve(__dirname, &#39;./src/main.js&#39;)
-&#125;
-
-plugins: [
-    new httpWebpackPlugin(&#123;
-     excludeChunks: [&#39;devor.js&#39;]//和的等等效
-    &#125;)
-]
-</code></pre>
-<p>那么编译后：</p>
-<pre><code class="javascript">&lt;script type=text/javascript src=&quot;index.js&quot;&gt;&lt;/script&gt;
-&lt;script type=text/javascript src=&quot;main.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<h3 id="webpack4与html-webpack-plugin"><a href="#webpack4与html-webpack-plugin" class="headerlink" title="webpack4与html-webpack-plugin"></a>webpack4与html-webpack-plugin</h3><p>用最新版本的的 html-webpack-plugin你可能还会遇到如下的错误：<br> throw new Error(‘Cyclic dependency’ + nodeRep)</p>
-<p>产生这个 bug 的原因是循环引用依赖，如果你没有这个问题可以忽略。<br> 目前解决方案可以使用 Alpha 版本，npm i –save-dev html-webpack-plugin@next<br> 或者加入chunksSortMode: ‘none’就可以了。<br> 但仔细查看文档发现设置成chunksSortMode: ‘none’这样是会有问题的。<br> 这属性会决定你 chunks 的加载顺序，如果设置为none，你的 chunk 加载在页面中加载的顺序就不能够保证了，可能会出现样式被覆盖的情况。比如我在app.css里面修改了一个第三方库element-ui的样式，通过加载顺序的先后来覆盖它，但由于设置为了none，打包出来的结果变成了这样：</p>
-<pre><code class="html">&lt;link href=&quot;/app.8945fbfc.css&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;link href=&quot;/chunk-elementUI.2db88087.css&quot; rel=&quot;stylesheet&quot;&gt;
-</code></pre>
-<p>app.css被先加载了，之前写的样式覆盖就失效了，除非你使用important或者其它 css 权重的方式覆盖它，但这明显是不太合理的。<br> vue-cli正好也有这个相关 issue，尤雨溪也在不使用@next版本的基础上 hack 了它，有兴趣的可以自己研究一下，</p>
-<p>其它 html-webpack-plugin 的配置和之前使用没有什么区别。</p>
-<p>参考链接<br> <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://segmentfault.com/a/1190000007294861">html-webpack-plugin用法全解</a><br> <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://segmentfault.com/a/1190000013883242">插件 html-webpack-plugin 的详解</a><br> <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1fcc2f8ed8bb">手摸手，带你用合理的姿势使用webpack4（上）</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/webpack/babel-loader/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/webpack/babel-loader/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h3><p>如今 ES6 语法在开发中已经非常普及，甚至也有许多开发人员用上了 ES7 或 ES8 语法。然而，浏览器对这些高级语法的支持性并不是非常好。因此为了让我们的新语法能在浏览器中都能顺利运行，Babel 应运而生。<br>Babel是一个JavaScript编译器，能够让我们放心的使用新一代JS语法。比如我们的箭头函数：</p>
-<pre><code class="javascript">() =&gt; console.log(&#39;hello babel&#39;)
-</code></pre>
-<p>经过Babel编译之后：</p>
-<pre><code class="javascript">(function()&#123;
-    return console.log(&#39;hello babel&#39;);
-&#125;);
-</code></pre>
-<p>会编译成浏览器可识别的ES5语法。</p>
-<h1 id="在webpack中使用babel-loader"><a href="#在webpack中使用babel-loader" class="headerlink" title="在webpack中使用babel-loader"></a>在webpack中使用babel-loader</h1><p>安装：</p>
-<pre><code class="shell">npm install babel-loader @babel/core @babel/preset-env --save-dev
-</code></pre>
-<p>修改 webpack.config.js，加入新的loader：</p>
-<pre><code>&#123;
-    test: /\.js$/,
-    loader: &#39;babel-loader&#39;,
-    exclude: /node_modules/
-&#125;
-</code></pre>
-<p>遇到JS文件就先用babel-loader处理，exclude表示排除 node_modules 文件夹中的文件。loader的配置就OK了，可是这样还不能发挥Babel的作用。在项目根目录下创建一个 .babelrc 文件，添加代码：</p>
-<pre><code class="json">&#123;
-  &quot;presets&quot;: [
-    &quot;@babel/preset-env&quot;
-  ]
-&#125;
-</code></pre>
-<p>我们还希望能够在项目对一些组件进行懒加载，所以还需要一个Babel插件：</p>
-<pre><code class="shell">npm i babel-plugin-syntax-dynamic-import --save-dev
-</code></pre>
-<p>在 .babelrc 文件中加入plugins配置：</p>
-<pre><code class="json">&#123;
-  &quot;presets&quot;: [
-    &quot;@babel/preset-env&quot;
-  ],
-  &quot;plugins&quot;: [
-    &quot;syntax-dynamic-import&quot;
-  ]
-&#125;
-</code></pre>
-<p>在src 目录下创建 helper.js：</p>
-<pre><code>console.log(&#39;this is helper&#39;)
-</code></pre>
-<p>再来修改我们的 main.js ：</p>
-<pre><code>import &#39;babel-polyfill&#39;
-import Modal from &#39;./components/modal/modal&#39;
-import &#39;./assets/style/common.less&#39;
-import _ from &#39;lodash&#39;
-const App = function () &#123;
-  let div = document.createElement(&#39;div&#39;)
-  div.setAttribute(&#39;id&#39;, &#39;app&#39;)
-  document.body.appendChild(div)
-  let dom = document.getElementById(&#39;app&#39;)
-  let modal = new Modal()
-  dom.innerHTML = modal.template(&#123;
-    title: &#39;标题&#39;,
-    content: &#39;内容&#39;,
-    footer: &#39;底部&#39;
-  &#125;)
-  let button = document.createElement(&#39;button&#39;)
-  button.innerText = &#39;click me&#39;
-  button.onclick = () =&gt; &#123;
-    const help = () =&gt; import(&#39;./helper&#39;)
-    help()
-  &#125;
-  document.body.appendChild(button)
-&#125;
-const app = new App()
-console.log(_.camelCase(&#39;Foo Bar&#39;))
-</code></pre>
-<p>当button点击时，加载 helper 然后调用。打包之后可见：<br><img src="https://segmentfault.com/img/remote/1460000017898869" alt="在这里插入图片描述"><br>多了一个 3.bundle.js，在浏览器打开 dist/index.html ，打开 network查看，3.bundle.js并未加载：<br><img src="https://segmentfault.com/img/remote/1460000017898870" alt="在这里插入图片描述"><br>当点击button之后，发现浏览器请求了3.bundle.js，控制台也打印出了数据。<br><img src="https://segmentfault.com/img/remote/1460000017898871" alt="在这里插入图片描述"><br><img src="https://segmentfault.com/img/remote/1460000017898872" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>由于 Babel 只转换语法(如箭头函数)， 你可以使用 babel-polyfill 支持新的全局变量，例如 Promise 、新的原生方法如 String.padStart (left-pad) 等。</p>
-</blockquote>
-<p>安装：</p>
-<pre><code>npm install --save-dev babel-polyfill
-</code></pre>
-<p>在入口文件引入就可以了：</p>
-<pre><code>import &#39;babel-polyfill&#39;
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue2.x%E5%8D%87%E7%BA%A7%E5%88%B0vue3.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/vue/vue2.x%E5%8D%87%E7%BA%A7%E5%88%B0vue3.0/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="开始升级"><a href="#开始升级" class="headerlink" title="开始升级"></a>开始升级</h3><p>直接使用脚手架，如果本地没有安装的可以执行脚手架安装命令：</p>
-<pre><code class="shell">npm install -g @vue/cli
-</code></pre>
-<p>如果本地安装过的，可以尝试更新一下：</p>
-<pre><code class="shell">npm update -g @vue/cli
-</code></pre>
-<p>测试 vue-cli 版本：</p>
-<pre><code class="shell">vue -V
-@vue/cli 4.5.4
-</code></pre>
-<p>将vue-cli更新到最新版本后，升级到vue-next (vue3.0)</p>
-<pre><code class="shell">vue add vue-next
-</code></pre>
-<p>执行完上述命令后，会自动安装 vue-cli-plugin-vue-next 插件，它会将项目升级为 vue3.0 的依赖环境，包括 vue-router 和 vuex 都会升级为 4.x 的版本。</p>
-<p>antd-vue升级</p>
-<pre><code>npm i --save ant-design-vue@next
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue-property-decorator%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/vue/vue-property-decorator%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><pre><code class="shell">npm i -s vue-property-decorator vue-class-component
-</code></pre>
-<h2 id="二，用法"><a href="#二，用法" class="headerlink" title="二，用法"></a><strong>二，用法</strong></h2><p><strong>1，@Component(options:ComponentOptions = {})</strong></p>
-<p><code>@Component</code> 装饰器可以接收一个对象作为参数，可以在对象中声明 <code>components ，filters，directives</code>等未提供装饰器的选项，也可以声明<code>computed，watch</code>等</p>
-<pre><code class="typescript">import &#123; Vue, Component &#125; from &#39;vue-property-decorator&#39;
-
-@Component(&#123;
-  filters: &#123;
-    toFixed: (num: number, fix: number = 2) =&gt; &#123;
-      return num.toFixed(fix)
-    &#125;
-  &#125;
-&#125;)
-export default class MyComponent extends Vue &#123;
-  public list: number[] = [0, 1, 2, 3, 4]
-  get evenList() &#123;
-    return this.list.filter((item: number) =&gt; item % 2 === 0)
-  &#125;
-&#125;
-</code></pre>
-<p><strong>2，@Prop(options: (PropOptions | Constructor[] | Constructor) = {})</strong></p>
-<p><code>@Prop</code>装饰器接收一个参数，这个参数可以有三种写法：</p>
-<ul>
-<li><code>Constructor</code>，例如<code>String，Number，Boolean</code>等，指定 <code>prop</code> 的类型；</li>
-<li><code>Constructor[]</code>，指定 <code>prop</code> 的可选类型；</li>
-<li><code>PropOptions</code>，可以使用以下选项：<code>type，default，required，validator</code>。</li>
-</ul>
-<pre><code class="typescript">import &#123; Vue, Component, Prop &#125; from &#39;vue-property-decorator&#39;
-
-export default class MyComponent extends Vue &#123;
-  @Prop(String) public propA: string | undefined
-  @Prop([String, Number]) public propB!: string | number
-  @Prop(&#123;
-    type: String,
-    default: &#39;abc&#39;
-  &#125;)
-  public propC!: string
-&#125;
-</code></pre>
-<p>等同于下面的<code>js</code>写法</p>
-<pre><code class="javascript">export default &#123;
-  props: &#123;
-    propA: &#123;
-      type: String
-    &#125;,
-    propB: &#123;
-      type: [String, Number]
-    &#125;,
-    propC: &#123;
-      type: String,
-      defalut: &#39;abc&#39;
-    &#125;
-  &#125;
-&#125;
-</code></pre>
-<p>注意：</p>
-<ul>
-<li>属性的ts类型后面需要加上<code>undefined</code>类型；或者在属性名后面加上!，表示<code>非null</code> 和 <code>非undefined</code><br>的断言，否则编译器会给出错误提示；</li>
-<li>指定默认值必须使用上面例子中的写法，如果直接在属性名后面赋值，会重写这个属性，并且会报错。</li>
-</ul>
-<p><strong>3，@PropSync(propName: string, options: (PropOptions | Constructor[] | Constructor) = {})</strong></p>
-<p><code>@PropSync</code>装饰器与<code>@prop</code>用法类似，二者的区别在于：</p>
-<ul>
-<li><code>@PropSync</code> 装饰器接收两个参数：<br><code>propName: string</code> 表示父组件传递过来的属性名；<br><code>options: Constructor | Constructor[] | PropOptions</code> 与<code>@Prop</code>的第一个参数一致；</li>
-<li><code>@PropSync</code> 会生成一个新的计算属性。</li>
-</ul>
-<pre><code class="typescript">import &#123; Vue, Component, PropSync &#125; from &#39;vue-property-decorator&#39;
-
-@Component
-export default class MyComponent extends Vue &#123;
-  @PropSync(&#39;propA&#39;, &#123; type: String, default: &#39;abc&#39; &#125;) public syncedPropA!: string
-&#125;
-</code></pre>
-<p>等同于下面的<code>js</code>写法</p>
-<pre><code class="javascript">export default &#123;
-  props: &#123;
-    propA: &#123;
-      type: String,
-      default: &#39;abc&#39;
-    &#125;
-  &#125;,
-  computed: &#123;
-    syncedPropA: &#123;
-      get() &#123;
-        return this.propA
-      &#125;,
-      set(value) &#123;
-        this.$emit(&#39;update:propA&#39;, value)
-      &#125;
-    &#125;
-  &#125;
-&#125;
-</code></pre>
-<p><strong>注意：<code>@PropSync</code>需要配合父组件的<code>.sync</code>修饰符使用</strong></p>
-<p><strong>4，@Model(event?: string, options: (PropOptions | Constructor[] | Constructor) = {})</strong></p>
-<p><code>@Model</code>装饰器允许我们在一个组件上自定义<code>v-model</code>，接收两个参数：</p>
-<ul>
-<li><code>event: string</code> 事件名。</li>
-<li><code>options: Constructor | Constructor[] | PropOptions</code> 与<code>@Prop</code>的第一个参数一致。</li>
-</ul>
-<pre><code class="typescript">import &#123; Vue, Component, Model &#125; from &#39;vue-property-decorator&#39;
-
-@Component
-export default class MyInput extends Vue &#123;
-  @Model(&#39;change&#39;, &#123; type: String, default: &#39;123&#39; &#125;) public value!: string
-&#125;
-</code></pre>
-<p>等同于下面的<code>js</code>写法</p>
-<pre><code class="javascript">export default &#123;
-  model: &#123;
-    prop: &#39;value&#39;,
-    event: &#39;change&#39;
-  &#125;,
-  props: &#123;
-    value: &#123;
-      type: String,
-      default: &#39;123&#39;
-    &#125;
-  &#125;
-&#125;
-</code></pre>
-<p>上面例子中指定的是<code>change</code>事件，所以我们还需要在<code>template</code>中加上相应的事件：</p>
-<pre><code class="html">&lt;template&gt;
-  &lt;input
-    type=&quot;text&quot;
-    :value=&quot;value&quot;
-    @change=&quot;$emit(&#39;change&#39;, $event.target.value)&quot;
-  /&gt;
-&lt;/template&gt;
-</code></pre>
-<p><strong>对<code>自定义v-model</code>不太理解的同学，可以查看<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">自定义事件</a></strong></p>
-<p><strong>5，@Watch(path: string, options: WatchOptions = {})</strong></p>
-<p><code>@Watch</code> 装饰器接收两个参数：</p>
-<ul>
-<li><p><code>path: string</code> 被侦听的属性名；</p>
-<p>options可以包含两个属性 ：</p>
-<p><code>immediate?:boolean</code> 侦听开始之后是否立即调用该回调函数；<br><code>deep?:boolean</code> 被侦听的对象的属性被改变时，是否调用该回调函数；</p>
-</li>
-</ul>
-<p><strong>侦听开始，发生在<code>beforeCreate</code>勾子之后，<code>created</code>勾子之前</strong></p>
-<pre><code class="typescript">import &#123; Vue, Component, Watch &#125; from &#39;vue-property-decorator&#39;
-
-@Component
-export default class MyInput extends Vue &#123;
-  @Watch(&#39;msg&#39;)
-  public onMsgChanged(newValue: string, oldValue: string) &#123;&#125;
-
-  @Watch(&#39;arr&#39;, &#123; immediate: true, deep: true &#125;)
-  public onArrChanged1(newValue: number[], oldValue: number[]) &#123;&#125;
-
-  @Watch(&#39;arr&#39;)
-  public onArrChanged2(newValue: number[], oldValue: number[]) &#123;&#125;
-&#125;
-</code></pre>
-<p>等同于下面的<code>js</code>写法</p>
-<pre><code class="javascript">export default &#123;
-  watch: &#123;
-    msg: [
-      &#123;
-        handler: &#39;onMsgChanged&#39;,
-        immediate: false,
-        deep: false
-      &#125;
-    ],
-    arr: [
-      &#123;
-        handler: &#39;onArrChanged1&#39;,
-        immediate: true,
-        deep: true
-      &#125;,
-      &#123;
-        handler: &#39;onArrChanged2&#39;,
-        immediate: false,
-        deep: false
-      &#125;
-    ]
-  &#125;,
-  methods: &#123;
-    onMsgVhanged(newValue, oldValue) &#123;&#125;,
-    onArrChange1(newValue, oldValue) &#123;&#125;,
-    onArrChange2(newValue, oldValue) &#123;&#125;
-  &#125;
-&#125;
-</code></pre>
-<p><strong>6，@Emit(event?: string)</strong></p>
-<ul>
-<li><code>@Emit</code> 装饰器接收一个可选参数，该参数是<code>$Emit</code>的第一个参数，充当事件名。如果没有提供这个参数，<code>$Emit</code>会将回调函数名的<code>camelCase</code>转为<code>kebab-case</code>，并将其作为事件名；</li>
-<li><code>@Emit</code>会将回调函数的返回值作为第二个参数，如果返回值是一个<code>Promise</code>对象，<code>$emit</code>会在<code>Promise</code>对象被标记为<code>resolved</code>之后触发；</li>
-<li><code>@Emit</code>的回调函数的参数，会放在其返回值之后，一起被<code>$emit</code>当做参数使用。</li>
-</ul>
-<pre><code class="typescript">import &#123; Vue, Component, Emit &#125; from &#39;vue-property-decorator&#39;
-
-@Component
-export default class MyComponent extends Vue &#123;
-  count = 0
-  @Emit()
-  public addToCount(n: number) &#123;
-    this.count += n
-  &#125;
-  @Emit(&#39;reset&#39;)
-  public resetCount() &#123;
-    this.count = 0
-  &#125;
-  @Emit()
-  public returnValue() &#123;
-    return 10
-  &#125;
-  @Emit()
-  public onInputChange(e) &#123;
-    return e.target.value
-  &#125;
-  @Emit()
-  public promise() &#123;
-    return new Promise(resolve =&gt; &#123;
-      setTimeout(() =&gt; &#123;
-        resolve(20)
-      &#125;, 0)
-    &#125;)
-  &#125;
-&#125;
-</code></pre>
-<p>等同于下面的<code>js</code>写法</p>
-<pre><code class="javascript">export default &#123;
-  data() &#123;
-    return &#123;
-      count: 0
-    &#125;
-  &#125;,
-  methods: &#123;
-    addToCount(n) &#123;
-      this.count += n
-      this.$emit(&#39;add-to-count&#39;, n)
-    &#125;,
-    resetCount() &#123;
-      this.count = 0
-      this.$emit(&#39;reset&#39;)
-    &#125;,
-    returnValue() &#123;
-      this.$emit(&#39;return-value&#39;, 10)
-    &#125;,
-    onInputChange(e) &#123;
-      this.$emit(&#39;on-input-change&#39;, e.target.value, e)
-    &#125;,
-    promise() &#123;
-      const promise = new Promise(resolve =&gt; &#123;
-        setTimeout(() =&gt; &#123;
-          resolve(20)
-        &#125;, 0)
-      &#125;)
-      promise.then(value =&gt; &#123;
-        this.$emit(&#39;promise&#39;, value)
-      &#125;)
-    &#125;
-  &#125;
-&#125;
-</code></pre>
-<p><strong>7，@Ref(refKey?: string)</strong></p>
-<p><code>@Ref</code> 装饰器接收一个可选参数，用来指向元素或子组件的引用信息。如果没有提供这个参数，会使用装饰器后面的属性名充当参数</p>
-<pre><code class="typescript">import &#123; Vue, Component, Ref &#125; from &#39;vue-property-decorator&#39;
-import &#123; Form &#125; from &#39;element-ui&#39;
-
-@Componentexport default class MyComponent extends Vue &#123;
-  @Ref() readonly loginForm!: Form
-  @Ref(&#39;changePasswordForm&#39;) readonly passwordForm!: Form
-
-  public handleLogin() &#123;
-    this.loginForm.validate(valide =&gt; &#123;
-      if (valide) &#123;
-        // login...
-      &#125; else &#123;
-        // error tips
-      &#125;
-    &#125;)
-  &#125;
-&#125;
-</code></pre>
-<p>等同于下面的<code>js</code>写法</p>
-<pre><code class="javascript">export default &#123;
-  computed: &#123;
-    loginForm: &#123;
-      cache: false,
-      get() &#123;
-        return this.$refs.loginForm
-      &#125;
-    &#125;,
-    passwordForm: &#123;
-      cache: false,
-      get() &#123;
-        return this.$refs.changePasswordForm
-      &#125;
-    &#125;
-  &#125;
-&#125;
-</code></pre>
-<p><strong>@Provide/@Inject 和 @ProvideReactive/@InhectReactive</strong></p>
-<p>由于平时基本不用到provide/inject选项，暂时先放着，以后有时间再研究</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://github.com/kaorun343/vue-property-decorator">https://github.com/kaorun343/…</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue-next/vue3.0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/vue-next/vue3.0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一个新的全局-API：createApp"><a href="#一个新的全局-API：createApp" class="headerlink" title="一个新的全局 API：createApp"></a>一个新的全局 API：<code>createApp</code></h2><p>调用 <code>createApp</code> 返回一个应用实例，这是 Vue 3 中的新概念：</p>
-<pre><code class="js">import &#123; createApp &#125; from &#39;vue&#39;
-
-const app = createApp(&#123;&#125;)
-</code></pre>
-<p>应用实例暴露当前全局 API 的子集，经验法则是，任何全局改变 Vue 行为的 API 现在都会移动到应用实例上，以下是当前全局 API 及其相应实例 API 的表：</p>
-<table>
-<thead>
-<tr>
-<th>2.x 全局 API</th>
-<th>3.x 实例 API (<code>app</code>)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Vue.config</td>
-<td>app.config</td>
-</tr>
-<tr>
-<td>Vue.config.productionTip</td>
-<td><em>removed</em> (<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api.html#config-productiontip-removed">见下方</a>)</td>
-</tr>
-<tr>
-<td>Vue.config.ignoredElements</td>
-<td>app.config.isCustomElement (<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api.html#config-ignoredelements-is-now-config-iscustomelement">见下方</a>)</td>
-</tr>
-<tr>
-<td>Vue.component</td>
-<td>app.component</td>
-</tr>
-<tr>
-<td>Vue.directive</td>
-<td>app.directive</td>
-</tr>
-<tr>
-<td>Vue.mixin</td>
-<td>app.mixin</td>
-</tr>
-<tr>
-<td>Vue.use</td>
-<td>app.use (<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api.html#a-note-for-plugin-authors">见下方</a>)</td>
-</tr>
-</tbody></table>
-<p>所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api-treeshaking.html">全局 API Treeshaking</a>。</p>
-<h2 id="provide"><a href="#provide" class="headerlink" title="provide"></a>provide</h2><ul>
-<li><p><strong>参数：</strong></p>
-<ul>
-<li><code>&#123;string | Symbol&#125; key</code></li>
-<li><code>value</code></li>
-</ul>
-</li>
-<li><p><strong>返回值：</strong></p>
-<ul>
-<li>应用实例</li>
-</ul>
-</li>
-<li><p><strong>用法：</strong></p>
-<p>设置一个可以被注入到应用范围内所有组件中的值。组件应该使用 <code>inject</code> 来接收提供的值。</p>
-<p>从 <code>provide</code>/<code>inject</code> 的角度来看，可以将应用程序视为根级别的祖先，而根组件是其唯一的子级。</p>
-<p>该方法不应该与 <a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/api/options-composition.html#provide-inject">provide 组件选项</a>或组合式 API 中的 <a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/api/composition-api.html#provide-inject">provide 方法</a>混淆。虽然它们也是相同的 <code>provide</code>/<code>inject</code> 机制的一部分，但是是用来配置组件提供的值而不是应用提供的值。</p>
-<p>通过应用提供值在写插件时尤其有用，因为插件一般不能使用组件提供值。这是使用 <a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/api/application-config.html#globalProperties">globalProperties</a> 的替代选择。</p>
-<p>Note</p>
-<p><code>provide</code> 和 <code>inject</code> 绑定不是响应式的。这是有意为之。不过，如果你向下传递一个响应式对象，这个对象上的 property 会保持响应式。</p>
-</li>
-<li><p><strong>示例：</strong></p>
-<p>向根组件中注入一个 property，值由应用提供。</p>
-</li>
-</ul>
-<pre><code class="js">import &#123; createApp &#125; from &#39;vue&#39;
-
-const app = createApp(&#123;
-  inject: [&#39;user&#39;],
-  template: `
-    &lt;div&gt;
-      &#123;&#123; user &#125;&#125;
-    &lt;/div&gt;
-  `
-&#125;)
-
-app.provide(&#39;user&#39;, &#39;administrator&#39;)
-</code></pre>
-<ul>
-<li>参考：<ul>
-<li><a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/component-provide-inject.html">Provide / Inject</a></li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue%E5%85%BC%E5%AE%B9ie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1936,12 +383,608 @@ require(&#39;es6-promise&#39;).polyfill();
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue2.x%E5%8D%87%E7%BA%A7%E5%88%B0vue3.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue/vue2.x%E5%8D%87%E7%BA%A7%E5%88%B0vue3.0/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="开始升级"><a href="#开始升级" class="headerlink" title="开始升级"></a>开始升级</h3><p>直接使用脚手架，如果本地没有安装的可以执行脚手架安装命令：</p>
+<pre><code class="shell">npm install -g @vue/cli
+</code></pre>
+<p>如果本地安装过的，可以尝试更新一下：</p>
+<pre><code class="shell">npm update -g @vue/cli
+</code></pre>
+<p>测试 vue-cli 版本：</p>
+<pre><code class="shell">vue -V
+@vue/cli 4.5.4
+</code></pre>
+<p>将vue-cli更新到最新版本后，升级到vue-next (vue3.0)</p>
+<pre><code class="shell">vue add vue-next
+</code></pre>
+<p>执行完上述命令后，会自动安装 vue-cli-plugin-vue-next 插件，它会将项目升级为 vue3.0 的依赖环境，包括 vue-router 和 vuex 都会升级为 4.x 的版本。</p>
+<p>antd-vue升级</p>
+<pre><code>npm i --save ant-design-vue@next
+</code></pre>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue-next/1.%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue-next/1.%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="vue3-0通过Proxy实现数据的双向绑定"><a href="#vue3-0通过Proxy实现数据的双向绑定" class="headerlink" title="vue3.0通过Proxy实现数据的双向绑定"></a>vue3.0通过Proxy实现数据的双向绑定</h3><blockquote>
+<p>proxy是什么？</p>
+<p>Proxy是 ES6 中新增的一个特性，翻译过来意思是”代理”，用在这里表示由它来“代理”某些操作。 Proxy 让我们能够以简洁易懂的方式控制外部对对象的访问。其功能非常类似于设计模式中的代理模式。</p>
+<p>Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。</p>
+<p>使用 Proxy 的核心优点是可以交由它来处理一些非核心逻辑（如：读取或设置对象的某些属性前记录日志；设置对象的某些属性值前，需要验证；某些属性的访问控制等）。 从而可以让对象只需关注于核心逻辑，达到关注点分离，降低对象复杂度等目的。基本</p>
+</blockquote>
+<p>基本用法</p>
+<pre><code class="javascript">let p = new Proxy(target, handler);
+</code></pre>
+<p>举例</p>
+<pre><code class="javascript">let obj = &#123;&#125;;
+let handler = &#123;
+    get(target, property) &#123;
+        console.log(&quot;读取到&quot;, target, property);
+        return property in target ? target[property] : 88;
+    &#125;,
+    set(target, property, value) &#123;
+        console.log(`$&#123;property&#125; 被设置为 $&#123;value&#125;`);
+        target[property] = value;
+        return true;  // 不加上这句代码会报错，必须要返回是否复制成功
+    &#125;
+&#125;
+let p = new    Proxy(obj, handler);
+p.name = &#39;小王&#39;;
+console.log(p.name);
+console.log(p.age);
+</code></pre>
+<p><img src="./img/image-20200628155100877.png" alt="上述代码运行结果"></p>
+<p>写一个Proxy实现输入框双向绑定显示的例子</p>
+<pre><code class="HTML">&lt;input type=&quot;text&quot; id=&quot;input&quot;&gt;
+&lt;div&gt;您输入的是：&lt;span id=&quot;title&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="javascript">const obj = &#123;&#125;;
+const input = document.getElementById(&quot;input&quot;);
+const title = document.getElementById(&quot;title&quot;);
+const newObj = new Proxy(obj, &#123;
+    get(target, key, receiver) &#123;
+        console.log(&quot;getting&quot;, key);
+        return Reflect.get(target, key, receiver);
+    &#125;,
+    set(target, key, value, receiver) &#123;
+        console.log(target, key, value, receiver);
+        if(key == &#39;text&#39;) &#123;
+            input.value = value
+            title.innerHTML = value;
+        &#125;
+        return Reflect.set(target, key, value, receiver);
+    &#125;
+&#125;)
+input.addEventListener(&quot;keyup&quot;, e =&gt; &#123;
+    newObj.text = e.target.value;
+&#125;)
+</code></pre>
+<p>参考文档  <a target="_blank" rel="noopener" href="https://juejin.im/post/5bf3e632e51d452baa5f7375">https://juejin.im/post/5bf3e632e51d452baa5f7375</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue-next/2.vue3.0%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue-next/2.vue3.0%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Vue3-0项目初始化"><a href="#Vue3-0项目初始化" class="headerlink" title="Vue3.0项目初始化"></a>Vue3.0项目初始化</h3><p>第一步，安装vue-cli</p>
+<pre><code>npm install -g @vue/cli
+</code></pre>
+<p>安装成功后可以查看安装版本</p>
+<pre><code>$ vue -V
+@vue/cli 4.3.1
+</code></pre>
+<p>第二步，初始化 vue 项目：</p>
+<pre><code>vue create vue-next-test
+</code></pre>
+<p>第三步，升级Vue3.0项目</p>
+<pre><code>cd vue-next-test
+vue add vue-next
+</code></pre>
+<p>完成上述操作后，项目将会升级到Vue3.0，但该方法还不支持typescript。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue-next/3.Composition%20API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue-next/3.Composition%20API/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Composition-API-上手初体验"><a href="#Composition-API-上手初体验" class="headerlink" title="Composition API 上手初体验"></a>Composition API 上手初体验</h3><blockquote>
+<p>Vue3.0最大的变化就是 Vue Composition API， Composition API是一种全新的逻辑重用和代码组织方法。</p>
+<p>在Vue2.X中使用的是“options”API 构建组件，为了将逻辑添加到Vue组件中，我们填充（options）属性，如data、methods、computed等。这种方法最大的缺点是，它本身不是一个工作的JavaScript代码。您需要确切地知道模板中可以访问哪些属性以及this关键字的行为。在底层，Vue编译器需要将此属性转换为工作代码。正因为如此，我们无法从自动建议或类型检查中获益。</p>
+<p>Composition API希望将通过当前组件属性、可用的机制公开为JavaScript函数来解决这个问题。Vue核心团队将组件Composition API描述为“一套附加的、基于函数的api，允许灵活地组合组件逻辑”。使用Composition API编写的代码更易读，并且场景不复杂，这使得阅读和学习变得更容易。</p>
+</blockquote>
+<p>下面看一个简单的组件示例</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;button @click=&quot;add&quot;&gt;
+            Count is &#123;&#123;count&#125;&#125;, double is &#123;&#123;double&#125;&#125;, click to add
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import &#123; ref, computed, onMounted &#125; from &#39;vue&#39;;
+export default &#123;
+    setup() &#123;
+        const count = ref(0);
+        const double = computed(() =&gt; count.value * 2)
+        function add() &#123;
+            count.value ++;
+        &#125;
+        onMounted(() =&gt; &#123;
+            console.log(&quot;onMounted&quot;);
+        &#125;)
+        return &#123;
+            count,
+            double,
+            add
+        &#125;
+    &#125;
+&#125;
+&lt;/script&gt;
+</code></pre>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue-next/Vue%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2060,7 +1103,7 @@ require(&#39;es6-promise&#39;).polyfill();
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2199,11 +1242,822 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/6.%20%E6%89%93%E5%8C%85%E3%80%81%E5%8F%91%E5%B8%83%E3%80%81%E5%8D%87%E7%BA%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/6.%20%E6%89%93%E5%8C%85%E3%80%81%E5%8F%91%E5%B8%83%E3%80%81%E5%8D%87%E7%BA%A7/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="发布方式"><a href="#发布方式" class="headerlink" title="发布方式"></a>发布方式</h1><p>插件开发完了，如何发布出去分享给他人呢？主要有3种方法：</p>
+<ul>
+<li>方法一：直接把文件夹发给别人，让别人找到vscode的插件存放目录并放进去，然后重启vscode，一般不推荐；</li>
+<li>方法二：打包成vsix插件，然后发送给别人安装，如果你的插件涉及机密不方便发布到应用市场，可以尝试采用这种方式；</li>
+<li>方法三：注册开发者账号，发布到官网应用市场，这个发布和npm一样是不需要审核的。</li>
+</ul>
+<h1 id="本地打包"><a href="#本地打包" class="headerlink" title="本地打包"></a>本地打包</h1><p>无论是本地打包还是发布到应用市场都需要借助<code>vsce</code>这个工具。</p>
+<p>安装：</p>
+<pre><code class="bash">npm i vsce -g
+</code></pre>
+<p>打包成<code>vsix</code>文件：</p>
+<pre><code class="bash">vsce package
+</code></pre>
+<p>打包的时候如果没有设置<code>repository</code>会有提示，所以最好设置一下。</p>
+<p><img src="http://image.haoji.me/201810/20181013_211058_449_1867.png" alt="W1678xH212"></p>
+<p>生成好的vsix文件不能直接拖入安装，只能从扩展的右上角选择<code>Install from VSIX</code>安装：</p>
+<p><img src="http://image.haoji.me/201810/20181013_211221_454_0291.png" alt="W956xH688"></p>
+<h1 id="发布应用市场"><a href="#发布应用市场" class="headerlink" title="发布应用市场"></a>发布应用市场</h1><p>Visual Studio Code的应用市场基于微软自己的<code>Azure DevOps</code>，插件的身份验证、托管和管理都是在这里。</p>
+<ul>
+<li>要发布到应用市场首先得有应用市场的<code>publisher</code>账号；</li>
+<li>而要有发布账号首先得有<code>Azure DevOps</code>组织；</li>
+<li>而创建组织之前，首先得创建<code>Azure</code>账号；</li>
+<li>创建<code>Azure</code>账号首先得有<code>Microsoft</code>账号；</li>
+</ul>
+<p>是不是有点晕，梳理一下：</p>
+<ul>
+<li>一个Microsoft账号可以创建多个<code>Azure</code>组织；</li>
+<li>一个组织可以创建多个<code>publisher</code>账号；</li>
+<li>同时一个组织可以创建多个<code>PAT</code>（<code>Personal Access Token</code>，个人访问令牌）；</li>
+</ul>
+<h2 id="3-1-注册账号"><a href="#3-1-注册账号" class="headerlink" title="3.1. 注册账号"></a>3.1. 注册账号</h2><p>首先访问 <a target="_blank" rel="noopener" href="https://login.live.com/">https://login.live.com/</a> 登录你的<code>Microsoft</code>账号，没有的先注册一个：</p>
+<p><img src="http://image.haoji.me/201810/20181013_214258_739_0257.png" alt="W579xH482"></p>
+<p>然后访问： <a target="_blank" rel="noopener" href="https://aka.ms/SignupAzureDevOps">https://aka.ms/SignupAzureDevOps</a> ，如果你从来没有使用过Azure，那么会看到如下提示：</p>
+<p><img src="http://image.haoji.me/201810/20181013_214409_099_0799.png" alt="W479xH330"></p>
+<p>点击继续，默认会创建一个以邮箱前缀为名的组织。</p>
+<h2 id="3-2-创建令牌"><a href="#3-2-创建令牌" class="headerlink" title="3.2. 创建令牌"></a>3.2. 创建令牌</h2><p>默认进入组织的主页后，点击右上角的<code>Security</code>：</p>
+<p><img src="http://image.haoji.me/201810/20181013_214712_447_4540.png" alt="W748xH607"></p>
+<p>点击创建新的个人访问令牌，这里特别要注意<code>Organization</code>要选择<code>all accessible organizations</code>，<code>Scopes</code>要选择<code>Full access</code>，否则后面发布会失败。</p>
+<p><img src="http://image.haoji.me/201810/20181013_215608_127_6001.png" alt="W639xH502"></p>
+<p>创建令牌成功后你需要本地记下来，因为网站是不会帮你保存的。</p>
+<h2 id="3-3-创建发布账号"><a href="#3-3-创建发布账号" class="headerlink" title="3.3. 创建发布账号"></a>3.3. 创建发布账号</h2><p>获得个人访问令牌后，使用<code>vsce</code>以下命令创建新的发布者：</p>
+<pre><code class="bash">vsce create-publisher your-publisher-name
+</code></pre>
+<p><code>your-publisher-name</code>必须是字母数字下划线，这是全网唯一的账号，然后会依次要求输入昵称、邮箱、令牌：</p>
+<p><img src="http://image.haoji.me/201810/20181013_221104_009_6828.png" alt="W1200xH294"></p>
+<p>创建成功后会默认登录这个账号，接下来你可以直接发布了，当然，如果你是在其它地方创建的，可以试用<code>vsce login your-publisher-name</code>来登录。</p>
+<p>除了用命令之外，你还可以使用网页版创建发布账号：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/manage">https://marketplace.visualstudio.com/manage</a></p>
+<h2 id="3-4-发布"><a href="#3-4-发布" class="headerlink" title="3.4. 发布"></a>3.4. 发布</h2><p>发布很简单：</p>
+<pre><code class="bash">vsce publish
+</code></pre>
+<p><img src="http://image.haoji.me/201810/20181013_221636_405_8062.png" alt="W1092xH254"></p>
+<p>发布成功后大概需要过几分钟才能在应用市场搜到。过几分钟就可以访问网页版的插件主页：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=sxei.vscode-plugin-demo">https://marketplace.visualstudio.com/items?itemName=sxei.vscode-plugin-demo</a></p>
+<p><img src="http://image.haoji.me/201810/20181013_221942_272_1738.png" alt="W646xH447"></p>
+<p>vscode里面也能搜到了：</p>
+<p><img src="http://image.haoji.me/201810/20181013_222332_214_5966.png" alt="W738xH674"></p>
+<h3 id="3-4-1-发布注意事项"><a href="#3-4-1-发布注意事项" class="headerlink" title="3.4.1. 发布注意事项"></a>3.4.1. 发布注意事项</h3><ul>
+<li><code>README.md</code>文件默认会显示在插件主页；</li>
+<li><code>README.md</code>中的资源必须全部是<code>HTTPS</code>的，如果是<code>HTTP</code>会发布失败；</li>
+<li><code>CHANGELOG.md</code>会显示在变更选项卡；</li>
+<li>如果代码是放在git仓库并且设置了repository字段，发布前必须先提交git，否则会提示<code>Git working directory not clean</code>；</li>
+</ul>
+<p>另外，如前面所说，如果<code>Organization</code>没有选择<code>all accessible organizations</code>，或者<code>Scopes</code>没有选择<code>Full access</code>，发布的时候可能会报如下错误：</p>
+<pre><code class="bash">Error: Failed Request: Unauthorized(401) - https://marketplace.visualstudio.com/_apis/gallery
+Be sure to use a Personal Access Token which has access to **all accessible accounts**.
+See https://code.visualstudio.com/docs/tools/vscecli#_common-questions for more information.
+</code></pre>
+<h3 id="3-4-2-增量发布"><a href="#3-4-2-增量发布" class="headerlink" title="3.4.2. 增量发布"></a>3.4.2. 增量发布</h3><p>版本号：<code>major.minor.patch</code></p>
+<p>如果想让发布之后版本号的patch自增，例如：<code>1.0.2</code> -&gt; <code>1.0.3</code>，可以这样：</p>
+<pre><code class="bash">vsce publish patch
+</code></pre>
+<p>执行这个命令后会自动修改<code>package.json</code>里面的版本号。同理，<code>vsce publish minor</code>也是可以的。</p>
+<h2 id="3-5-取消发布"><a href="#3-5-取消发布" class="headerlink" title="3.5. 取消发布"></a>3.5. 取消发布</h2><pre><code class="bash">vsce unpublish (publisher name).(extension name)
+</code></pre>
+<h2 id="3-6-更新"><a href="#3-6-更新" class="headerlink" title="3.6. 更新"></a>3.6. 更新</h2><p>如果修改了插件代码想要重新发布，只需要修改版本号然后重新执行<code>vsce publish</code>即可。</p>
+<h1 id="插件升级"><a href="#插件升级" class="headerlink" title="插件升级"></a>插件升级</h1><h2 id="4-1-发布到了应用市场"><a href="#4-1-发布到了应用市场" class="headerlink" title="4.1. 发布到了应用市场"></a>4.1. 发布到了应用市场</h2><p>如果发布到了应用市场，那么一般来说会自动检测有没有新版本，有的话会自动无感知升级，但具体什么时候会去检测我还没有研究过，已经确定的是在扩展面板搜索插件名字会自动检测，重启vscode也会检测。</p>
+<h2 id="4-2-如果是本地打包"><a href="#4-2-如果是本地打包" class="headerlink" title="4.2. 如果是本地打包"></a>4.2. 如果是本地打包</h2><p>如果是打包成<code>vsix</code>，那么只能自己实现升级检测功能呢，通过对比服务器上某个文件的版本号，具体我就不细讲了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/5.%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/5.%20%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在介绍完一些比较简单的内容点之后，我觉得有必要先和大家介绍一些开发中遇到的一些细节问题以及技巧，特别是后面一章节将要介绍WebView的知识，这个坑会比较多，避免大家走弯路。</p>
+<h1 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h1><p>最理想的方式是准备双显示器，一个写代码，一个运行插件，实践证明这种方式开发效率会提升很多，每次修改完代码之后直接<code>Ctrl+R</code>重新加载即可，非常方便。</p>
+<h1 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h1><p>就我目前遇到的情况来看，vscode日志主要有这5种：</p>
+<h2 id="3-1-旧窗口的调试控制台"><a href="#3-1-旧窗口的调试控制台" class="headerlink" title="3.1. 旧窗口的调试控制台"></a>3.1. 旧窗口的调试控制台</h2><p>扩展里的<code>console.log()</code>日志一般输出在这里，但是有很大的限制，结构稍微深一点的对象在这里了就显示不了：</p>
+<blockquote>
+<p>Unable to log remote console arguments Output omitted for an object that cannot be inspected (Error: [sxei.vscode-plugin-demo]: Proposed API is only available when running out of dev or with the following command line switch: –enable-proposed-api sxei.vscode-plugin-demo)</p>
+</blockquote>
+<p>这里只能看成是新窗口开发者控制台日志的一种快捷显示，以下是旧窗口调试控制台显示的内容：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016092524198-2128000609.png" alt="img"></p>
+<p>而对应的内容在新窗口的开发者控制台显示如下：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016092542113-1079237606.png" alt="img"></p>
+<p>可以看到，结构较深的对象即使在控制台也无法显示，目前发现的唯一比较好的方法就是在输出的地方打一个断点，然后运行的时候会自动卡在这里，鼠标悬停就可以查看对象的内容。</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016092559813-140401356.png" alt="img"></p>
+<h2 id="3-2-新窗口的调试控制台"><a href="#3-2-新窗口的调试控制台" class="headerlink" title="3.2. 新窗口的调试控制台"></a>3.2. 新窗口的调试控制台</h2><p>一般没什么扩展相关日志会输出在这里。</p>
+<h2 id="3-3-旧窗口的开发者控制台"><a href="#3-3-旧窗口的开发者控制台" class="headerlink" title="3.3. 旧窗口的开发者控制台"></a>3.3. 旧窗口的开发者控制台</h2><p>快捷键<code>Ctrl+Alt+I</code>，这里一般显示vscode本身一些日志，和扩展相关的不会显示在这里，所以这个也不用太多关心。</p>
+<h2 id="3-4-新窗口的开发者控制台"><a href="#3-4-新窗口的开发者控制台" class="headerlink" title="3.4. 新窗口的开发者控制台"></a>3.4. 新窗口的开发者控制台</h2><p>快捷键也是<code>Ctrl+Alt+I</code>，不记得的可以从<code>帮助</code> -&gt; <code>切换开发人员工具</code>找到。这个控制台很重要，有时候如果发现你的代码莫名其妙没生效，很有可能是报错了，这种报错是不会显示在<code>旧窗口调试控制台</code>的，如果你不知道到这里来查看日志，那么你只能一脸懵逼的到处乱试了，调试控制台只打印常规日志，语法错误并不会显示在这里。</p>
+<p>例如，我在跳转定义实现前人为制造一个错误：</p>
+<pre><code class="js">function provideDefinition(document, position, token) &#123;
+    console.log(aaf);
+    const fileName    = document.fileName;
+    // 省略其它代码
+&#125;
+</code></pre>
+<p>运行后就会发现点击跳转不生效，但是也没有什么报错提示，此时只能打开控制台查看才能发现问题：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016092831383-554527682.png" alt="img"></p>
+<h2 id="3-5-WebView控制台"><a href="#3-5-WebView控制台" class="headerlink" title="3.5. WebView控制台"></a>3.5. WebView控制台</h2><p><code>WebView</code>我们会在下一章节介绍，这里先提一下。<code>Webview</code>的控制台比较特殊，需要特殊的命令才能打开，按下<code>Ctrl+Shift+P</code>然后执行<code>打开Webview开发工具</code>，英文版应该是<code>Open Webview Developer Tools</code>：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016092855266-1904942237.png" alt="img"></p>
+<p>开发时我们把它当成一个普通的网页来看就好了。</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>vscode插件的调试非常简单方便，只需要在需要调试的地方打个断点，然后按<code>F5</code>执行即可：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016092935660-1039810316.png" alt="img"></p>
+<p>几个调试快捷键：</p>
+<ul>
+<li><code>F5</code>运行</li>
+<li><code>Ctrl+F2</code>停止运行</li>
+<li><code>F6</code>下一步跳过（类似于Chrome的<code>F10</code>）</li>
+<li><code>F5</code>下一步跳入</li>
+<li><code>F8</code>跳过</li>
+</ul>
+<h1 id="如何快速找到我想找的内容"><a href="#如何快速找到我想找的内容" class="headerlink" title="如何快速找到我想找的内容"></a>如何快速找到我想找的内容</h1><p>刚开始只能先大概对整个vscode的api有一个大概了解，了解了之后就大概清楚一般什么功能会怎么实现，该去什么地方找，所有的vscode的api都可以在<code>vscode.d.ts</code>文件里面找到：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016093008271-1545026665.png" alt="img"></p>
+<p>不得不佩服，正规大型项目的注释写的真的不是一般的详细，<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/vscode-api">官网的API文档</a>肯定也是基于这个自动生成的，反正把这个<code>ts</code>文件吃透了，基本上你想实现什么功能要怎么实现都了如指掌了。</p>
+<h1 id="查看插件存放目录"><a href="#查看插件存放目录" class="headerlink" title="查看插件存放目录"></a>查看插件存放目录</h1><p>插件安装后根据操作系统不同会放在如下目录：</p>
+<ul>
+<li>Windows系统：<code>%USERPROFILE%\.vscode\extensions</code></li>
+<li>Mac/Linux：<code>~/.vscode/extensions</code></li>
+</ul>
+<p>想要学习查看其它插件的代码可以找到这个目录：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016093021874-1771606398.png" alt="img"></p>
+<h1 id="一些个人经验分享"><a href="#一些个人经验分享" class="headerlink" title="一些个人经验分享"></a>一些个人经验分享</h1><h2 id="7-1-调试控制台日志不可靠"><a href="#7-1-调试控制台日志不可靠" class="headerlink" title="7.1. 调试控制台日志不可靠"></a>7.1. 调试控制台日志不可靠</h2><p>vscode有一个很坑爹的地方，这里特别要注意，当require一个function进来并打印输出时，虽然打印在控制台显示为null，但其实是有值的，不知道的人很容易被误导，直接就是被这个现象骗了很久，<strong>切记切记</strong>！</p>
+<p>test-require-function.js：</p>
+<pre><code class="js">function testRequireFunction(a, b) &#123;
+    console.log(&#39;进入testRequireFunction方法&#39;);
+    console.log(a, b);
+&#125;
+module.exports = testRequireFunction;
+</code></pre>
+<p><code>extension.js</code>：</p>
+<pre><code class="js">exports.activate = function(context) &#123;
+    const testFn = require(&#39;./test-require-function&#39;);
+    console.log(testFn); // vscode的日志输出不可靠，这里竟然会打印null？！
+    testFn(1, 2); // 1, 2
+&#125;;
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="bash">null
+进入testRequireFunction方法
+1 2
+</code></pre>
+<h2 id="7-2-代码为什么没生效"><a href="#7-2-代码为什么没生效" class="headerlink" title="7.2. 代码为什么没生效"></a>7.2. 代码为什么没生效</h2><p>代码没生效一般从这几个地方去查找：</p>
+<ul>
+<li><code>activationEvents</code>里面添加了吗？开发的时候如果老是忘记可以直接设置成<code>*</code>；</li>
+<li>代码是不是报错了？如前文所说，很多错误是不会暴露出来的，需要手动打开控制台查看；</li>
+<li>代码是不是忘记引入了？有时候拆分多个文件之后可能忘了引入；</li>
+<li>逻辑是不是写错了？最好的办法就是debug，这是找问题最快的方法；</li>
+<li>版本冲突</li>
+</ul>
+<p>这里重点说一下最后面的版本冲突，这个甚至可以说是vscode本身的一些bug，经常发现代码莫名其妙地没生效，怎么调试都不对，后来发现运行的根本就不是我们正在开发的那个版本，特别是当你的插件已经发了一版到应用市场并安装后，本地再按F5运行，理论上说debug运行的会覆盖已安装的，但有时候还是会出现异常情况，所以为了以防万一，当出现这种情况时可以先把已经安装的给卸载。</p>
+<p>还有一个问题就是，有时候明明安装了版本更加新的那个，结果运行的却是旧的，打开扩展目录会发现很多并存的同名不同版本插件，或者可能先是通过vsix方式安装了一个版本，然后又从应用市场安装一个，总之解决这类问题最好的方法就是：先卸载再安装，实在不行手动去插件目录删除之！</p>
+<h2 id="7-3-打开文件"><a href="#7-3-打开文件" class="headerlink" title="7.3. 打开文件"></a>7.3. 打开文件</h2><p>打开文件是<code>vscode.window.showTextDocument</code>而不是<code>vscode.workspace.openTextDocument</code>，这个根据字面意思很容易搞错，原来老外也有命名不准确的时候啊，哈哈。</p>
+<ul>
+<li><code>vscode.workspace.openTextDocument</code>仅仅是加载文档并返回一个<code>TextDocument</code>对象，但是并不在vscode中打开；</li>
+<li><code>vscode.window.showTextDocument</code>则是在vscode中打开一个文档；</li>
+</ul>
+<p>其实：</p>
+<pre><code class="js">vscode.workspace.openTextDocument(&#39;someFilePath&#39;).then(document =&gt; &#123;
+    vscode.window.showTextDocument(document, editor =&gt; &#123;
+        // 可以操作文档的editor对象
+    &#125;);
+&#125;)
+</code></pre>
+<p>等价于：</p>
+<pre><code class="js">vscode.window.showTextDocument(vscode.Uri.file(&#39;someFilePath&#39;), editor =&gt; &#123;
+    // 可以操作文档的editor对象
+&#125;);
+</code></pre>
+<h2 id="7-4-工程根目录的获取"><a href="#7-4-工程根目录的获取" class="headerlink" title="7.4. 工程根目录的获取"></a>7.4. 工程根目录的获取</h2><p>被这个问题踩过很多次坑，所有重点介绍一下。</p>
+<p>有的人的vscode工作空间是这样的，每一个工程一个个地单独拖入：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016093050606-1105831560.png" alt="img"></p>
+<p>也有的人是直接用打开文件夹的方式把存放代码的父文件夹给打开：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016093107878-964654349.png" alt="img"></p>
+<p>但是如果此时你点击<code>将工作区另存为</code>保存了工作区之后就变成这样了（请注意图标的变化）：</p>
+<p><img src="https://img2018.cnblogs.com/blog/352797/201810/352797-20181016093116500-2050472646.png" alt="img"></p>
+<p>所以，即便拿到了某个文件的完整路径也不好获取这个文件的工程路径，因为不知道工作区的这个文件夹名字是你的工程名还是存放工程的父文件夹的名字。</p>
+<p>已知：</p>
+<ul>
+<li>vscode以前有一个<code>vscode.workspace.rootPath</code>，由于后来vscode支持multipleRoot模式，所以这个字段已经过时作废了。</li>
+<li><code>vscode.workspace.workspaceFolders</code>可以获取当前工作区所有根文件夹数组；</li>
+</ul>
+<p>之前我写了一个简单粗暴的获取工程目录方式：</p>
+<pre><code class="js">/**
+ * 获取当前所在工程根目录，有3种使用方法：&lt;br&gt;
+ * getProjectPath(uri) uri 表示工程内某个文件的路径&lt;br&gt;
+ * getProjectPath(document) document 表示当前被打开的文件document对象&lt;br&gt;
+ * getProjectPath() 会自动从 activeTextEditor 拿document对象，如果没有拿到则报错
+ * @param &#123;*&#125; document 
+ */
+getProjectPath(document) &#123;
+    if (!document) &#123;
+        document = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.document : null;
+    &#125;
+    if (!document) &#123;
+        this.showError(&#39;当前激活的编辑器不是文件或者没有文件被打开！&#39;);
+        return &#39;&#39;;
+    &#125;
+    const currentFile = (document.uri ? document.uri : document).fsPath;
+    let projectPath = null;
+
+    let workspaceFolders = vscode.workspace.workspaceFolders.map(item =&gt; item.uri.path);
+    // 由于存在Multi-root工作区，暂时没有特别好的判断方法，先这样粗暴判断
+    // 如果发现只有一个根文件夹，读取其子文件夹作为 workspaceFolders
+    if (workspaceFolders.length == 1 &amp;&amp; workspaceFolders[0] === vscode.workspace.rootPath) &#123;
+        const rootPath = workspaceFolders[0];
+        var files = fs.readdirSync(rootPath);
+        workspaceFolders = files.filter(name =&gt; !/^\./g.test(name)).map(name =&gt; path.resolve(rootPath, name));
+        // vscode.workspace.rootPath会不准确，且已过时
+        // return vscode.workspace.rootPath + &#39;/&#39; + this._getProjectName(vscode, document);
+    &#125;
+    workspaceFolders.forEach(folder =&gt; &#123;
+        if (currentFile.indexOf(folder) === 0) &#123;
+            projectPath = folder;
+        &#125;
+    &#125;)
+    if (!projectPath) &#123;
+        this.showError(&#39;获取工程根路径异常！&#39;);
+        return &#39;&#39;;
+    &#125;
+    return projectPath;
+&#125;,
+</code></pre>
+<p>这种方式生效的前提是，如果是按照第一种方式存放工作空间的，工程的数目必须大于等于2，但是这种判断方式不用说肯定会不准确。</p>
+<p>后来换成了另外一种方式，考虑到工作接触到的项目无论是node端还是前端都会有<code>package.json</code>文件在根目录，所以就根据哪个文件夹有这个文件来判断，也只能是这样了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/4.%20WebView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/4.%20WebView/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是Webview"><a href="#什么是Webview" class="headerlink" title="什么是Webview"></a>什么是Webview</h1><p>大家都知道，整个VSCode编辑器就是一张大的网页，其实，我们还可以在<code>Visual Studio Code</code>中创建完全自定义的、可以间接和<code>nodejs</code>通信的特殊网页（通过一个<code>acquireVsCodeApi</code>特殊方法），这个网页就叫<code>WebView</code>。内置的<code>Markdown</code>的预览就是使用<code>WebView</code>实现的。使用<code>Webview</code>可以构建复杂的、支持本地文件操作的用户界面。</p>
+<p>VSCode插件的WebView类似于iframe的实现，但并不是真正的iframe（我猜底层应该还是基于iframe实现的，只不过上层包装了一层），通过开发者工具可以看到：</p>
+<p><img src="http://image.haoji.me/201810/20181013_173826_714_7935.png" alt="W1506xH802"></p>
+<h2 id="1-1-demo"><a href="#1-1-demo" class="headerlink" title="1.1. demo"></a>1.1. demo</h2><p>在我们的<a target="_blank" rel="noopener" href="https://github.com/sxei/vscode-plugin-demo">vscode-plugin-demo</a>中，我写了一个非常简单、没啥实际意义的<code>Webview</code>示例仅供参考，在任意编辑器右键可以看到<code>打开Webview</code>的菜单：</p>
+<p><img src="http://image.haoji.me/201810/20181013_175235_562_4228.png" alt="W1424xH842"></p>
+<h1 id="什么时候适合使用WebView"><a href="#什么时候适合使用WebView" class="headerlink" title="什么时候适合使用WebView"></a>什么时候适合使用WebView</h1><p>虽然Webview令人很振奋，因为基于它我们可以随意发挥不受限制，但必须注意还是要慎用，毕竟VSCode是很注重性能的，不能因为你一个插件拖累了整个IDE，一般仅在原有API和功能以及交互方式无法满足你时才需要考虑，另外，设计糟糕的Webview也很容易在<code>VS Code</code>中让人感觉不舒适，不能让人家一看就觉得你这是一张网页，好看的UI也很重要。</p>
+<p>这是官网给出的建议，在使用webview之前请考虑以下事项：</p>
+<ul>
+<li>这个功能真的需要放在<code>VSCode</code>中吗？作为单独的应用程序或网站会不会更好呢？</li>
+<li>webview是实现这个功能的唯一方法吗？可以使用常规VS Code API吗？</li>
+<li>您的webview是否会带来足够的用户价值以证明其高资源成本？</li>
+</ul>
+<h1 id="正式开始WebView之旅"><a href="#正式开始WebView之旅" class="headerlink" title="正式开始WebView之旅"></a>正式开始WebView之旅</h1><h2 id="3-1-创建WebView"><a href="#3-1-创建WebView" class="headerlink" title="3.1. 创建WebView"></a>3.1. 创建WebView</h2><pre><code class="js">context.subscriptions.push(vscode.commands.registerCommand(&#39;extension.demo.openWebview&#39;, function (uri) &#123;
+    // 创建webview
+    const panel = vscode.window.createWebviewPanel(
+        &#39;testWebview&#39;, // viewType
+        &quot;WebView演示&quot;, // 视图标题
+        vscode.ViewColumn.One, // 显示在编辑器的哪个部位
+        &#123;
+            enableScripts: true, // 启用JS，默认禁用
+            retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
+        &#125;
+    );
+    panel.webview.html = `&lt;html&gt;&lt;body&gt;你好，我是Webview&lt;/body&gt;&lt;/html&gt;`
+</code></pre>
+<p>几点说明：</p>
+<ul>
+<li>默认情况下，在Web视图中禁用<code>JavaScript</code>，但可以通过传入<code>enableScripts: true</code>选项轻松启用；</li>
+<li>默认情况下当webview被隐藏时资源会被销毁，通过<code>retainContextWhenHidden: true</code>会一直保存，但会占用较大内存开销，仅在需要时开启；</li>
+</ul>
+<h2 id="3-2-加载本地资源"><a href="#3-2-加载本地资源" class="headerlink" title="3.2. 加载本地资源"></a>3.2. 加载本地资源</h2><p>出于安全考虑，Webview默认无法直接访问本地资源，它在一个孤立的上下文中运行，想要加载本地图片、js、css等必须通过特殊的<code>vscode-resource:</code>协议，网页里面<strong>所有的静态资源都要转换成这种格式，否则无法被正常加载</strong>。</p>
+<p><code>vscode-resource:</code>协议类似于<code>file:</code>协议，但它只允许访问特定的本地文件。和<code>file:</code>一样，<code>vscode-resource:</code>从磁盘加载绝对路径的资源。</p>
+<p>我简单封装了一个转换方法：</p>
+<pre><code class="js">/**
+ * 获取某个扩展文件相对于webview需要的一种特殊路径格式
+ * 形如：vscode-resource:/Users/toonces/projects/vscode-cat-coding/media/cat.gif
+ * @param context 上下文
+ * @param relativePath 扩展中某个文件相对于根目录的路径，如 images/test.jpg
+ */
+getExtensionFileVscodeResource: function(context, relativePath) &#123;
+    const diskPath = vscode.Uri.file(path.join(context.extensionPath, relativePath));
+    return diskPath.with(&#123; scheme: &#39;vscode-resource&#39; &#125;).toString();
+&#125;
+</code></pre>
+<p>默认情况下，<code>vscode-resource:</code>只能访问以下位置中的资源：</p>
+<ul>
+<li>扩展程序安装目录中的文件。</li>
+<li>用户当前活动的工作区内。</li>
+<li>当然，你还可以使用<code>dataURI</code>直接在Webview中嵌入资源，这种方式没有限制；</li>
+</ul>
+<h2 id="3-3-从文件加载HTML内容"><a href="#3-3-从文件加载HTML内容" class="headerlink" title="3.3. 从文件加载HTML内容"></a>3.3. 从文件加载HTML内容</h2><p>默认不支持从文件加载HTML，需要自己封装代码，我简单封装了一个供大家参考：</p>
+<pre><code class="js">/**
+ * 从某个HTML文件读取能被Webview加载的HTML内容
+ * @param &#123;*&#125; context 上下文
+ * @param &#123;*&#125; templatePath 相对于插件根目录的html文件相对路径
+ */
+function getWebViewContent(context, templatePath) &#123;
+    const resourcePath = path.join(context.extensionPath, templatePath);
+    const dirPath = path.dirname(resourcePath);
+    let html = fs.readFileSync(resourcePath, &#39;utf-8&#39;);
+    // vscode不支持直接加载本地资源，需要替换成其专有路径格式，这里只是简单的将样式和JS的路径替换
+    html = html.replace(/(&lt;link.+?href=&quot;|&lt;script.+?src=&quot;|&lt;img.+?src=&quot;)(.+?)&quot;/g, (m, $1, $2) =&gt; &#123;
+        return $1 + vscode.Uri.file(path.resolve(dirPath, $2)).with(&#123; scheme: &#39;vscode-resource&#39; &#125;).toString() + &#39;&quot;&#39;;
+    &#125;);
+    return html;
+&#125;
+</code></pre>
+<p>运行这段代码之后，会自动将HTML文件中<code>link</code>、<code>href</code>、<code>script</code>、<code>img</code>的资源相对路径全部替换成正确的<code>vscode-resource:</code>绝对路径，例如：</p>
+<pre><code class="bash">../../lib/vue-2.5.17/vue.js
+变成
+vscode-resource:/Users/test/workspace/vscode-plugin-demo/lib/vue-2.5.17/vue.js
+</code></pre>
+<p>使用方法如下：</p>
+<pre><code class="js">panel.webview.html = getWebViewContent(context, &#39;src/view/test-webview.html&#39;);
+</code></pre>
+<h2 id="3-4-消息通信"><a href="#3-4-消息通信" class="headerlink" title="3.4. 消息通信"></a>3.4. 消息通信</h2><p>重头戏来了，<code>Webview</code>和普通网页非常类似，不能直接调用任何<code>VSCode</code>API，但是，它唯一特别之处就在于多了一个名叫<code>acquireVsCodeApi</code>的方法，执行这个方法会返回一个超级阉割版的<code>vscode</code>对象，这个对象里面有且仅有如下3个可以和插件通信的API：</p>
+<p><img src="http://image.haoji.me/201810/20181013_184810_640_4228.png" alt="W624xH430"></p>
+<p>插件和<code>Webview</code>之间如何互相通信呢？</p>
+<p>插件给<code>Webview</code>发送消息（支持发送任意可以被<code>JSON</code>化的数据）：</p>
+<pre><code class="js">panel.webview.postMessage(&#123;text: &#39;你好，我是小茗同学！&#39;&#125;);
+</code></pre>
+<p><code>Webview</code>端接收：</p>
+<pre><code class="js">window.addEventListener(&#39;message&#39;, event =&gt; &#123;
+    const message = event.data;
+    console.log(&#39;Webview接收到的消息：&#39;, message);
+&#125;
+</code></pre>
+<p><code>Webview</code>主动发送消息给插件：</p>
+<pre><code class="js">vscode.postMessage(&#123;text: &#39;你好，我是Webview啊！&#39;&#125;);
+</code></pre>
+<p>插件接收：</p>
+<pre><code class="js">panel.webview.onDidReceiveMessage(message =&gt; &#123;
+    console.log(&#39;插件收到的消息：&#39;, message);
+&#125;, undefined, context.subscriptions);
+</code></pre>
+<h3 id="3-4-1-简单通信封装"><a href="#3-4-1-简单通信封装" class="headerlink" title="3.4.1. 简单通信封装"></a>3.4.1. 简单通信封装</h3><p>为了双方通信方便，我把它们简单封装了一下，仅供参考，Webview端：</p>
+<pre><code class="js">const callbacks = &#123;&#125;; // 存放所有的回调函数
+/**
+ * 调用vscode原生api
+ * @param data 可以是类似 &#123;cmd: &#39;xxx&#39;, param1: &#39;xxx&#39;&#125;，也可以直接是 cmd 字符串
+ * @param cb 可选的回调函数
+ */
+function callVscode(data, cb) &#123;
+    if (typeof data === &#39;string&#39;) &#123;
+        data = &#123; cmd: data &#125;;
+    &#125;
+    if (cb) &#123;
+        // 时间戳加上5位随机数
+        const cbid = Date.now() + &#39;&#39; + Math.round(Math.random() * 100000);
+        // 将回调函数分配一个随机cbid然后存起来，后续需要执行的时候再捞起来
+        callbacks[cbid] = cb;
+        data.cbid = cbid;
+    &#125;
+    vscode.postMessage(data);
+&#125;
+window.addEventListener(&#39;message&#39;, event =&gt; &#123;
+    const message = event.data;
+    switch (message.cmd) &#123;
+        // 来自vscode的回调
+        case &#39;vscodeCallback&#39;:
+            console.log(message.data);
+            (callbacks[message.cbid] || function () &#123; &#125;)(message.data);
+            delete callbacks[message.cbid]; // 执行完回调删除
+            break;
+        default: break;
+    &#125;
+&#125;);
+</code></pre>
+<p>插件端：</p>
+<pre><code class="js">let global = &#123; projectPath, panel&#125;;
+panel.webview.onDidReceiveMessage(message =&gt; &#123;
+    if (messageHandler[message.cmd]) &#123;
+        // cmd表示要执行的方法名称
+        messageHandler[message.cmd](global, message);
+    &#125; else &#123;
+        util.showError(`未找到名为 $&#123;message.cmd&#125; 的方法!`);
+    &#125;
+&#125;, undefined, context.subscriptions);
+
+/**
+ * 存放所有消息回调函数，根据 message.cmd 来决定调用哪个方法，
+ * 想调用什么方法，就在这里写一个和cmd同名的方法实现即可
+ */
+const messageHandler = &#123;
+    // 弹出提示
+    alert(global, message) &#123;
+        util.showInfo(message.info);
+    &#125;,
+    // 显示错误提示
+    error(global, message) &#123;
+        util.showError(message.info);
+    &#125;,
+    // 回调示例：获取工程名
+    getProjectName(global, message) &#123;
+        invokeCallback(global.panel, message, util.getProjectName(global.projectPath));
+    &#125;
+&#125;
+/**
+ * 执行回调函数
+ * @param &#123;*&#125; panel 
+ * @param &#123;*&#125; message 
+ * @param &#123;*&#125; resp 
+ */
+function invokeCallback(panel, message, resp) &#123;
+    console.log(&#39;回调消息：&#39;, resp);
+    // 错误码在400-600之间的，默认弹出错误提示
+    if (typeof resp == &#39;object&#39; &amp;&amp; resp.code &amp;&amp; resp.code &gt;= 400 &amp;&amp; resp.code &lt; 600) &#123;
+        util.showError(resp.message || &#39;发生未知错误！&#39;);
+    &#125;
+    panel.webview.postMessage(&#123;cmd: &#39;vscodeCallback&#39;, cbid: message.cbid, data: resp&#125;);
+&#125;
+</code></pre>
+<p>按上述方法封装之后，例如，Webview端想要执行名为<code>openFileInVscode</code>命令只需要这样：</p>
+<pre><code class="js">callVscode(&#123;cmd: &#39;openFileInVscode&#39;, path: `package.json`&#125;, (message) =&gt; &#123;
+    this.alert(message);
+&#125;);
+</code></pre>
+<p>然后在插件端的<code>messageHandler</code>实现<code>openFileInVscode</code>方法即可，其它都不用管：</p>
+<pre><code class="js">const messageHandler = &#123;
+    // 省略其它方法
+    openFileInVscode(global, message) &#123;
+        util.openFileInVscode(`$&#123;global.projectPath&#125;/$&#123;message.path&#125;`);
+        invokeCallback(global.panel, message, &#39;打开文件成功！&#39;);
+    &#125;
+&#125;;
+</code></pre>
+<p>以上封装的比较随便，只是给大家提供一个思路，有时间可以好好封装一下。</p>
+<h2 id="3-5-主题适配"><a href="#3-5-主题适配" class="headerlink" title="3.5. 主题适配"></a>3.5. 主题适配</h2><p><code>Webview</code>可以根据<code>VS Code</code>的当前主题更改其外观，原理是body上面添加当前主题名称，主要有以下三种：</p>
+<ul>
+<li><code>vscode-light</code> - 浅色主题；</li>
+<li><code>vscode-dark</code> -深色主题；</li>
+<li><code>vscode-high-contrast</code> - 高对比度主题;</li>
+</ul>
+<p>所以我们可以通过自己写样式来适配不同主题：</p>
+<pre><code class="css">/* 浅色主题 */
+.body.vscode-light &#123;
+    background: white;
+    color: black;
+&#125;
+/* 深色主题 */
+body.vscode-dark &#123;
+    background: #252526;
+    color: white;
+&#125;
+/* 高对比度主题 */
+body.vscode-high-contrast &#123;
+    background: white;
+    color: red;
+&#125;
+</code></pre>
+<p>深色主题效果：</p>
+<p><img src="http://image.haoji.me/201810/20181015_093741_153_8305.png" alt="W1404xH770"></p>
+<h2 id="3-6-生命周期"><a href="#3-6-生命周期" class="headerlink" title="3.6. 生命周期"></a>3.6. 生命周期</h2><p><code>webview</code>由创建它的扩展程序所有，返回的<code>panel</code>对象你必须自己保存，如果你的扩展程序丢失了这个引用，那么将无法再次重新访问该<code>webview</code>，即使Web视图继续显示在<code>vscode</code>中。</p>
+<p>用户也可以随时关闭<code>webview</code>面板。当用户关闭webview面板时，webview本身将被销毁，此时不能再使用panel引用，否则将会出现异常，可以通过监听<code>onDidDispose</code>事件在这里面做一些销毁操作。</p>
+<p>可以通过<code>panel.dispose()</code>方法主动关闭webview。</p>
+<h2 id="3-7-状态保持"><a href="#3-7-状态保持" class="headerlink" title="3.7. 状态保持"></a>3.7. 状态保持</h2><p>当webview移动到后台又再次显示时，webview中的任何状态都将丢失。</p>
+<p>解决此问题的最佳方法是使你的webview无状态，通过消息传递来保存webview的状态。</p>
+<h3 id="3-7-1-state"><a href="#3-7-1-state" class="headerlink" title="3.7.1. state"></a>3.7.1. state</h3><p>在webview的js中我们可以使用<code>vscode.getState()</code>和<code>vscode.setState()</code>方法来保存和恢复JSON可序列化状态对象。当webview被隐藏时，即使webview内容本身被破坏，这些状态仍然会保存。当然了，当webview被销毁时，状态将被销毁。</p>
+<h3 id="3-7-2-序列化"><a href="#3-7-2-序列化" class="headerlink" title="3.7.2. 序列化"></a>3.7.2. 序列化</h3><p>通过注册<code>WebviewPanelSerializer</code>可以实现在<code>VScode</code>重启后自动恢复你的<code>webview</code>，当然，序列化其实也是建立在<code>getState</code>和<code>setState</code>之上的。</p>
+<p>注册方法：<code>vscode.window.registerWebviewPanelSerializer</code></p>
+<h3 id="3-7-3-retainContextWhenHidden"><a href="#3-7-3-retainContextWhenHidden" class="headerlink" title="3.7.3. retainContextWhenHidden"></a>3.7.3. retainContextWhenHidden</h3><p>对于具有非常复杂的UI或状态且无法快速保存和恢复的<code>webview</code>，我们可以直接使用<code>retainContextWhenHidden</code>选项。设置<code>retainContextWhenHidden: true</code>后即使webview被隐藏到后台其状态也不会丢失。</p>
+<p>尽管<code>retainContextWhenHidden</code>很有吸引力，但它需要很高的内存开销，一般建议在实在没办法的时候才启用。<br><code>getState</code>和<code>setState</code>是持久化的首选方式，因为它们的性能开销要比<code>retainContextWhenHidden</code>低得多。</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>注意，要调试Webview不能直接把VSCode的开发者工具打开，直接打开就会和我们最前面的截图看到的那样，你只能看到一个<code>&lt;webview&gt;&lt;/webview&gt;</code>标签，看不到代码，要看代码需要按下<code>Ctrl+Shift+P</code>然后执行<code>打开Webview开发工具</code>，英文版应该是<code>Open Webview Developer Tools</code>：</p>
+<p><img src="http://image.haoji.me/201810/20181013_192430_475_8260.png" alt="W906xH526"></p>
+<p>审查Webview：</p>
+<p><img src="http://image.haoji.me/201810/20181013_192845_230_7878.png" alt="W1152xH1086"></p>
+<p>这个时候需要特别注意错误日志出现的位置，如果是Webview的错误，一般打印在前面说的这个开发者工具，但如果是插件端的错误只会打印在整个VSCode的开发者工具里。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2238,6 +2092,10 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/header.jpeg"
+                alt="" />
+            
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -2249,20 +2107,54 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
               
                 <a href="/blog/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjinxin613" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1749574663@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -2298,18 +2190,6 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
 
   
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
 
 
 
@@ -2355,7 +2235,12 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
   
 
 
+  
 
+
+
+  
+  
 
 
 
@@ -2393,6 +2278,21 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
   
   
     <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three-waves.min.js"></script>
   
 
 
@@ -2478,5 +2378,14 @@ vscode.window.showErrorMessage(&#39;我是错误信息！&#39;);
 
   
 
-</body>
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

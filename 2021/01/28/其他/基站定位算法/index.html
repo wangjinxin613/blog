@@ -239,7 +239,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -399,7 +399,7 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="next" title="">
+              <a href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/Jest%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -409,7 +409,7 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2021/01/28/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/vue-next/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0/" rel="prev" title="">
+              <a href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -477,6 +477,10 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/header.jpeg"
+                alt="" />
+            
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -488,20 +492,54 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
               
                 <a href="/blog/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjinxin613" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1749574663@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -555,18 +593,6 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
 
         
 
@@ -610,7 +636,12 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
   
 
 
+  
 
+
+
+  
+  
 
 
 
@@ -648,6 +679,21 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
   
   
     <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three-waves.min.js"></script>
   
 
 
@@ -737,5 +783,14 @@ svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
 
   
 
-</body>
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

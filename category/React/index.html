@@ -79,15 +79,11 @@
 
 
 
-<meta name="description" content="# &#x2F;api&#x2F;activity&#x2F;deploy&amp;#123;   &quot;details&quot;: &amp;#123;     &quot;additionalProp1&quot;: &amp;#123;  &#x2F;&#x2F; 从一开始的数字       &quot;approveAuthority&quot;: &quot;string&quot;,  &#x2F;&#x2F; 审批权限 1 和 2       &quot;approv">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="wangjinxin的博客1">
-<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/category/React/index.html">
 <meta property="og:site_name" content="wangjinxin的博客1">
-<meta property="og:description" content="# &#x2F;api&#x2F;activity&#x2F;deploy&amp;#123;   &quot;details&quot;: &amp;#123;     &quot;additionalProp1&quot;: &amp;#123;  &#x2F;&#x2F; 从一开始的数字       &quot;approveAuthority&quot;: &quot;string&quot;,  &#x2F;&#x2F; 审批权限 1 和 2       &quot;approv">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-01-28T07:26:37.343Z">
-<meta property="article:modified_time" content="2021-01-28T07:26:37.343Z">
 <meta property="article:author" content="wangjinxin">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/记录/"/>
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/category/React/"/>
 
 
 
 
 
-  <title> | wangjinxin的博客1</title>
+  <title>分类: React | wangjinxin的博客1</title>
   
 
 
@@ -144,7 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,196 +214,55 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>React<small>分类</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E8%AE%B0%E5%BD%95/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline"></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/blog/2021/08/12/react/React%20Hooks/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">React Hooks</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2021-08-12T00:00:00+08:00"
+              content="2021-08-12" >
+          08-12
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="api-activity-deploy"><a href="#api-activity-deploy" class="headerlink" title="# /api/activity/deploy"></a># <a target="_blank" rel="noopener" href="http://192.168.3.139:18081/swagger-ui.html#/operations/activity-controller/deployUsingPOST">/api/activity/deploy</a></h2><pre><code class="json">&#123;
-  &quot;details&quot;: &#123;
-    &quot;additionalProp1&quot;: &#123;  // 从一开始的数字
-      &quot;approveAuthority&quot;: &quot;string&quot;,  // 审批权限 1 和 2
-      &quot;approveId&quot;: 0, // ID 不用传
-      &quot;approveType&quot;: 0, // 审批类型 传个0
-      &quot;formAuthority&quot;: 0,  // 表单权限 
-      &quot;id&quot;: 0, 
-      &quot;ifChoose&quot;: 0, // 能否自选下一节点审批用户 
-      &quot;roles&quot;: &quot;string&quot;, // 角色 多个角色
-      &quot;userTaskId&quot;: 0 // 跟 additionalProp1 是一个值
-  &#125;,
-  &quot;dynamicApprover&quot;: [
-   0
-  ], // 动态指定下一个审批人的节点的id集合 不传
-  &quot;ifDelete&quot;: 0, // 是不是一个删除的审批流
-  &quot;passConditions&quot;: &#123; // 不管
-    &quot;additionalProp1&quot;: &quot;string&quot;,
-    &quot;additionalProp2&quot;: &quot;string&quot;,
-    &quot;additionalProp3&quot;: &quot;string&quot;
-  &#125;,
-  &quot;personsTasks&quot;: &#123; // 不管
-    &quot;additionalProp1&quot;: [
-      &quot;string&quot;
-    ],
-    &quot;additionalProp2&quot;: [
-      &quot;string&quot;
-    ],
-    &quot;additionalProp3&quot;: [
-      &quot;string&quot;
-    ]
-  &#125;,
-  &quot;processId&quot;: &quot;string&quot;, // 审批表单名称
-  &quot;rejectConditions&quot;: &#123; // 不管
-    &quot;additionalProp1&quot;: &quot;string&quot;,
-    &quot;additionalProp2&quot;: &quot;string&quot;,
-    &quot;additionalProp3&quot;: &quot;string&quot;
-  &#125;,
-  &quot;roleListFlow&quot;: &#123; // 不传
-    &quot;additionalProp1&quot;: [
-      0
-    ],
-    &quot;additionalProp2&quot;: [
-      0
-    ],
-    &quot;additionalProp3&quot;: [
-      0
-    ]
-  &#125;,
-  &quot;userId&quot;: 0 // 用户id
- &#125;
-</code></pre>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/blog/2021/01/28/%E6%95%B0%E6%8D%AE%E5%BA%93/%E8%AE%A4%E8%AF%86mongodb/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2021/01/28/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/vue/%E9%98%85%E8%AF%BBvue%E6%BA%90%E7%A0%81%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -415,10 +270,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -439,19 +290,14 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/header.jpeg"
+                alt="" />
             
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -464,20 +310,54 @@
               
                 <a href="/blog/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjinxin613" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1749574663@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -491,22 +371,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#api-activity-deploy"><span class="nav-number">1.</span> <span class="nav-text"># &#x2F;api&#x2F;activity&#x2F;deploy</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -529,18 +393,6 @@
 
   
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
 
 
 
@@ -586,7 +438,12 @@
   
 
 
+  
 
+
+
+  
+  
 
 
 
@@ -626,6 +483,21 @@
     <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three-waves.min.js"></script>
+  
+
 
   
 
@@ -647,10 +519,6 @@
 
 
   
-  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -713,5 +581,14 @@
 
   
 
-</body>
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

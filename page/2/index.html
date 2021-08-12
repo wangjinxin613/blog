@@ -229,12 +229,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -300,246 +300,80 @@
       
         
           
-            <h2 id="微前端概述"><a href="#微前端概述" class="headerlink" title="微前端概述"></a>微前端概述</h2><p>   微前端概念是ThoughtWorks在2016年提出来的，它将微服务理念扩展到前端开发，解决中台微服务化后，前端由于仍为单体而存在的逻辑繁杂和臃肿的问题。微前端是按照前端设计方法在前端同时构建多个可以独立部署、完全自治、松耦合的页面组合，其中每个组合只负责特定的 UI 元素和功能。</p>
-<p>   微前端与微服务都是希望将单体应用，按照一定的规则拆分为多个可以独立运行、独立开发、独立部署、独立运维的微服务或者页面聚合，从而满足业务快速变化及分布式多团队并行开发的需求。</p>
-<p>   微前端除了可以实现前端页面的解耦外，还可实现前端页面的复用，做到“<strong>一次开发，多端复用</strong>”，这也与中台服务共享理念是一脉相承。</p>
-<h2 id="从单体前端到微前端"><a href="#从单体前端到微前端" class="headerlink" title="从单体前端到微前端"></a>从单体前端到微前端</h2><p>​    传统的软件项目往往采用单体式架构，前端往往由一个团队创建并维护一个 Web 应用程序，通过API网关从微服务调用服务。随着时间的推移，前端往往会越来越臃肿，越来越难维护。</p>
-<p>   随着5G技术的应用，企业活动将进一步移动化和线上化，过去企业的通常做法是为不同的应用开发出很多独立的APP。但是用户来并不想装那么多APP！为了提高用户体验，实现统一运营，很多企业开始缩减APP的数量，通过一个APP集成所有应用功能。</p>
-<p>   试想如果将企业内所有前端页面、流程设计以及前端与后端集成的工作都交给前端项目，将原来独立和分散的应用，展示在一个巴掌大的手机屏幕上。前端项目将会面对无数的中台项目和成千上万不太熟悉的API接口，这绝对会是一场灾难。</p>
-<p>   相对互联网企业而言，传统企业的渠道应用更多样化，有面向内部人员的柜台类应用、面向外部客户的互联网电商及移动APP类应用，还有面向商业生态圈的第三方API集成。由于渠道的差异，传统企业前端设计将会更多样化和复杂化。</p>
-<p>   传统企业在实施中台战略时，为满足前端和中台多渠道共享和复用，部分场景还应有别于阿里巴巴的中台战略。传统企业除了要像阿里巴巴一样进行通用共享服务（主要提供共享API）的中台化建设外，还需要对核心专属业务（除API外，还存在大量面向用户的页面）进行中台化建设，以满足不同渠道的业务复用的需求。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15900223-a20d080f834be4cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1093/format/webp" alt="img"></p>
-<p>从单体前端到微前端</p>
-<p>   如何实现前端复用，降低前端集成的复杂度？</p>
-<p>   在前端设计时，我们可以参考微服务设计方法，遵循单一职责和共享原则，按照领域模型和微服务边界，将前端页面进行拆分和组合形成微前端，与中台微服务组合成业务单元。</p>
-<p>   <strong>业务单元定义：</strong>在前后端分离架构模式下，微前端页面与中台微服务共同组成一个业务单元。在同一个业务单元内，从前端页面、中台微服务到后端数据可以独立开发、测试、部署和运维，在业务单元内自包含完成中台领域内的部分或全部业务功能。</p>
-<p>   <strong>项目职责和系统边界</strong></p>
-<p>   1）前端项目主要负责前端页面的集成、页面风格设计和流程控制，以及与微前端集成相关的微前端加载、微前端注册、页面路由以及数据共享。</p>
-<p>   2）后端中台项目负责业务单元内中台微服务以及微服务对应微前端开发和集成。</p>
-<p>   通用和专属中台项目既面向第三方生态圈提供API服务，也面向前端集成主页面提供微前端页面复用。微前端和中台微服务组合成业务单元为多渠道业务提供从前端到后台的页面和业务逻辑复用。在面向多渠道业务页面复用时，微前端需要做好页面风格适配，以满足不同渠道界面风格的要求。</p>
-<p>   通过职责分工和应用边界的清晰划分，前端项目专注于微前端集成，后端项目专职做好本业务领域内中台微服务开发和微前端集成，确保领域内前端页面和后端业务逻辑作为一个业务单元整体高可用。</p>
-<p>   由于微前端和微服务之间的API集成已由中台项目完成，前端项目可基于微前端实现<strong>拼图</strong>式开发，在实现前后端复用的同时，大大降低前端集成复杂度。   </p>
-<h2 id="微前端与微服务组合的几种形态"><a href="#微前端与微服务组合的几种形态" class="headerlink" title="微前端与微服务组合的几种形态"></a>微前端与微服务组合的几种形态</h2><p>​    微前端与微服务可以有多种组合方式，以实现不同的业务目标。</p>
-<p>​    一个虚框内微前端、中台微服务共同组成一个业务单元（如下图）。虚框内组件可以按照业务单元分前端和后端进行独立部署。</p>
-<p>​    微前端页面包括业务操作必需的页面要素，不含页面导航等要素，页面导航功能位于前端集成主页面内。</p>
-<p>​    微前端页面稍加改造就可以完成简单的单一场景业务，也可根据页面路由动态加载到前端集成主页面完成复杂组合场景业务。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15900223-cd23699fd1993068.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/736/format/webp" alt="img"></p>
-<p>微前端的几种形态</p>
-<p>   微前端与微服务的组合主要有以下几类形式。</p>
-<p>   1）单一类微前端：一个微前端和一个中台微服务组成一个业务单元。微前端完成业务单元内页面流程和前端操作，中台微服务完成后端业务逻辑，业务单元功能独立且自包含。微前端可按照页面路由动态加载至前端集成主页面。</p>
-<p>   2）组合类微前端：一个微前端与多个中台微服务组成业务单元。微前端通过对多个中台微服务进行服务编排和组合，完成业务单元内较复杂的页面流程和前端操作。业务逻辑由后端多个微服务组合完成，如：可由专属业务中台与通用中台微服务组合，也可由同一领域内多个微服务组合。在微前端设计时，微前端对应的组合微服务的数量要均衡考虑，否则很容易将微前端开发成单体前端。同时业务单元的领域边界要清晰，避免由于功能交叉而导致单元与单元之间的耦合，影响项目团队职责边界，进而影响到部署、测试以及运维等。</p>
-<p>   3）通用共享类微前端：一个微前端与一个或多个通用中台微服务组成共享类业务单元。通用共享类微前端一般通过前端集成主页面，以共享页面的模式与其他微前端页面组合，共同完成业务流程。该类微前端通常对应通用中台共享类微服务。</p>
-<h2 id="微前端的价值"><a href="#微前端的价值" class="headerlink" title="微前端的价值"></a>微前端的价值</h2><p>微前端架构具备以下几个核心价值：</p>
-<ul>
-<li>技术栈无关 主框架不限制接入应用的技术栈，子应用具备完全自主权</li>
-<li>独立开发、独立部署 子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新</li>
-<li>独立运行时 每个子应用之间状态隔离，运行时状态不共享</li>
+            <h3 id="手机基站-amp-蜂窝网络基站："><a href="#手机基站-amp-蜂窝网络基站：" class="headerlink" title="手机基站 &amp; 蜂窝网络基站："></a>手机基站 &amp; 蜂窝网络基站：</h3><p>基站即公用移动通信基站是无线电台站的一种形式，是指在一定的无线电覆盖区中，通过移动通信交换中心，与移动电话终端之间进行信息传递的无线电收发信电台。</p>
+<p>基站定位一般应用于手机用户，手机基站定位服务又叫做移动位置服务（LBS——Location Based Service），它是通过电信移动运营商的网络（如GSM网）获取移动终端用户的位置信息（经纬度坐标），在电子地图平台的支持下，为用户提供相应服务的一种增值业务，例如目前中国移动动感地带提供的动感位置查询服务等。</p>
+<p>1.1  COO（Cell of Origin）定位：COO定位是一种单基站定位，即根据设备当前连接的蜂窝基站的位置来确定设备的位置。</p>
+<p>1.2  AOA定位：AOA(Angle of Arrival到达角度)定位是一种两基站定位方法，基于信号的入射角度进行定位。</p>
+<p>1.3  TOA/TDOA定位：TOA(Time of Arrival到达时间)、TDOA(Time Difference of Arrival到达时间差)都是基于电波传播时间的定位方法。也都是三基站定位方法，二者的定位都需要同时有三个位置已知的基站合作才能进行。<br>基站定位的大致原理为：移动电话测量不同基站的下行导频信号，得到不同基站下行导频的TOA（Time of Arrival，到达时刻）或TDOA(Time Difference of Arrival，到达时间差)，根据该测量结果并结合基站的坐标，一般采用三角公式估计算法，就能够计算出移动电话的位置。实际的位置估计算法需要考虑多基站(3个或3个以上)定位的情况，因此算法要复杂很多。一般而言，移动台测量的基站数目越多，测量精度越高，定位性能改善越明显。</p>
+<h3 id="什么是MNC-LAC-Cell-ID"><a href="#什么是MNC-LAC-Cell-ID" class="headerlink" title="什么是MNC/LAC/Cell ID"></a>什么是MNC/LAC/Cell ID</h3><ul>
+<li>Mobile Network Code(MNC)<br>移动网号码，中国联通CDMA系统的MNC为03，中国移动的为00。</li>
+<li>Mobile Country Code(MCC)<br>移动用户所属国家代号：460</li>
+<li>Location Area Code(LAC)<br>地区区域码，用来划分区域，一般一个小地方就一个LAC，大地方就</li>
+<li>Cell Tower ID(Cell ID)<br>CellID代表一个移动基站，如果你有基站数据，查CellID你就可以知道这个基站在哪里，移动公司或者警察通过这个知道你是在哪个基站范围打的移动电话。</li>
 </ul>
-<p>微前端架构旨在解决单体应用在一个相对长的时间跨度下，由于参与的人员、团队的增多、变迁，从一个普通应用演变成一个巨石应用(<a href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=pU1gXA0rfwc">Frontend Monolith</a>)后，随之而来的应用不可维护的问题。这类问题在企业级 Web 应用中尤其常见。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/%E4%BD%BF%E7%94%A8Jest%E5%AF%B9Vue%E7%BB%84%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/%E4%BD%BF%E7%94%A8Jest%E5%AF%B9Vue%E7%BB%84%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="使用Jest对Vue组件进行单元测试"><a href="#使用Jest对Vue组件进行单元测试" class="headerlink" title="使用Jest对Vue组件进行单元测试"></a>使用Jest对Vue组件进行单元测试</h1><p>安装依赖</p>
-<pre><code class="shell">npm install --save-dev @vue/test-utils vue-jest jest-transform-stub jest-serializer-vue
+<p>　这些信息有什么用呢？ 通过这些信息可以知道你的手机是从哪个国家，区域和哪个基站接入移动网络的。所以有些防盗手机丢失后，会发一些类 似”MCC:460;MNC:01;LAC:7198:CELLID:24989”内容的短信到你指定号码就是这个用途，通过这些信息可以从移动查到你的 被盗手机在哪里出现过。不过知道了也没用，中国人口这么密集，就是在你身边你也不知道谁是小偷：） </p>
+<h1 id="Trilateration三边测量定位算法"><a href="#Trilateration三边测量定位算法" class="headerlink" title="Trilateration三边测量定位算法"></a>Trilateration三边测量定位算法</h1><p>Trilateration（三边测量）是一种常用的定位算法：</p>
+<ol>
+<li>已知三点位置 (x1, y1), (x2, y2), (x3, y3)</li>
+<li>已知未知点 (x0, y0) 到三点距离 d1, d2, d3</li>
+</ol>
+<p>以 d1, d2, d3 为半径作三个圆，根据毕达哥拉斯定理，得出交点即未知点的位置计算公式：</p>
+<pre><code>( x1 - x0 )2 + ( y1 - y0 )2 = d12
+( x2 - x0 )2 + ( y2 - y0 )2 = d22
+( x3 - x0 )2 + ( y3 - y0 )2 = d32
 </code></pre>
-<p>然后在<code>components</code>目录下创建<code>Counter.vue</code>，代码如下：</p>
-<pre><code class="vue">&lt;template&gt;
-  &lt;div&gt;
-    &lt;div&gt;&#123;&#123; computedCount &#125;&#125;&lt;/div&gt;
-    &lt;button @click=&quot;inc&quot;&gt;加&lt;/button&gt;
-    &lt;button @click=&quot;dec&quot;&gt;减&lt;/button&gt;
-    &lt;button @click=&quot;reset&quot;&gt;重置&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default &#123;
-  props: &#123;
-    factor: &#123; type: Number, default: 1 &#125;
-  &#125;,
-  data() &#123;
-    return &#123;
-      count: 0
-    &#125;;
-  &#125;,
-  methods: &#123;
-    inc() &#123;
-      this.count++;
-    &#125;,
-    dec() &#123;
-      this.count--;
-    &#125;,
-    reset() &#123;
-      this.count = 0;
-    &#125;
-  &#125;,
-  computed: &#123;
-    computedCount: function() &#123;
-      return this.count * this.factor;
-    &#125;
-  &#125;
-&#125;;
-&lt;/script&gt;
+<p><img src="..%5Cimg%5Cimage-20200825164145365.png" alt="image-20200825164145365"></p>
+<p>设未知点位置为 (x, y)， 令其中的第一个球形 P1 的球心坐标为 (0, 0)，P2 处于相同纵坐标，球心坐标为 (d, 0)，P3 球心坐标为 (i, j)，三个球形半径分别为 r1, r2, r3，z为三球形相交点与水平面高度。则有：</p>
+<pre><code>r12 = x2 + y2 + z2
+r22 = (x - d)2 + y2 + z2
+r32 = (x - i)2 + (y - j)2 + z2
 </code></pre>
-<p>在<code>unit</code>目录下创建<code>Counter.spec.js</code>，代码如下：</p>
-<pre><code class="javascript">import &#123; mount &#125; from &#39;@vue/test-utils&#39;
-import Counter from &#39;@/components/Counter.vue&#39;
-
-describe(&quot;Counter.vue&quot;, () =&gt; &#123;
-    it(&quot;渲染Counter组件&quot;, () =&gt; &#123;
-        const wrapper = mount(Counter)
-        expect(wrapper.element).toMatchSnapshot()
-    &#125;)
-
-    it(&quot;初始化之为0&quot;, () =&gt; &#123;
-        const wrapper = mount(Counter)
-        expect(wrapper.vm.count).toEqual(0)
-    &#125;)
-
-    it(&quot;加1&quot;, () =&gt; &#123;
-        const wrapper = mount(Counter)
-        wrapper.vm.inc()
-        expect(wrapper.vm.count).toEqual(1)
-    &#125;)
-
-    it(&quot;减1&quot;, () =&gt; &#123;
-        const wrapper = mount(Counter)
-        wrapper.vm.dec()
-        expect(wrapper.vm.count).toEqual(-1)
-    &#125;)
-
-    it(&quot;重置&quot;, () =&gt; &#123;
-        const wrapper = mount(Counter)
-        wrapper.vm.reset()
-        expect(wrapper.vm.count).toEqual(0)
-    &#125;)
-
-    it(&quot;因数为10加1操作&quot;, () =&gt; &#123;
-        const wrapper = mount(Counter, &#123; propsData: &#123; factor: 10 &#125; &#125;)
-        wrapper.vm.inc()
-        expect(wrapper.vm.computedCount).toEqual(10)
-    &#125;)
-&#125;)
+<p>当 z = 0 时， 即为三个圆在水平面上相交为一点，首先解出 x:</p>
+<pre><code>x = (r12 - r22 + d2) / 2d
 </code></pre>
-<p>打开控制台，进入项目根目录，运行<code>yarn test:unit</code>，如图1所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5402876-7ee2e8edb485c7dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/383/format/webp" alt="img"></p>
-<p>看代码很容易理解如何在<code>unit test</code>中初始化组件，初始化组件的属性，访问组件的数据，调用组件的方法等等。</p>
+<p>将公式二变形，将公式一的 z2 代入公式二，再代入公式三得到 y 的计算公式：</p>
+<pre><code>y = (r12 - r32 - x2 + (x - i)2 + j2) / 2j
+</code></pre>
+<h2 id="javascript算法实现"><a href="#javascript算法实现" class="headerlink" title="javascript算法实现"></a>javascript算法实现</h2><pre><code class="javascript">function trilateration(x1, y1, d1, x2, y2, d2, x3, y3, d3) &#123;
+  var d = [0.0, 0.0];
+  var a11 = 2 * (x1 - x3);
+  var a12 = 2 * (y1 - y3);
+  var b1 = Math.pow(x1, 2) - Math.pow(x3, 2) + Math.pow(y1, 2) - Math.pow(y3, 2) + Math.pow(d3, 2) - Math.pow(d1, 2);
+  var a21 = 2 * (x2 - x3);
+  var a22 = 2 * (y2 - y3);
+  var b2 = Math.pow(x2, 2) - Math.pow(x3, 2) + Math.pow(y2, 2) - Math.pow(y3, 2) + Math.pow(d3, 2) - Math.pow(d2, 2);
+  d[0] = (b1 * a22 - a12 * b2) / (a11 * a22 - a12 * a21);
+  d[1] = (a11 * b2 - b1 * a21) / (a11 * a22 - a12 * a21);
+  return d;
+&#125;
+var area = trilateration(12641371.971, 4138703.5211, 6, 12641381.9026, 4138706.4714, 6, 12641370.7839, 4138708.7705, 6);
+console.log(area.join(&#39;,&#39;));
+</code></pre>
+<h2 id="D3-js实现"><a href="#D3-js实现" class="headerlink" title="D3.js实现"></a>D3.js实现</h2><p>定义三个圆的坐标及半径，计算    出交点的坐标 (obj_x, obj_y).</p>
+<pre><code>var x_0 = 150, y_0 = 150;
+var x_1 = x_0, y_1 = y_0, d = 150, x_2 = x_0 + d, x_3 = 225, y_3 = 315, r = 100;
+var i = x_3 - x_0, j = y_3 - y_0;
+var x = (Math.pow(r, 2) - Math.pow(r, 2) + Math.pow(d, 2)) / (2 * d) + x_0;
+var obj_x = x + x_0;
+var y = (Math.pow(r, 2) - Math.pow(r, 2) - Math.pow(x, 2) + Math.pow((x - i), 2)
+    + Math.pow(j, 2)) / (2 * j);
+var obj_y = y + y_0;
+</code></pre>
+<p>绘出圆形及交点：</p>
+<pre><code>svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, x_1)
+    .attr(&quot;cy&quot;, y_1).attr(&quot;r&quot;, r)
+    .style(&quot;fill&quot;, &quot;blue&quot;).style(&quot;opacity&quot;, 0.3);
+svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, x_2)
+    .attr(&quot;cy&quot;, y_0).attr(&quot;r&quot;, r)
+    .style(&quot;fill&quot;, &quot;red&quot;).style(&quot;opacity&quot;, 0.4);
+svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, x_3)
+    .attr(&quot;cy&quot;, y_3).style(&quot;opacity&quot;, 0.5)
+    .attr(&quot;r&quot;, r).style(&quot;fill&quot;, &quot;yellow&quot;);
+svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
+    .attr(&quot;cy&quot;, obj_y).attr(&quot;r&quot;, 3)
+    .style(&quot;fill&quot;, &quot;red&quot;);
+</code></pre>
+<p>多于用实现定位算法，与之相同的也许还可以采用K-Means或Overlap聚类算法，后两者在地图标注上使用比较广。</p>
 
           
         
@@ -593,7 +427,7 @@ describe(&quot;Counter.vue&quot;, () =&gt; &#123;
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -732,12 +566,255 @@ test(&#39;city database has San Juan&#39;, () =&gt; &#123;
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E9%9A%8F%E7%AC%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E9%9A%8F%E7%AC%94/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><p>中老年人生活普遍匮乏<br>中年人需要良好的导向，奔向他们向往的生活方式<br>他们被边缘化，感知不到存在感。儿女工作忙，得不到陪伴</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E4%B8%AD%E8%80%81%E5%B9%B4%E7%A4%BE%E4%BA%A4%E4%BA%A7%E5%93%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E4%B8%AD%E8%80%81%E5%B9%B4%E7%A4%BE%E4%BA%A4%E4%BA%A7%E5%93%81/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="中老年社交产品"><a href="#中老年社交产品" class="headerlink" title="中老年社交产品"></a>中老年社交产品</h3><p>用户真正需要的是什么？你的产品能缓解什么样的痛苦？</p>
+<p>中老年是被互联网遗忘的一个群体，他们有些人或已经退休，是该享受着天伦之乐的年纪，因此他们就有很多的空闲时间。中老年群体的社交圈大部分都是熟人圈子，很难去接触认识到陌生人，互联网可以缩短人与人之间的距离，但是对中老年人来说，并没有出现一个比较火热的陌生人社交软件。</p>
+<p>现在社会生活节奏迅速，家，这个在原始记忆里，应该陪伴我们出生、成长乃至衰老、死亡的地方，已经渐渐削弱了自身的养老功能。儿女工作繁忙，老人得不到陪伴；搬进高楼大厦，他们缺少社交；周边都是适应年轻人的事物，他们被边缘化、感知不到存在感。</p>
+<p>老年需要社交，像年轻人一样需要自己的生活圈子，参加丰富的活动，自主选择友谊或爱情。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/Eslint/eslint%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1122,255 +1199,12 @@ setTimeout(() =&gt; &#123;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E9%9A%8F%E7%AC%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E9%9A%8F%E7%AC%94/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><p>中老年人生活普遍匮乏<br>中年人需要良好的导向，奔向他们向往的生活方式<br>他们被边缘化，感知不到存在感。儿女工作忙，得不到陪伴</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E4%B8%AD%E8%80%81%E5%B9%B4%E7%A4%BE%E4%BA%A4%E4%BA%A7%E5%93%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E4%B8%AD%E8%80%81%E5%B9%B4%E7%A4%BE%E4%BA%A4%E4%BA%A7%E5%93%81/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="中老年社交产品"><a href="#中老年社交产品" class="headerlink" title="中老年社交产品"></a>中老年社交产品</h3><p>用户真正需要的是什么？你的产品能缓解什么样的痛苦？</p>
-<p>中老年是被互联网遗忘的一个群体，他们有些人或已经退休，是该享受着天伦之乐的年纪，因此他们就有很多的空闲时间。中老年群体的社交圈大部分都是熟人圈子，很难去接触认识到陌生人，互联网可以缩短人与人之间的距离，但是对中老年人来说，并没有出现一个比较火热的陌生人社交软件。</p>
-<p>现在社会生活节奏迅速，家，这个在原始记忆里，应该陪伴我们出生、成长乃至衰老、死亡的地方，已经渐渐削弱了自身的养老功能。儿女工作繁忙，老人得不到陪伴；搬进高楼大厦，他们缺少社交；周边都是适应年轻人的事物，他们被边缘化、感知不到存在感。</p>
-<p>老年需要社交，像年轻人一样需要自己的生活圈子，参加丰富的活动，自主选择友谊或爱情。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/Jest%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1664,12 +1498,12 @@ test(&#39;compiling android goes as expected&#39;, () =&gt; &#123;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/webpack/webpack-dev-server/">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue%E6%94%AF%E6%8C%81tsx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1683,7 +1517,7 @@ test(&#39;compiling android goes as expected&#39;, () =&gt; &#123;
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2021/01/28/webpack/webpack-dev-server/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/blog/2021/01/28/vue/vue%E6%94%AF%E6%8C%81tsx/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1735,847 +1569,571 @@ test(&#39;compiling android goes as expected&#39;, () =&gt; &#123;
       
         
           
-            <h1 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h1><p>devServer是用来提高开发效率的，不是用devServer来做打包的，它提供了一些配置项，可以用于改变devServer的默认行为，要配置devServer，除了可以在配置文件里通过devServer传入参数，还可以通过命令行传入参数。<br> ⚠️注意！！！只有在通过devServer启动webpack时，配置文件里的devServer才会生效，因为这些参数所对应的功能都是devServer提供的，webpack本事并不认识devServer的配置项。<br> devServer的配置项也很多，我们老规矩，介绍几个常用的，感兴趣的可以戳这里（<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/dev-server/">开发中 Server(devServer)</a>）去官网查看。</p>
-<h3 id="hot"><a href="#hot" class="headerlink" title="hot"></a>hot</h3><h4 id="hot介绍"><a href="#hot介绍" class="headerlink" title="hot介绍"></a>hot介绍</h4><p>hot配置是否启用模块的热替换功能，devServer的默认行为是在发现源代码被变更后，通过自动刷新整个页面来做到事实预览，开启hot后，将在不刷新整个页面的情况下通过新模块替换老模块来做到实时预览。</p>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>hot 有两种使用方法，</p>
-<h6 id="1、通过配置文件，具体如下"><a href="#1、通过配置文件，具体如下" class="headerlink" title="1、通过配置文件，具体如下"></a>1、通过配置文件，具体如下</h6><pre><code class="javascript">const webpack = require(&#39;webpack&#39;);
-const path = require(&#39;path&#39;);
-let env = process.env.NODE_ENV == &quot;development&quot; ? &quot;development&quot; : &quot;production&quot;;
-const config = &#123;
-  mode: env,
- devServer: &#123;
-     hot:true
- &#125;
-&#125;
-  plugins: [
-     new webpack.HotModuleReplacementPlugin(), //热加载插件
-  ],
-module.exports = config;
+            <p>使用vuecl3创建的项目，集成tsx</p>
+<pre><code>vue add tsx-support
 </code></pre>
-<p>需要引入一个plugins:webpack.HotModuleReplacementPlugin(),<br> 看看官网怎么说</p>
-<blockquote>
-<p>Note that webpack.HotModuleReplacementPlugin is required to fully enable HMR. If webpack or webpack-dev-server are launched with the –hot option, this plugin will be added automatically, so you may not need to add this to your webpack.config.js. See the HMR concepts page for more information.</p>
-</blockquote>
-<p>大致意思是说，你如果通过–hot配置，就会自动引用webpack.HotModuleReplacementPlugin这个插件，所以我们不建议这么配置hot，麻烦<br> 用第二种</p>
-<h6 id="2、通过命令行"><a href="#2、通过命令行" class="headerlink" title="2、通过命令行"></a>2、通过命令行</h6><p> 在package.json中的script中处理</p>
-<pre><code class="javascript">  &quot;scripts&quot;: &#123;
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
-    &quot;start&quot;: &quot;NODE_ENV=development  webpack-dev-server --config  webpack.develop.config.js --hot&quot;,
-  &#125;,
+<h2 id="导入和配置"><a href="#导入和配置" class="headerlink" title="导入和配置"></a>导入和配置</h2><p>安装 vue-tsx-support 包</p>
+<pre><code class="shell">npm install vue-tsx-support --save
 </code></pre>
-<p>如上在start中添加–hot即可，省去了繁琐的配置</p>
-<h3 id="host"><a href="#host" class="headerlink" title="host"></a>host</h3><p>配置devServer服务监听的地址，例如如果想让局域网内的其他用户访问自己的设备，可以将host配置为自己本机的IP地址，<br> 分享一个可以自动获取本地ip地址的方法</p>
-<pre><code class="javascript">const webpack = require(&#39;webpack&#39;);
-const path = require(&#39;path&#39;);
-let env = process.env.NODE_ENV == &quot;development&quot; ? &quot;development&quot; : &quot;production&quot;;
-const os = require(&#39;os&#39;)
-// 动态获取 host || 也可在package.json中配置 HOST （--host 0.0.0.0)
-let arr = []
-let HOST
-for (let key in os.networkInterfaces()) &#123;
-  os.networkInterfaces()[key].forEach((item) =&gt; &#123;
-    if (item.family === &#39;IPv4&#39; &amp;&amp; item.address.indexOf(&#39;192.168.&#39;) !== -1) &#123;
-      arr.push(item.address)
-    &#125;
-  &#125;)
-&#125;
-HOST = arr[0]
-
-const config = &#123;
-  mode: env,
- devServer: &#123;
-     hot:true,
-     hsot:HOST
- &#125;
-&#125;
-  plugins: [
-     new webpack.HotModuleReplacementPlugin(), //热加载插件
-  ],
-module.exports = config;
-</code></pre>
-<p>通过命令行也是可以的</p>
-<pre><code class="javascript">  &quot;scripts&quot;: &#123;
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
-    &quot;start&quot;: &quot;NODE_ENV=development  webpack-dev-server --config  webpack.develop.config.js --hot --host 0.0.0.0&quot;,
-  &#125;,
-</code></pre>
-<p>host的默认地址是127.0.0.1</p>
-<h3 id="port"><a href="#port" class="headerlink" title="port"></a>port</h3><p>这个没什么说的了就是端口号，默认是8080，如果占用就换成8081或者1234，都可以</p>
-<h3 id="open"><a href="#open" class="headerlink" title="open"></a>open</h3><p>open 在devServer启动且第一次构建完成时，自动用我们的系统的默认浏览器去打开要开发的网页，<br> 使用方法<br> 可在配置文件中使用</p>
-<pre><code class="javascript"> devServer: &#123;
-     open:true
- &#125;
-&#125;
-</code></pre>
-<p>也可以在命令行中使用</p>
-<pre><code class="javascript">  &quot;scripts&quot;: &#123;
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
-    &quot;start&quot;: &quot;NODE_ENV=development  webpack-dev-server --config  webpack.develop.config.js --hot --open --host 0.0.0.0&quot;,
-  &#125;,
-</code></pre>
-<p>还有类似的openPage，用来打开指定网页，具体可去官网查看</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>还有很多其他常用的配置，例如<br> <a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/dev-server/#devserver-contentbase">contentBase</a>配置devServer，Http服务器的文件根目录，<br> <a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/dev-server/#devserver-proxy">proxy</a>配置代理，处理本地跨域，<br> 这些官网介绍的都很详细，就不一一介绍了<br> 今天就到这里，明天我们不见不散</p>
-<p><a target="_blank" rel="noopener" href="https://www.qdtalk.com/2018/11/13/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAwebpack4%E4%B9%8B%E5%BF%85%E9%A1%BB%E8%A6%81%E6%87%82%E7%9A%84devserver/">原文链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/webpack/%E5%AD%A6%E4%B9%A0webpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/webpack/%E5%AD%A6%E4%B9%A0webpack/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="webpack概念"><a href="#webpack概念" class="headerlink" title="webpack概念"></a>webpack概念</h1><p><em>webpack</em> 是一个现代 JavaScript 应用程序的*静态模块打包器(module bundler)<em>。当 webpack 处理应用程序时，它会递归地构建一个</em>依赖关系图(dependency graph)*，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 <em>bundle</em>4</p>
-<p>webpack四个核心概念</p>
-<ul>
-<li>入口(entry)</li>
-<li>输出(output)</li>
-<li>loader</li>
-<li>插件(plugins)</li>
-</ul>
-<h2 id="入口-entry"><a href="#入口-entry" class="headerlink" title="入口(entry)"></a>入口(entry)</h2><p>**入口起点(entry point)*<em>指示 webpack 应该使用哪个模块，来作为构建其内部</em>依赖图*的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p>
-<p>每个依赖项随即被处理，最后输出到称之为 <em>bundles</em> 的文件中，我们将在下一章节详细讨论这个过程。</p>
-<p>可以通过在 <a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration">webpack 配置</a>中配置 <code>entry</code> 属性，来指定一个入口起点（或多个入口起点）。默认值为 <code>./src</code>。</p>
-<p>接下来我们看一个 <code>entry</code> 配置的最简单例子：</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="js">module.exports = &#123;
-  entry: &#39;./path/to/my/entry/file.js&#39;
-&#125;;
-</code></pre>
-<p><code>entry</code> 属性的单个入口语法，是下面的简写：</p>
-<pre><code class="javascript">const config = &#123;
-  entry: &#123;
-    main: &#39;./path/to/my/entry/file.js&#39;
-  &#125;
-&#125;;
-</code></pre>
-<blockquote>
-<p><strong>当你向 <code>entry</code> 传入一个数组时会发生什么？</strong>向 <code>entry</code> 属性传入「文件路径(file path)数组」将创建<strong>“多个主入口(multi-main entry)”</strong>。在你想要多个依赖文件一起注入，并且将它们的依赖导向(graph)到一个“chunk”时，传入数组的方式就很有用。</p>
-</blockquote>
-<p>当你正在寻找为「只有一个入口起点的应用程序或工具（即 library）」快速设置 webpack 配置的时候，这会是个很不错的选择。然而，使用此语法在扩展配置时有失灵活性。</p>
-<h3 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h3><p>用法：<code>entry: &#123;[entryChunkName: string]: string|Array&lt;string&gt;&#125;</code></p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="javascript">const config = &#123;
-  entry: &#123;
-    app: &#39;./src/app.js&#39;,
-    vendors: &#39;./src/vendors.js&#39;
-  &#125;
-&#125;;
-</code></pre>
-<p>对象语法会比较繁琐。然而，这是应用程序中定义入口的最可扩展的方式。</p>
-<blockquote>
-<p><strong>“可扩展的 webpack 配置”</strong>是指，可重用并且可以与其他配置组合使用。这是一种流行的技术，用于将关注点(concern)从环境(environment)、构建目标(build target)、运行时(runtime)中分离。然后使用专门的工具（如 <a target="_blank" rel="noopener" href="https://github.com/survivejs/webpack-merge">webpack-merge</a>）将它们合并。</p>
-</blockquote>
-<h2 id="出口-output"><a href="#出口-output" class="headerlink" title="出口(output)"></a>出口(output)</h2><p><strong>output</strong> 属性告诉 webpack 在哪里输出它所创建的 <em>bundles</em>，以及如何命名这些文件，默认值为 <code>./dist</code>。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。你可以通过在配置中指定一个 <code>output</code> 字段，来配置这些处理过程：</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="javascript">const path = require(&#39;path&#39;);
-
-module.exports = &#123;
-  entry: &#39;./path/to/my/entry/file.js&#39;,
-  output: &#123;
-    path: path.resolve(__dirname, &#39;dist&#39;),
-    filename: &#39;my-first-webpack.bundle.js&#39;
-  &#125;
-&#125;;
-</code></pre>
-<p>在上面的示例中，我们通过 <code>output.filename</code> 和 <code>output.path</code> 属性，来告诉 webpack bundle 的名称，以及我们想要 bundle 生成(emit)到哪里。可能你想要了解在代码最上面导入的 path 模块是什么，它是一个 <a target="_blank" rel="noopener" href="https://nodejs.org/api/modules.html">Node.js 核心模块</a>，用于操作文件路径。</p>
-<blockquote>
-<p>你可能会发现术语**生成(emitted 或 emit)**贯穿了我们整个文档和<a target="_blank" rel="noopener" href="https://www.webpackjs.com/api/plugins">插件 API</a>。它是“生产(produced)”或“释放(discharged)”的特殊术语。</p>
-</blockquote>
-<blockquote>
-<p><code>output</code> 属性还有<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/output">更多可配置的特性</a>，如果你想要了解更多关于 <code>output</code> 属性的概念，你可以通过<a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/output">阅读概念章节</a>来了解更多。</p>
-</blockquote>
-<h3 id="用法-Usage"><a href="#用法-Usage" class="headerlink" title="用法(Usage)"></a>用法(Usage)</h3><p>在 webpack 中配置 <code>output</code> 属性的最低要求是，将它的值设置为一个对象，包括以下两点：</p>
-<ul>
-<li><code>filename</code> 用于输出文件的文件名。</li>
-<li>目标输出目录 <code>path</code> 的绝对路径。</li>
-</ul>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="javascript">const config = &#123;
-  output: &#123;
-    filename: &#39;bundle.js&#39;,
-    path: &#39;/home/proj/public/assets&#39;
-  &#125;
-&#125;;
-
-module.exports = config;
-</code></pre>
-<p>此配置将一个单独的 <code>bundle.js</code> 文件输出到 <code>/home/proj/public/assets</code> 目录中。</p>
-<h3 id="多个入口起点"><a href="#多个入口起点" class="headerlink" title="多个入口起点"></a>多个入口起点</h3><p>如果配置创建了多个单独的 “chunk”（例如，使用多个入口起点或使用像 CommonsChunkPlugin 这样的插件），则应该使用<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/output#output-filename">占位符(substitutions)</a>来确保每个文件具有唯一的名称。</p>
-<pre><code class="javascript">&#123;
-  entry: &#123;
-    app: &#39;./src/app.js&#39;,
-    search: &#39;./src/search.js&#39;
-  &#125;,
-  output: &#123;
-    filename: &#39;[name].js&#39;,
-    path: __dirname + &#39;/dist&#39;
-  &#125;
-&#125;
-</code></pre>
-<h2 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h2><p><em>loader</em> 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效<a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/modules">模块</a>，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
-<p>本质上，webpack loader 将所有类型的文件，转换为应用程序的依赖图（和最终的 bundle）可以直接引用的模块。</p>
-<blockquote>
-<p>注意，loader 能够 <code>import</code> 导入任何类型的模块（例如 <code>.css</code> 文件），这是 webpack 特有的功能，其他打包程序或任务执行器的可能并不支持。我们认为这种语言扩展是有很必要的，因为这可以使开发人员创建出更准确的依赖关系图。</p>
-</blockquote>
-<p>在更高层面，在 webpack 的配置中 <strong>loader</strong> 有两个目标：</p>
-<ol>
-<li><code>test</code> 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。</li>
-<li><code>use</code> 属性，表示进行转换时，应该使用哪个 loader。</li>
-</ol>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="javascript">const path = require(&#39;path&#39;);
-
-const config = &#123;
-  output: &#123;
-    filename: &#39;my-first-webpack.bundle.js&#39;
-  &#125;,
-  module: &#123;
-    rules: [
-      &#123; test: /\.txt$/, use: &#39;raw-loader&#39; &#125;
-    ]
-  &#125;
-&#125;;
-
-module.exports = config;
-</code></pre>
-<p>以上配置中，对一个单独的 module 对象定义了 <code>rules</code> 属性，里面包含两个必须属性：<code>test</code> 和 <code>use</code>。这告诉 webpack 编译器(compiler) 如下信息：</p>
-<blockquote>
-<p>“嘿，webpack 编译器，当你碰到「在 <code>require()</code>/<code>import</code> 语句中被解析为 ‘.txt’ 的路径」时，在你对它打包之前，先<strong>使用</strong> <code>raw-loader</code> 转换一下。”</p>
-</blockquote>
-<blockquote>
-<p>重要的是要记得，**在 webpack 配置中定义 loader 时，要定义在 <code>module.rules</code> 中，而不是 <code>rules</code>**。然而，在定义错误时 webpack 会给出严重的警告。为了使你受益于此，如果没有按照正确方式去做，webpack 会“给出严重的警告”</p>
-</blockquote>
-<p>loader 还有更多我们尚未提到的具体配置属性。</p>
-<p><a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/loaders">了解更多！</a></p>
-<h2 id="插件-plugins"><a href="#插件-plugins" class="headerlink" title="插件(plugins)"></a>插件(plugins)</h2><p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。<a target="_blank" rel="noopener" href="https://www.webpackjs.com/api/plugins">插件接口</a>功能极其强大，可以用来处理各种各样的任务。</p>
-<p>想要使用一个插件，你只需要 <code>require()</code> 它，然后把它添加到 <code>plugins</code> 数组中。多数插件可以通过选项(option)自定义。你也可以在一个配置文件中因为不同目的而多次使用同一个插件，这时需要通过使用 <code>new</code> 操作符来创建它的一个实例。</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="javascript">const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;); // 通过 npm 安装
-const webpack = require(&#39;webpack&#39;); // 用于访问内置插件
-
-const config = &#123;
-  module: &#123;
-    rules: [
-      &#123; test: /\.txt$/, use: &#39;raw-loader&#39; &#125;
-    ]
-  &#125;,
-  plugins: [
-    new HtmlWebpackPlugin(&#123;template: &#39;./src/index.html&#39;&#125;)
-  ]
-&#125;;
-
-module.exports = config;
-</code></pre>
-<p>webpack 提供许多开箱可用的插件！查阅我们的<a target="_blank" rel="noopener" href="https://www.webpackjs.com/plugins">插件列表</a>获取更多信息。</p>
-<p>在 webpack 配置中使用插件是简单直接的，然而也有很多值得我们进一步探讨的用例。</p>
-<p><a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/plugins">了解更多！</a></p>
-<h3 id="剖析"><a href="#剖析" class="headerlink" title="剖析"></a>剖析</h3><p>webpack <strong>插件</strong>是一个具有 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"><code>apply</code></a> 属性的 JavaScript 对象。<code>apply</code> 属性会被 webpack compiler 调用，并且 compiler 对象可在<strong>整个</strong>编译生命周期访问。</p>
-<p><strong>ConsoleLogOnBuildWebpackPlugin.js</strong></p>
-<pre><code class="javascript">const pluginName = &#39;ConsoleLogOnBuildWebpackPlugin&#39;;
-
-class ConsoleLogOnBuildWebpackPlugin &#123;
-    apply(compiler) &#123;
-        compiler.hooks.run.tap(pluginName, compilation =&gt; &#123;
-            console.log(&quot;webpack 构建过程开始！&quot;);
-        &#125;);
-    &#125;
-&#125;
-</code></pre>
-<p>compiler hook 的 tap 方法的第一个参数，应该是驼峰式命名的插件名称。建议为此使用一个常量，以便它可以在所有 hook 中复用。</p>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>由于<strong>插件</strong>可以携带参数/选项，你必须在 webpack 配置中，向 <code>plugins</code> 属性传入 <code>new</code> 实例。</p>
-<p>根据你的 webpack 用法，这里有多种方式使用插件。</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><strong>webpack.config.js</strong></p>
-<pre><code class="javascript">const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;); //通过 npm 安装
-const webpack = require(&#39;webpack&#39;); //访问内置的插件
-const path = require(&#39;path&#39;);
-
-const config = &#123;
-  entry: &#39;./path/to/my/entry/file.js&#39;,
-  output: &#123;
-    filename: &#39;my-first-webpack.bundle.js&#39;,
-    path: path.resolve(__dirname, &#39;dist&#39;)
-  &#125;,
-  module: &#123;
-    rules: [
-      &#123;
-        test: /\.(js|jsx)$/,
-        use: &#39;babel-loader&#39;
-      &#125;
-    ]
-  &#125;,
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin(&#123;template: &#39;./src/index.html&#39;&#125;)
-  ]
-&#125;;
-
-module.exports = config;
-</code></pre>
-<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>通过选择 <code>development</code> 或 <code>production</code> 之中的一个，来设置 <code>mode</code> 参数，你可以启用相应模式下的 webpack 内置的优化</p>
-<pre><code class="javascript">module.exports = &#123;
-  mode: &#39;production&#39;
-&#125;;
-</code></pre>
-<p><a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/mode">了解更多！</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/webpack/%E4%BD%BF%E7%94%A8webpack%E6%90%AD%E5%BB%BAvue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangjinxin的博客1">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/01/28/webpack/%E4%BD%BF%E7%94%A8webpack%E6%90%AD%E5%BB%BAvue/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
-                2021-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="生成package-json"><a href="#生成package-json" class="headerlink" title="生成package.json"></a>生成package.json</h3><pre><code class="shell">npm init
-</code></pre>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><pre><code class="shell">npm i webpack vue vue-loader css-loader vue-template-compiler
-</code></pre>
-<h3 id="新建文件夹src，创建文件app-vue"><a href="#新建文件夹src，创建文件app-vue" class="headerlink" title="新建文件夹src，创建文件app.vue"></a>新建文件夹src，创建文件app.vue</h3><pre><code class="javascript">&lt;template&gt;
-    &lt;div class=&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default &#123;
-    data()&#123;
-        return&#123;
-            text:&#39;abc&#39;
-        &#125;
-    &#125;
-&#125;
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-    .text&#123;
-        color:red;
-    &#125;
-&lt;/style&gt;
-</code></pre>
-<h3 id="创建webpack-config-js-（帮助打包前端资源）"><a href="#创建webpack-config-js-（帮助打包前端资源）" class="headerlink" title="创建webpack.config.js （帮助打包前端资源）"></a>创建webpack.config.js （帮助打包前端资源）</h3><pre><code class="javascript">// 打包前端资源
-const path = require(&#39;path&#39;)
-const VueLoaderPlugin = require(&quot;vue-loader/lib/plugin&quot;);
-
-module.exports = &#123;
-  entry: path.join(__dirname, &quot;src/index.js&quot;),
-  output: &#123;
-    filename: &quot;app.js&quot;,
-    path: path.join(__dirname, &quot;dist&quot;),
-  &#125;,
-  module: &#123;
-    rules: [
-      &#123;
-        test: /.vue$/,
-        loader: &quot;vue-loader&quot;,
-      &#125;,
-      &#123;
-        test: /\.css$/,
-        loader: &quot;css-loader&quot;,
-      &#125;
-    ],
-  &#125;,
-  plugins: [
-    // 请确保引入这个插件！
-    new VueLoaderPlugin(),
-  ],
-&#125;;
-</code></pre>
-<h3 id="在src目录中创建index-js-（入口文件）"><a href="#在src目录中创建index-js-（入口文件）" class="headerlink" title="在src目录中创建index.js （入口文件）"></a>在src目录中创建index.js （入口文件）</h3><pre><code class="javascript">// 入口文件
-import Vue from &#39;vue&#39;
-import App from &#39;./app.vue&#39;
-
-const root=document.createElement(&quot;div&quot;)
-document.body.appendChild(root)
-
-new Vue(&#123;
-    render:(h)=&gt;h(App)
-&#125;).$mount(root)
-</code></pre>
-<h3 id="在package-json中的scripts里添加一个命令"><a href="#在package-json中的scripts里添加一个命令" class="headerlink" title="在package.json中的scripts里添加一个命令"></a>在package.json中的scripts里添加一个命令</h3><pre><code>...
-&quot;build&quot;: &quot;webpack --config webpack.config.js&quot;
-...
-</code></pre>
-<h3 id="执行打包"><a href="#执行打包" class="headerlink" title="执行打包"></a>执行打包</h3><pre><code class="shell">npm run build
-</code></pre>
-<p>打包后会在dist目录生成打包好后的文件。</p>
-<h3 id="webpack插件-plugin"><a href="#webpack插件-plugin" class="headerlink" title="webpack插件 - plugin"></a>webpack插件 - plugin</h3><p>plugin是用于扩展webpack的功能，各种各样的plugin几乎可以让webpack做任何与构建相关的事情。<br>plugin的配置很简单，plugins配置项接收一个数组，数组里的每一项都是一个要使用的plugin的实例，plugin需要的参数通过构造函数传入。</p>
-<p>举个例子</p>
-<pre><code class="javascript">const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;)
-  plugins: [
-    new HtmlWebpackPlugin(&#123; // 打包输出HTML
-      title: &#39;Hello World app&#39;,
-      minify: &#123; // 压缩HTML文件
-        removeComments: true, // 移除HTML中的注释
-        collapseWhitespace: true, // 删除空白符与换行符
-        minifyCSS: true// 压缩内联css
-      &#125;,
-      filename: &#39;index.html&#39;,
-      template: &#39;index.html&#39;
-    &#125;),
-  ]
-</code></pre>
-<p>使用plugin的难点在于plugin本身的配置项，而不是如何在webpack中引入plugin，几乎所有webpack无法直接实现的功能，都能找到开源的plugin去解决，我们要做的就是去找更据自己的需要找出相应的plugin。</p>
-<h3 id="HTMLPlugin"><a href="#HTMLPlugin" class="headerlink" title="HTMLPlugin"></a>HTMLPlugin</h3><p>虽然现在可以打包了，但是只生成了js文件，并没有生成html文件，我们需要引入一个插件 HTMLPlugin。</p>
-<p>在webpack.config.js中加入以下代码：</p>
-<pre><code class="javascript">const HTMLPlugin = require(&#39;html-webpack-plugin&#39;);
-...
-// 在插件列表中声明引用了HTMLPlugin插件
-plugins: [
-    new VueLoaderPlugin(),
-    new HTMLPlugin(&#123;
-        title: &#39;Hello World app&#39;,
-    &#125;) // 处理html模版
-],
-...
-</code></pre>
-<p>现在执行npm run build可以打包出index.html了，双击这个文件是可以直接在浏览器中运行的。</p>
-<p>了解html-webpack-plugin的更多内容，详见  <a href="./HTMLPlugin.md">HTMLPlugin.md</a></p>
-<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><p>每次打包一次再运行实在是太麻烦了，我们希望能够在一个服务端口上运行这个项目，并且代码有改动时能够热更新，这个时候就需要webpack-dev-server。</p>
-<p>安装webpack-dev-server</p>
-<pre><code>npm install webpack-dev-server --save
-</code></pre>
-<p>修改 webpack.config.js</p>
-<pre><code class="javascript">// 打包前端资源
-const path = require(&#39;path&#39;)
-const VueLoaderPlugin = require(&quot;vue-loader/lib/plugin&quot;);
-const HTMLPlugin = require(&#39;html-webpack-plugin&#39;);
-const isDev = process.env.NODE_ENV === &#39;development&#39;;  // 判断当前环境是否为开发环境
-
-const config = &#123;
-  entry: path.join(__dirname, &quot;src/index.js&quot;),
-  output: &#123;
-    filename: &quot;app.js&quot;,
-    path: path.join(__dirname, &quot;dist&quot;),
-  &#125;,
-  module: &#123;
-    rules: [
-      &#123;
-        test: /.vue$/,
-        loader: &quot;vue-loader&quot;,
-      &#125;,
-      &#123;
-        test: /\.css$/,
-        loader: &quot;css-loader&quot;,
-      &#125;
-    ],
-  &#125;,
-  plugins: [
-    new VueLoaderPlugin(),
-    new HTMLPlugin(&#123;
-      title: &#39;使用webpack搭建一个vue应用&#39;
-    &#125;)
-  ],
-&#125;;
-
-if(isDev) &#123;
-  Object.assign(config, &#123;
-    // 调试代码时可以看到自己原本的代码，而不是编译后的
-    devtool: &#39;#cheap-module-eval-source-map&#39;,
-    devServer: &#123;
-      port: 8000,
-      host: &#39;0.0.0.0&#39;,
-      overlay: &#123;
-          errors: true // 将webpack编译的错误显示在网页上面
-      &#125;,
-      open: true, // 在启用webpack-dev-server时，自动打开浏览器
-      hot: true 
-    &#125;
-  &#125;)
-&#125;
-
-module.exports = config;
-</code></pre>
-<p>package.json中的scripts里添加一个命令</p>
-<pre><code class="javascript">...
-&quot;scripts&quot;: &#123;
-    ...
-    &quot;dev&quot;: &quot;webpack-dev-server --config webpack.config.js&quot;
-&#125;
-...
-</code></pre>
-<p>执行命令 <code>npm run dev</code> 就会启动一个8080端口，就可以在浏览器<code>http://localhost:8080</code> 访问到这个项目了。</p>
-<h3 id="图片的加载"><a href="#图片的加载" class="headerlink" title="图片的加载"></a>图片的加载</h3><p>目前的配置是不支持加载图片的，接下来我们让它支持加载图片。</p>
-<p>使用<code>file-loader</code>处理文件的导入</p>
-<pre><code class="shell">npm install file-loader --save-dev
-</code></pre>
-<p>在webpack.config.js中修改</p>
-<pre><code class="javascript">module: &#123;
-    rules: [
-        ...
-        &#123;
-            test: /\.(gif|jpg|jpeg|png|svg)$/, // 处理图片文件
-            use: &#123;
-              loader: &#39;file-loader&#39;,
-              options: &#123;
-                name: &#39;[name]_[hash].[ext]&#39;,
-              &#125;
-            &#125;
-        &#125;
-        ...
-      ]
-&#125;
-</code></pre>
-<p>经测试使用<code>file-loader</code>仅支持 <code>import img from &quot;./assets/logo.jpg&quot;;</code> 和 <code> background: url(&#39;./assets/logo.jpg&#39;);</code> 的引用，并不能支持 <code> &lt;img src=&quot;./assets/logo.jpg&quot; &gt;</code>，会将图片地址解析成<code>[object module]</code> ，查了资料后发现：</p>
-<p>默认情况下，file-loader生成使用ES模块语法的JS模块。在某些情况下，使用ES模块是有益的，比如在模块连接和树抖动的情况下。</p>
-<p>简而言之就是file-loader新版本默认使用了esModule语法，造成了引用图片文件时的方式和以前的版本不一样，通过查看其仓库的release会发现：在v4.3.0版本就引入这一新特性。</p>
-<p>解决方法是在webpack的file-loader配置项里，设置esModule为false</p>
-<pre><code class="javascript">module: &#123;
-    rules: [
-        ...
-        &#123;
-            test: /\.(gif|jpg|jpeg|png|svg)$/, // 处理图片文件
-            use: &#123;
-              loader: &#39;file-loader&#39;,
-              options: &#123;
-                name: &#39;[name]_[hash].[ext]&#39;,
-                esModule: false  
-              &#125;
-            &#125;
-        &#125;
-       ...
-      ]
-&#125;
-</code></pre>
-<p>除了file-loader还可以使用url-loader，url-loader是在file-loader的基础上做了一层封装，能够让较小的图片打包成base64</p>
-<pre><code class="shell">npm install url-loader --save-dev
-</code></pre>
-<pre><code class="javascript">// 将file-loader换成url-loader，并加入    limit 属性
-use: &#123;
-    loader: &#39;url-loader&#39;,
-    options: &#123;
-        name: &#39;[name]_[hash].[ext]&#39;,
-        esModule: false,
-        limit: 4096088  // 表示小于这个大小的图片的地址都会转化成base64
-      &#125;
-&#125;
-</code></pre>
-<h3 id="支持less"><a href="#支持less" class="headerlink" title="支持less"></a>支持less</h3><p>less是css的预处理语言，它扩展了css语言，下面让我们的webpack支持less</p>
-<p>安装less相关依赖</p>
-<pre><code class="shell">npm i less-loader less --save-dev
-</code></pre>
-<p>在webpack.config.js中加入less的对应规则</p>
-<pre><code class="javascript">&#123;
-  test: /\.less$/,
-    use: [
-      &#123;
-        loader: &#39;style-loader&#39;
-      &#125;,
-      &#123;
-        loader: &#39;css-loader&#39;
-      &#125;,
-      &#123;
-        loader: &#39;less-loader&#39;
-      &#125;
-    ]
-&#125;
-</code></pre>
-<p>至此一个简单的vue脚手架就搭建好啦，如果你想更完善一点，后续可以添加更多的功能。</p>
-<h3 id="支持typescript"><a href="#支持typescript" class="headerlink" title="支持typescript"></a>支持typescript</h3><p>typescript是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JavaScript">JavaScript</a>的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B">面向对象编程</a>。</p>
-<p>安装依赖</p>
-<pre><code class="shell">npm install typescript ts-loader --save-dev
-</code></pre>
-<p>将入口文件文件名index.js改成index.ts</p>
-<p>修改webpack配置</p>
-<pre><code class="javascript">...
-// 入口文件地址改一下
-entry: path.join(__dirname, &quot;src/index.ts&quot;),
-...
-
-// 加入对ts文件的处理规则
-...
-&#123;
-  test: /\.tsx?$/,
-  loader: &#39;ts-loader&#39;,
-  exclude: /node_modules/,
-  options: &#123;
-      appendTsSuffixTo: [/\.vue$/]
-  &#125;
-&#125;
-...
-</code></pre>
-<p>创建typescript配置文件，tsconfig.json，这里的配置可以根据实际要求进行配置</p>
-<pre><code class="json">&#123;
-  &quot;compilerOptions&quot;: &#123;
-    &quot;target&quot;: &quot;esnext&quot;,
-    &quot;module&quot;: &quot;esnext&quot;,
-    &quot;strict&quot;: true,
-    &quot;jsx&quot;: &quot;preserve&quot;,
-    &quot;importHelpers&quot;: true,
-    &quot;moduleResolution&quot;: &quot;node&quot;,
-    &quot;experimentalDecorators&quot;: true,
-    &quot;esModuleInterop&quot;: true,
-    &quot;allowSyntheticDefaultImports&quot;: true,
-    &quot;sourceMap&quot;: true,
-    &quot;baseUrl&quot;: &quot;.&quot;,
-    &quot;paths&quot;: &#123;
-      &quot;@/*&quot;: [
-        &quot;src/*&quot;
-      ]
-    &#125;,
-    &quot;lib&quot;: [
-      &quot;esnext&quot;,
-      &quot;dom&quot;,
-      &quot;dom.iterable&quot;,
-      &quot;scripthost&quot;
-    ]
-  &#125;,
-  &quot;include&quot;: [
+<p>导入TS声明，有两种方式</p>
+<p>编辑tsconfig.js</p>
+<pre><code>&quot;include&quot;: [
+    &quot;node_modules/vue-tsx-support/enable-check.d.ts&quot;, 
     &quot;src/**/*.ts&quot;,
     &quot;src/**/*.tsx&quot;,
     &quot;src/**/*.vue&quot;,
     &quot;tests/**/*.ts&quot;,
     &quot;tests/**/*.tsx&quot;
   ],
-  &quot;exclude&quot;: [
-    &quot;node_modules&quot;
-  ]
-&#125;
+  
+ // 注意：将exclude内的 &quot;node_modules&quot; 删掉，不然永远也无法被引用到了
 </code></pre>
-<p>添加对vue的声明，在src目录下创建文件<code>shims-vue.d.ts</code></p>
-<pre><code class="typescript">declare module &quot;*.vue&quot; &#123;
-  import Vue from &quot;vue&quot;
-  export default Vue
-&#125;
+<p>或者在main.js中 import</p>
+<pre><code>import &quot;vue-tsx-support/enable-check&quot;;
 </code></pre>
-<p>需要注意的是如果在Vue原型当中添加了属性，也需要添加对应的声明，但是由于vue-router和vuex这种是作为Vue插件来使用的 (也就是按<code>Vue.use(Router)</code>这种方式来使用)，并且都已经支持TypeScript，所以并不需要单独来编写声明了。但是像axios这种并不是按Vue插件使用，需要用下面的方式添加到Vue原型当中</p>
-<pre><code class="javascript">Vue.prototype.$http = axios
+<h2 id="创建视图组件"><a href="#创建视图组件" class="headerlink" title="创建视图组件"></a>创建视图组件</h2><p>来创建个按钮组件：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<pre><code> 1 import &#123; Component, Prop &#125; from &quot;vue-property-decorator&quot;;
+ 2 import * as tsx from &quot;vue-tsx-support&quot;;
+ 3 
+ 4 export enum ButtonType &#123;
+ 5   default = &quot;default&quot;,
+ 6   primary = &quot;primary&quot;
+ 7 &#125;
+ 8 
+ 9 export enum ButtonSize &#123;
+10   large = &quot;large&quot;,
+11   small = &quot;small&quot;
+12 &#125;
+13 export interface IButtonProps &#123;
+14   type?: ButtonType;
+15   size?: ButtonSize;
+16   num: number;
+17 &#125;
+18 
+19 @Component
+20 export default class Button extends tsx.Component&lt;IButtonProps&gt; &#123;
+21   @Prop() public type!: ButtonType;
+22   @Prop() public size!: ButtonSize;
+23   @Prop(&#123; default: 0 &#125;) public num!: number;
+24 
+25   protected render() &#123;
+26     return (
+27       &lt;div&gt;
+28         &lt;p&gt;id:&#123;this.num&#125;&lt;/p&gt;
+29         &#123;this.type &amp;&amp; &lt;p&gt;type:&#123;this.type&#125;&lt;/p&gt;&#125;
+30         &#123;this.size &amp;&amp; &lt;p&gt;size:&#123;this.size&#125;&lt;/p&gt;&#125;
+31       &lt;/div&gt;
+32     );
+33   &#125;
+34 &#125;
 </code></pre>
-<p>那么使用了TypeScript之后，就需要对该属性进行声明<br>否则ts编译的过程就会认为该属性不存在</p>
-<p>在src目录下创建<code>index.d.ts</code></p>
-<pre><code class="typescript">import &#123; AxiosInstance &#125; from &#39;axios&#39;
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>再创建Container 用TSX引用组件Button：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<pre><code>import &#123; Component, Prop &#125; from &quot;vue-property-decorator&quot;;
+import &#123; Component as tsc &#125; from &quot;vue-tsx-support&quot;;
+import Button, &#123; ButtonType, ButtonSize &#125; from &quot;./button&quot;;
 
-declare module &#39;vue/types/vue&#39; &#123;
-  interface Vue &#123;
-    $http: AxiosInstance
+interface IContainerProps &#123;
+  name?: string;
+&#125;
+
+@Component
+export default class Container extends tsc&lt;IContainerProps&gt; &#123;
+  @Prop() public name!: string;
+
+  protected render() &#123;
+    return (
+      &lt;div&gt;
+        &lt;p&gt;container Name:&#123;this.name&#125;&lt;/p&gt;
+        &lt;p&gt;&#123;this.$slots.default&#125;&lt;/p&gt;
+        &lt;p&gt;
+          button:
+          &lt;Button num=&#123;9&#125; type=&#123;ButtonType.primary&#125; size=&#123;ButtonSize.large&#125; /&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+    );
   &#125;
 &#125;
 </code></pre>
-<h3 id="vue-class-component和vue-property-decorator"><a href="#vue-class-component和vue-property-decorator" class="headerlink" title="vue-class-component和vue-property-decorator"></a>vue-class-component和vue-property-decorator</h3><p><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/vuejs/vue-class-component%5D(https://github.com/vuejs/vue-class-component)">vue-class-component</a> 是官方推出的vue对typescript支持的装饰器(库)，可以将Vue中的组件用类的方式编写，<strong>vue-property-decorator</strong>是<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/vuejs/vue-class-component%5D(https://github.com/vuejs/vue-class-component)">vue-class-component</a> 的超集，下面我们来学习一下<strong>vue-property-decorator</strong>。</p>
-<p>安装依赖包</p>
-<pre><code class="shell">npm install vue-property-decorator vue-class-component --save
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue%E7%9A%84model%E9%80%89%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue/vue%E7%9A%84model%E9%80%89%E9%A1%B9/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>允许一个自定义组件在使用 <code>v-model</code> 时定制 prop 和 event。默认情况下，一个组件上的 <code>v-model</code> 会把 <code>value</code> 用作 prop 且把 <code>input</code> 用作 event，但是一些输入类型比如单选框和复选框按钮可能想使用 <code>value</code> prop 来达到不同的目的。使用 <code>model</code> 选项可以回避这些情况产生的冲突。</p>
+<p>示例</p>
+<pre><code class="javascript">Vue.component(&#39;my-checkbox&#39;, &#123;
+  model: &#123;
+    prop: &#39;checked&#39;,
+    event: &#39;change&#39;
+  &#125;,
+  props: &#123;
+    // this allows using the `value` prop for a different purpose
+    value: String,
+    // use `checked` as the prop which take the place of `value`
+    checked: &#123;
+      type: Number,
+      default: 0
+    &#125;
+  &#125;,
+  // ...
+&#125;)
 </code></pre>
-<p>组件就可以这么写了</p>
-<pre><code class="typescript">&lt;script lang=&quot;ts&quot;&gt;
-import &#123; Vue, Component &#125; from &#39;vue-property-decorator&#39;
+<pre><code class="html">&lt;my-checkbox v-model=&quot;foo&quot; value=&quot;some value&quot;&gt;&lt;/my-checkbox&gt;
+</code></pre>
+<p>相当于：</p>
+<pre><code class="html">&lt;my-checkbox
+  :checked=&quot;foo&quot;
+  @change=&quot;val =&gt; &#123; foo = val &#125;&quot;
+  value=&quot;some value&quot;&gt;
+&lt;/my-checkbox&gt;
+</code></pre>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue-next/vue3.0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue-next/vue3.0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一个新的全局-API：createApp"><a href="#一个新的全局-API：createApp" class="headerlink" title="一个新的全局 API：createApp"></a>一个新的全局 API：<code>createApp</code></h2><p>调用 <code>createApp</code> 返回一个应用实例，这是 Vue 3 中的新概念：</p>
+<pre><code class="js">import &#123; createApp &#125; from &#39;vue&#39;
+
+const app = createApp(&#123;&#125;)
+</code></pre>
+<p>应用实例暴露当前全局 API 的子集，经验法则是，任何全局改变 Vue 行为的 API 现在都会移动到应用实例上，以下是当前全局 API 及其相应实例 API 的表：</p>
+<table>
+<thead>
+<tr>
+<th>2.x 全局 API</th>
+<th>3.x 实例 API (<code>app</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vue.config</td>
+<td>app.config</td>
+</tr>
+<tr>
+<td>Vue.config.productionTip</td>
+<td><em>removed</em> (<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api.html#config-productiontip-removed">见下方</a>)</td>
+</tr>
+<tr>
+<td>Vue.config.ignoredElements</td>
+<td>app.config.isCustomElement (<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api.html#config-ignoredelements-is-now-config-iscustomelement">见下方</a>)</td>
+</tr>
+<tr>
+<td>Vue.component</td>
+<td>app.component</td>
+</tr>
+<tr>
+<td>Vue.directive</td>
+<td>app.directive</td>
+</tr>
+<tr>
+<td>Vue.mixin</td>
+<td>app.mixin</td>
+</tr>
+<tr>
+<td>Vue.use</td>
+<td>app.use (<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api.html#a-note-for-plugin-authors">见下方</a>)</td>
+</tr>
+</tbody></table>
+<p>所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见<a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/migration/global-api-treeshaking.html">全局 API Treeshaking</a>。</p>
+<h2 id="provide"><a href="#provide" class="headerlink" title="provide"></a>provide</h2><ul>
+<li><p><strong>参数：</strong></p>
+<ul>
+<li><code>&#123;string | Symbol&#125; key</code></li>
+<li><code>value</code></li>
+</ul>
+</li>
+<li><p><strong>返回值：</strong></p>
+<ul>
+<li>应用实例</li>
+</ul>
+</li>
+<li><p><strong>用法：</strong></p>
+<p>设置一个可以被注入到应用范围内所有组件中的值。组件应该使用 <code>inject</code> 来接收提供的值。</p>
+<p>从 <code>provide</code>/<code>inject</code> 的角度来看，可以将应用程序视为根级别的祖先，而根组件是其唯一的子级。</p>
+<p>该方法不应该与 <a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/api/options-composition.html#provide-inject">provide 组件选项</a>或组合式 API 中的 <a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/api/composition-api.html#provide-inject">provide 方法</a>混淆。虽然它们也是相同的 <code>provide</code>/<code>inject</code> 机制的一部分，但是是用来配置组件提供的值而不是应用提供的值。</p>
+<p>通过应用提供值在写插件时尤其有用，因为插件一般不能使用组件提供值。这是使用 <a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/api/application-config.html#globalProperties">globalProperties</a> 的替代选择。</p>
+<p>Note</p>
+<p><code>provide</code> 和 <code>inject</code> 绑定不是响应式的。这是有意为之。不过，如果你向下传递一个响应式对象，这个对象上的 property 会保持响应式。</p>
+</li>
+<li><p><strong>示例：</strong></p>
+<p>向根组件中注入一个 property，值由应用提供。</p>
+</li>
+</ul>
+<pre><code class="js">import &#123; createApp &#125; from &#39;vue&#39;
+
+const app = createApp(&#123;
+  inject: [&#39;user&#39;],
+  template: `
+    &lt;div&gt;
+      &#123;&#123; user &#125;&#125;
+    &lt;/div&gt;
+  `
+&#125;)
+
+app.provide(&#39;user&#39;, &#39;administrator&#39;)
+</code></pre>
+<ul>
+<li>参考：<ul>
+<li><a target="_blank" rel="noopener" href="https://www.vue3js.cn/docs/zh/guide/component-provide-inject.html">Provide / Inject</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vue/vue-property-decorator%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/header.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2021/01/28/vue/vue-property-decorator%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><pre><code class="shell">npm i -s vue-property-decorator vue-class-component
+</code></pre>
+<h2 id="二，用法"><a href="#二，用法" class="headerlink" title="二，用法"></a><strong>二，用法</strong></h2><p><strong>1，@Component(options:ComponentOptions = {})</strong></p>
+<p><code>@Component</code> 装饰器可以接收一个对象作为参数，可以在对象中声明 <code>components ，filters，directives</code>等未提供装饰器的选项，也可以声明<code>computed，watch</code>等</p>
+<pre><code class="typescript">import &#123; Vue, Component &#125; from &#39;vue-property-decorator&#39;
+
 @Component(&#123;
   filters: &#123;
     toFixed: (num: number, fix: number = 2) =&gt; &#123;
@@ -2589,40 +2147,284 @@ export default class MyComponent extends Vue &#123;
     return this.list.filter((item: number) =&gt; item % 2 === 0)
   &#125;
 &#125;
-&lt;/script&gt;
 </code></pre>
-<h3 id="集成eslint"><a href="#集成eslint" class="headerlink" title="集成eslint"></a>集成eslint</h3><p>安装</p>
-<pre><code class="shell">npm install --save-dev eslint-loader eslint
-</code></pre>
-<p>在 <code>webpack.config.js</code> 中添加如下代码：</p>
-<pre><code class="css">&#123;
-    test: /\.js$/,
-    loader: &#39;eslint-loader&#39;,
-    enforce: &quot;pre&quot;,
-    include: [path.resolve(__dirname, &#39;src&#39;)], // 指定检查的目录
-    options: &#123; // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
-        formatter: require(&#39;eslint-friendly-formatter&#39;) // 指定错误报告的格式规范
-    &#125;
+<p><strong>2，@Prop(options: (PropOptions | Constructor[] | Constructor) = {})</strong></p>
+<p><code>@Prop</code>装饰器接收一个参数，这个参数可以有三种写法：</p>
+<ul>
+<li><code>Constructor</code>，例如<code>String，Number，Boolean</code>等，指定 <code>prop</code> 的类型；</li>
+<li><code>Constructor[]</code>，指定 <code>prop</code> 的可选类型；</li>
+<li><code>PropOptions</code>，可以使用以下选项：<code>type，default，required，validator</code>。</li>
+</ul>
+<pre><code class="typescript">import &#123; Vue, Component, Prop &#125; from &#39;vue-property-decorator&#39;
+
+export default class MyComponent extends Vue &#123;
+  @Prop(String) public propA: string | undefined
+  @Prop([String, Number]) public propB!: string | number
+  @Prop(&#123;
+    type: String,
+    default: &#39;abc&#39;
+  &#125;)
+  public propC!: string
 &#125;
 </code></pre>
-<p>最后，项目想要使用那些eslin规则，可以创建一个配置项文件 ‘.eslintrc.js’，代码如下:</p>
-<pre><code class="java">module.exports = &#123;
-    root: true, 
-    parserOptions: &#123;
-        sourceType: &#39;module&#39;
+<p>等同于下面的<code>js</code>写法</p>
+<pre><code class="javascript">export default &#123;
+  props: &#123;
+    propA: &#123;
+      type: String
     &#125;,
-    env: &#123;
-        browser: true,
+    propB: &#123;
+      type: [String, Number]
     &#125;,
-    rules: &#123;
-        &quot;indent&quot;: [&quot;error&quot;, 2],
-        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;],
-        &quot;semi&quot;: [&quot;error&quot;, &quot;always&quot;],
-        &quot;no-console&quot;: &quot;error&quot;,
-        &quot;arrow-parens&quot;: 0
+    propC: &#123;
+      type: String,
+      defalut: &#39;abc&#39;
     &#125;
+  &#125;
 &#125;
 </code></pre>
+<p>注意：</p>
+<ul>
+<li>属性的ts类型后面需要加上<code>undefined</code>类型；或者在属性名后面加上!，表示<code>非null</code> 和 <code>非undefined</code><br>的断言，否则编译器会给出错误提示；</li>
+<li>指定默认值必须使用上面例子中的写法，如果直接在属性名后面赋值，会重写这个属性，并且会报错。</li>
+</ul>
+<p><strong>3，@PropSync(propName: string, options: (PropOptions | Constructor[] | Constructor) = {})</strong></p>
+<p><code>@PropSync</code>装饰器与<code>@prop</code>用法类似，二者的区别在于：</p>
+<ul>
+<li><code>@PropSync</code> 装饰器接收两个参数：<br><code>propName: string</code> 表示父组件传递过来的属性名；<br><code>options: Constructor | Constructor[] | PropOptions</code> 与<code>@Prop</code>的第一个参数一致；</li>
+<li><code>@PropSync</code> 会生成一个新的计算属性。</li>
+</ul>
+<pre><code class="typescript">import &#123; Vue, Component, PropSync &#125; from &#39;vue-property-decorator&#39;
+
+@Component
+export default class MyComponent extends Vue &#123;
+  @PropSync(&#39;propA&#39;, &#123; type: String, default: &#39;abc&#39; &#125;) public syncedPropA!: string
+&#125;
+</code></pre>
+<p>等同于下面的<code>js</code>写法</p>
+<pre><code class="javascript">export default &#123;
+  props: &#123;
+    propA: &#123;
+      type: String,
+      default: &#39;abc&#39;
+    &#125;
+  &#125;,
+  computed: &#123;
+    syncedPropA: &#123;
+      get() &#123;
+        return this.propA
+      &#125;,
+      set(value) &#123;
+        this.$emit(&#39;update:propA&#39;, value)
+      &#125;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p><strong>注意：<code>@PropSync</code>需要配合父组件的<code>.sync</code>修饰符使用</strong></p>
+<p><strong>4，@Model(event?: string, options: (PropOptions | Constructor[] | Constructor) = {})</strong></p>
+<p><code>@Model</code>装饰器允许我们在一个组件上自定义<code>v-model</code>，接收两个参数：</p>
+<ul>
+<li><code>event: string</code> 事件名。</li>
+<li><code>options: Constructor | Constructor[] | PropOptions</code> 与<code>@Prop</code>的第一个参数一致。</li>
+</ul>
+<pre><code class="typescript">import &#123; Vue, Component, Model &#125; from &#39;vue-property-decorator&#39;
+
+@Component
+export default class MyInput extends Vue &#123;
+  @Model(&#39;change&#39;, &#123; type: String, default: &#39;123&#39; &#125;) public value!: string
+&#125;
+</code></pre>
+<p>等同于下面的<code>js</code>写法</p>
+<pre><code class="javascript">export default &#123;
+  model: &#123;
+    prop: &#39;value&#39;,
+    event: &#39;change&#39;
+  &#125;,
+  props: &#123;
+    value: &#123;
+      type: String,
+      default: &#39;123&#39;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>上面例子中指定的是<code>change</code>事件，所以我们还需要在<code>template</code>中加上相应的事件：</p>
+<pre><code class="html">&lt;template&gt;
+  &lt;input
+    type=&quot;text&quot;
+    :value=&quot;value&quot;
+    @change=&quot;$emit(&#39;change&#39;, $event.target.value)&quot;
+  /&gt;
+&lt;/template&gt;
+</code></pre>
+<p><strong>对<code>自定义v-model</code>不太理解的同学，可以查看<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">自定义事件</a></strong></p>
+<p><strong>5，@Watch(path: string, options: WatchOptions = {})</strong></p>
+<p><code>@Watch</code> 装饰器接收两个参数：</p>
+<ul>
+<li><p><code>path: string</code> 被侦听的属性名；</p>
+<p>options可以包含两个属性 ：</p>
+<p><code>immediate?:boolean</code> 侦听开始之后是否立即调用该回调函数；<br><code>deep?:boolean</code> 被侦听的对象的属性被改变时，是否调用该回调函数；</p>
+</li>
+</ul>
+<p><strong>侦听开始，发生在<code>beforeCreate</code>勾子之后，<code>created</code>勾子之前</strong></p>
+<pre><code class="typescript">import &#123; Vue, Component, Watch &#125; from &#39;vue-property-decorator&#39;
+
+@Component
+export default class MyInput extends Vue &#123;
+  @Watch(&#39;msg&#39;)
+  public onMsgChanged(newValue: string, oldValue: string) &#123;&#125;
+
+  @Watch(&#39;arr&#39;, &#123; immediate: true, deep: true &#125;)
+  public onArrChanged1(newValue: number[], oldValue: number[]) &#123;&#125;
+
+  @Watch(&#39;arr&#39;)
+  public onArrChanged2(newValue: number[], oldValue: number[]) &#123;&#125;
+&#125;
+</code></pre>
+<p>等同于下面的<code>js</code>写法</p>
+<pre><code class="javascript">export default &#123;
+  watch: &#123;
+    msg: [
+      &#123;
+        handler: &#39;onMsgChanged&#39;,
+        immediate: false,
+        deep: false
+      &#125;
+    ],
+    arr: [
+      &#123;
+        handler: &#39;onArrChanged1&#39;,
+        immediate: true,
+        deep: true
+      &#125;,
+      &#123;
+        handler: &#39;onArrChanged2&#39;,
+        immediate: false,
+        deep: false
+      &#125;
+    ]
+  &#125;,
+  methods: &#123;
+    onMsgVhanged(newValue, oldValue) &#123;&#125;,
+    onArrChange1(newValue, oldValue) &#123;&#125;,
+    onArrChange2(newValue, oldValue) &#123;&#125;
+  &#125;
+&#125;
+</code></pre>
+<p><strong>6，@Emit(event?: string)</strong></p>
+<ul>
+<li><code>@Emit</code> 装饰器接收一个可选参数，该参数是<code>$Emit</code>的第一个参数，充当事件名。如果没有提供这个参数，<code>$Emit</code>会将回调函数名的<code>camelCase</code>转为<code>kebab-case</code>，并将其作为事件名；</li>
+<li><code>@Emit</code>会将回调函数的返回值作为第二个参数，如果返回值是一个<code>Promise</code>对象，<code>$emit</code>会在<code>Promise</code>对象被标记为<code>resolved</code>之后触发；</li>
+<li><code>@Emit</code>的回调函数的参数，会放在其返回值之后，一起被<code>$emit</code>当做参数使用。</li>
+</ul>
+<pre><code class="typescript">import &#123; Vue, Component, Emit &#125; from &#39;vue-property-decorator&#39;
+
+@Component
+export default class MyComponent extends Vue &#123;
+  count = 0
+  @Emit()
+  public addToCount(n: number) &#123;
+    this.count += n
+  &#125;
+  @Emit(&#39;reset&#39;)
+  public resetCount() &#123;
+    this.count = 0
+  &#125;
+  @Emit()
+  public returnValue() &#123;
+    return 10
+  &#125;
+  @Emit()
+  public onInputChange(e) &#123;
+    return e.target.value
+  &#125;
+  @Emit()
+  public promise() &#123;
+    return new Promise(resolve =&gt; &#123;
+      setTimeout(() =&gt; &#123;
+        resolve(20)
+      &#125;, 0)
+    &#125;)
+  &#125;
+&#125;
+</code></pre>
+<p>等同于下面的<code>js</code>写法</p>
+<pre><code class="javascript">export default &#123;
+  data() &#123;
+    return &#123;
+      count: 0
+    &#125;
+  &#125;,
+  methods: &#123;
+    addToCount(n) &#123;
+      this.count += n
+      this.$emit(&#39;add-to-count&#39;, n)
+    &#125;,
+    resetCount() &#123;
+      this.count = 0
+      this.$emit(&#39;reset&#39;)
+    &#125;,
+    returnValue() &#123;
+      this.$emit(&#39;return-value&#39;, 10)
+    &#125;,
+    onInputChange(e) &#123;
+      this.$emit(&#39;on-input-change&#39;, e.target.value, e)
+    &#125;,
+    promise() &#123;
+      const promise = new Promise(resolve =&gt; &#123;
+        setTimeout(() =&gt; &#123;
+          resolve(20)
+        &#125;, 0)
+      &#125;)
+      promise.then(value =&gt; &#123;
+        this.$emit(&#39;promise&#39;, value)
+      &#125;)
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p><strong>7，@Ref(refKey?: string)</strong></p>
+<p><code>@Ref</code> 装饰器接收一个可选参数，用来指向元素或子组件的引用信息。如果没有提供这个参数，会使用装饰器后面的属性名充当参数</p>
+<pre><code class="typescript">import &#123; Vue, Component, Ref &#125; from &#39;vue-property-decorator&#39;
+import &#123; Form &#125; from &#39;element-ui&#39;
+
+@Componentexport default class MyComponent extends Vue &#123;
+  @Ref() readonly loginForm!: Form
+  @Ref(&#39;changePasswordForm&#39;) readonly passwordForm!: Form
+
+  public handleLogin() &#123;
+    this.loginForm.validate(valide =&gt; &#123;
+      if (valide) &#123;
+        // login...
+      &#125; else &#123;
+        // error tips
+      &#125;
+    &#125;)
+  &#125;
+&#125;
+</code></pre>
+<p>等同于下面的<code>js</code>写法</p>
+<pre><code class="javascript">export default &#123;
+  computed: &#123;
+    loginForm: &#123;
+      cache: false,
+      get() &#123;
+        return this.$refs.loginForm
+      &#125;
+    &#125;,
+    passwordForm: &#123;
+      cache: false,
+      get() &#123;
+        return this.$refs.changePasswordForm
+      &#125;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p><strong>@Provide/@Inject 和 @ProvideReactive/@InhectReactive</strong></p>
+<p>由于平时基本不用到provide/inject选项，暂时先放着，以后有时间再研究</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/kaorun343/vue-property-decorator">https://github.com/kaorun343/…</a></p>
 
           
         
@@ -2662,7 +2464,7 @@ export default class MyComponent extends Vue &#123;
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/3/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/blog/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/3/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2697,6 +2499,10 @@ export default class MyComponent extends Vue &#123;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/header.jpeg"
+                alt="" />
+            
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -2708,20 +2514,54 @@ export default class MyComponent extends Vue &#123;
               
                 <a href="/blog/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjinxin613" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1749574663@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -2757,18 +2597,6 @@ export default class MyComponent extends Vue &#123;
 
   
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
 
 
 
@@ -2814,7 +2642,12 @@ export default class MyComponent extends Vue &#123;
   
 
 
+  
 
+
+
+  
+  
 
 
 
@@ -2852,6 +2685,21 @@ export default class MyComponent extends Vue &#123;
   
   
     <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/three/three-waves.min.js"></script>
   
 
 
@@ -2937,5 +2785,14 @@ export default class MyComponent extends Vue &#123;
 
   
 
-</body>
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
