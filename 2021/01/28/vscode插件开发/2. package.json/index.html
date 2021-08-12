@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="package.json在详细介绍vscode插件开发细节之前，这里我们先详细介绍一下vscode插件的package.json写法，但是建议先只需要随便看一下，了解个大概，等后面讲到具体细节的时候再回过头来看。 如下是package.json文件的常用配置，当然这里还不是全部： &amp;#123;     &#x2F;&#x2F; 插件的名字，应全部小写，不能有空格     &quot;name&quot;: &amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wangjinxin的博客1">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/2.%20package.json/index.html">
+<meta property="og:site_name" content="wangjinxin的博客1">
+<meta property="og:description" content="package.json在详细介绍vscode插件开发细节之前，这里我们先详细介绍一下vscode插件的package.json写法，但是建议先只需要随便看一下，了解个大概，等后面讲到具体细节的时候再回过头来看。 如下是package.json文件的常用配置，当然这里还不是全部： &amp;#123;     &#x2F;&#x2F; 插件的名字，应全部小写，不能有空格     &quot;name&quot;: &amp;quot">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-28T07:26:37.330Z">
+<meta property="article:modified_time" content="2021-01-28T07:26:37.330Z">
+<meta property="article:author" content="wangjinxin">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/vscode插件开发/2. package.json/"/>
+
+
+
+
+
+  <title> | wangjinxin的博客1</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangjinxin的博客1</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">欢迎进入我的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/2.%20package.json/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h1><p>在详细介绍vscode插件开发细节之前，这里我们先详细介绍一下vscode插件的<code>package.json</code>写法，但是建议先只需要随便看一下，了解个大概，等后面讲到具体细节的时候再回过头来看。</p>
+<p>如下是<code>package.json</code>文件的常用配置，当然这里还不是全部：</p>
+<pre><code class="json">&#123;
+    // 插件的名字，应全部小写，不能有空格
+    &quot;name&quot;: &quot;vscode-plugin-demo&quot;,
+    // 插件的友好显示名称，用于显示在应用市场，支持中文
+    &quot;displayName&quot;: &quot;VSCode插件demo&quot;,
+    // 描述
+    &quot;description&quot;: &quot;VSCode插件demo集锦&quot;,
+    // 关键字，用于应用市场搜索
+    &quot;keywords&quot;: [&quot;vscode&quot;, &quot;plugin&quot;, &quot;demo&quot;],
+    // 版本号
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    // 发布者，如果要发布到应用市场的话，这个名字必须与发布者一致
+    &quot;publisher&quot;: &quot;sxei&quot;,
+    // 表示插件最低支持的vscode版本
+    &quot;engines&quot;: &#123;
+        &quot;vscode&quot;: &quot;^1.27.0&quot;
+    &#125;,
+    // 插件应用市场分类，可选值： [Programming Languages, Snippets, Linters, Themes, Debuggers, Formatters, Keymaps, SCM Providers, Other, Extension Packs, Language Packs]
+    &quot;categories&quot;: [
+        &quot;Other&quot;
+    ],
+    // 插件图标，至少128x128像素
+    &quot;icon&quot;: &quot;images/icon.png&quot;,
+    // 扩展的激活事件数组，可以被哪些事件激活扩展，后文有详细介绍
+    &quot;activationEvents&quot;: [
+        &quot;onCommand:extension.sayHello&quot;
+    ],
+    // 插件的主入口
+    &quot;main&quot;: &quot;./src/extension&quot;,
+    // 贡献点，整个插件最重要最多的配置项
+    &quot;contributes&quot;: &#123;
+        // 插件配置项
+        &quot;configuration&quot;: &#123;
+            &quot;type&quot;: &quot;object&quot;,
+            // 配置项标题，会显示在vscode的设置页
+            &quot;title&quot;: &quot;vscode-plugin-demo&quot;,
+            &quot;properties&quot;: &#123;
+                // 这里我随便写了2个设置，配置你的昵称
+                &quot;vscodePluginDemo.yourName&quot;: &#123;
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;default&quot;: &quot;guest&quot;,
+                    &quot;description&quot;: &quot;你的名字&quot;
+                &#125;,
+                // 是否在启动时显示提示
+                &quot;vscodePluginDemo.showTip&quot;: &#123;
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;default&quot;: true,
+                    &quot;description&quot;: &quot;是否在每次启动时显示欢迎提示！&quot;
+                &#125;
+            &#125;
+        &#125;,
+        // 命令
+        &quot;commands&quot;: [
+            &#123;
+                &quot;command&quot;: &quot;extension.sayHello&quot;,
+                &quot;title&quot;: &quot;Hello World&quot;
+            &#125;
+        ],
+        // 快捷键绑定
+        &quot;keybindings&quot;: [
+            &#123;
+                &quot;command&quot;: &quot;extension.sayHello&quot;,
+                &quot;key&quot;: &quot;ctrl+f10&quot;,
+                &quot;mac&quot;: &quot;cmd+f10&quot;,
+                &quot;when&quot;: &quot;editorTextFocus&quot;
+            &#125;
+        ],
+        // 菜单
+        &quot;menus&quot;: &#123;
+            // 编辑器右键菜单
+            &quot;editor/context&quot;: [
+                &#123;
+                    // 表示只有编辑器具有焦点时才会在菜单中出现
+                    &quot;when&quot;: &quot;editorFocus&quot;,
+                    &quot;command&quot;: &quot;extension.sayHello&quot;,
+                    // navigation是一个永远置顶的分组，后面的@6是人工进行组内排序
+                    &quot;group&quot;: &quot;navigation@6&quot;
+                &#125;,
+                &#123;
+                    &quot;when&quot;: &quot;editorFocus&quot;,
+                    &quot;command&quot;: &quot;extension.demo.getCurrentFilePath&quot;,
+                    &quot;group&quot;: &quot;navigation@5&quot;
+                &#125;,
+                &#123;
+                    // 只有编辑器具有焦点，并且打开的是JS文件才会出现
+                    &quot;when&quot;: &quot;editorFocus &amp;&amp; resourceLangId == javascript&quot;,
+                    &quot;command&quot;: &quot;extension.demo.testMenuShow&quot;,
+                    &quot;group&quot;: &quot;z_commands&quot;
+                &#125;,
+                &#123;
+                    &quot;command&quot;: &quot;extension.demo.openWebview&quot;,
+                    &quot;group&quot;: &quot;navigation&quot;
+                &#125;
+            ],
+            // 编辑器右上角图标，不配置图片就显示文字
+            &quot;editor/title&quot;: [
+                &#123;
+                    &quot;when&quot;: &quot;editorFocus &amp;&amp; resourceLangId == javascript&quot;,
+                    &quot;command&quot;: &quot;extension.demo.testMenuShow&quot;,
+                    &quot;group&quot;: &quot;navigation&quot;
+                &#125;
+            ],
+            // 编辑器标题右键菜单
+            &quot;editor/title/context&quot;: [
+                &#123;
+                    &quot;when&quot;: &quot;resourceLangId == javascript&quot;,
+                    &quot;command&quot;: &quot;extension.demo.testMenuShow&quot;,
+                    &quot;group&quot;: &quot;navigation&quot;
+                &#125;
+            ],
+            // 资源管理器右键菜单
+            &quot;explorer/context&quot;: [
+                &#123;
+                    &quot;command&quot;: &quot;extension.demo.getCurrentFilePath&quot;,
+                    &quot;group&quot;: &quot;navigation&quot;
+                &#125;,
+                &#123;
+                    &quot;command&quot;: &quot;extension.demo.openWebview&quot;,
+                    &quot;group&quot;: &quot;navigation&quot;
+                &#125;
+            ]
+        &#125;,
+        // 代码片段
+        &quot;snippets&quot;: [
+            &#123;
+                &quot;language&quot;: &quot;javascript&quot;,
+                &quot;path&quot;: &quot;./snippets/javascript.json&quot;
+            &#125;,
+            &#123;
+                &quot;language&quot;: &quot;html&quot;,
+                &quot;path&quot;: &quot;./snippets/html.json&quot;
+            &#125;
+        ],
+        // 自定义新的activitybar图标，也就是左侧侧边栏大的图标
+        &quot;viewsContainers&quot;: &#123;
+            &quot;activitybar&quot;: [
+                &#123;
+                    &quot;id&quot;: &quot;beautifulGirl&quot;,
+                    &quot;title&quot;: &quot;美女&quot;,
+                    &quot;icon&quot;: &quot;images/beautifulGirl.svg&quot;
+                &#125;
+            ]
+        &#125;,
+        // 自定义侧边栏内view的实现
+        &quot;views&quot;: &#123;
+            // 和 viewsContainers 的id对应
+            &quot;beautifulGirl&quot;: [
+                &#123;
+                    &quot;id&quot;: &quot;beautifulGirl1&quot;,
+                    &quot;name&quot;: &quot;国内美女&quot;
+                &#125;,
+                &#123;
+                    &quot;id&quot;: &quot;beautifulGirl2&quot;,
+                    &quot;name&quot;: &quot;国外美女&quot;
+                &#125;,
+                &#123;
+                    &quot;id&quot;: &quot;beautifulGirl3&quot;,
+                    &quot;name&quot;: &quot;人妖&quot;
+                &#125;
+            ]
+        &#125;,
+        // 图标主题
+        &quot;iconThemes&quot;: [
+            &#123;
+                &quot;id&quot;: &quot;testIconTheme&quot;,
+                &quot;label&quot;: &quot;测试图标主题&quot;,
+                &quot;path&quot;: &quot;./theme/icon-theme.json&quot;
+            &#125;
+        ]
+    &#125;,
+    // 同 npm scripts
+    &quot;scripts&quot;: &#123;
+        &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;,
+        &quot;test&quot;: &quot;node ./node_modules/vscode/bin/test&quot;
+    &#125;,
+    // 开发依赖
+    &quot;devDependencies&quot;: &#123;
+        &quot;typescript&quot;: &quot;^2.6.1&quot;,
+        &quot;vscode&quot;: &quot;^1.1.6&quot;,
+        &quot;eslint&quot;: &quot;^4.11.0&quot;,
+        &quot;@types/node&quot;: &quot;^7.0.43&quot;,
+        &quot;@types/mocha&quot;: &quot;^2.2.42&quot;
+    &#125;,
+    // 后面这几个应该不用介绍了
+    &quot;license&quot;: &quot;SEE LICENSE IN LICENSE.txt&quot;,
+    &quot;bugs&quot;: &#123;
+        &quot;url&quot;: &quot;https://github.com/sxei/vscode-plugin-demo/issues&quot;
+    &#125;,
+    &quot;repository&quot;: &#123;
+        &quot;type&quot;: &quot;git&quot;,
+        &quot;url&quot;: &quot;https://github.com/sxei/vscode-plugin-demo&quot;
+    &#125;,
+    // 主页
+    &quot;homepage&quot;: &quot;https://github.com/sxei/vscode-plugin-demo/blob/master/README.md&quot;
+&#125;
+</code></pre>
+<h1 id="activationEvents"><a href="#activationEvents" class="headerlink" title="activationEvents"></a>activationEvents</h1><p>插件在<code>VS Code</code>中默认是没有被激活的，哪什么时候才被激活呢？就是通过<code>activationEvents</code>来配置，目前支持一下8种配置：</p>
+<ul>
+<li>onLanguage:${language}</li>
+<li>onCommand:${command}</li>
+<li>onDebug</li>
+<li>workspaceContains:${toplevelfilename}</li>
+<li>onFileSystem:${scheme}</li>
+<li>onView:${viewId}</li>
+<li>onUri</li>
+<li><code>*</code></li>
+</ul>
+<p>都比较好懂，我就不做一一介绍了，举个例子，如果我配置了<code>onLanguage:javascript</code>，那么只要我打开了JS类型的文件，插件就会被激活。</p>
+<p>重点说一下<code>*</code>，如果配置了<code>*</code>，只要一启动vscode，插件就会被激活，为了出色的用户体验，官方不推荐这么做。看到这里相信大家知道了我们前面HelloWord里面为啥要配置<code>onCommand</code>了吧。</p>
+<h1 id="contributes"><a href="#contributes" class="headerlink" title="contributes"></a>contributes</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesconfiguration"><code>configuration</code></a>：设置</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributescommands"><code>commands</code></a>：命令</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesmenus"><code>menus</code></a>：菜单</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributeskeybindings"><code>keybindings</code></a>：快捷键绑定</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributeslanguages"><code>languages</code></a>：新语言支持</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesdebuggers"><code>debuggers</code></a>：调试</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesbreakpoints"><code>breakpoints</code></a>：断点</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesgrammars"><code>grammars</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesthemes"><code>themes</code></a>：主题</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributessnippets"><code>snippets</code></a>：代码片段</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesjsonvalidation"><code>jsonValidation</code></a>：自定义JSON校验</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesviews"><code>views</code></a>：左侧侧边栏视图</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesviewscontainers"><code>viewsContainers</code></a>：自定义activitybar</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesproblemmatchers"><code>problemMatchers</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesproblempatterns"><code>problemPatterns</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributestaskDefinitions"><code>taskDefinitions</code></a></li>
+<li>[<code>colors</code>](</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/1.%20vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2021/01/28/vscode%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/3.%20%E5%91%BD%E4%BB%A4%E3%80%81%E8%8F%9C%E5%8D%95%E3%80%81%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#package-json"><span class="nav-number">1.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activationEvents"><span class="nav-number">2.</span> <span class="nav-text">activationEvents</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#contributes"><span class="nav-number">3.</span> <span class="nav-text">contributes</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangjinxin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

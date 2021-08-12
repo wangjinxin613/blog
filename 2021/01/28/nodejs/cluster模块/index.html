@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="cluster模块Node.js默认单进程运行，对于32位系统最高可以使用512MB内存，对于64位最高可以使用1GB内存。**对于多核CPU的计算机来说，这样做效率很低，因为只有一个核在运行，其他核都在闲置**。cluster模块就是为了解决这个问题而提出的。  cluster模块允许设立一个主进程和若干个worker进程，由主进程监控和协调worker进程的运行。 worker之间采用进程间通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wangjinxin的博客1">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/nodejs/cluster%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="wangjinxin的博客1">
+<meta property="og:description" content="cluster模块Node.js默认单进程运行，对于32位系统最高可以使用512MB内存，对于64位最高可以使用1GB内存。**对于多核CPU的计算机来说，这样做效率很低，因为只有一个核在运行，其他核都在闲置**。cluster模块就是为了解决这个问题而提出的。  cluster模块允许设立一个主进程和若干个worker进程，由主进程监控和协调worker进程的运行。 worker之间采用进程间通">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-28T07:26:37.329Z">
+<meta property="article:modified_time" content="2021-01-28T07:26:37.329Z">
+<meta property="article:author" content="wangjinxin">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/nodejs/cluster模块/"/>
+
+
+
+
+
+  <title> | wangjinxin的博客1</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangjinxin的博客1</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">欢迎进入我的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/nodejs/cluster%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="cluster模块"><a href="#cluster模块" class="headerlink" title="cluster模块"></a>cluster模块</h1><p><code>Node.js</code>默认单进程运行，对于<code>32</code>位系统最高可以使用512MB内存，对于<code>64</code>位最高可以使用1GB内存。**<code>对于多核CPU的计算机来说，这样做效率很低，因为只有一个核在运行，其他核都在闲置</code>**。<code>cluster模块</code>就是为了解决这个问题而提出的。</p>
+<ul>
+<li><code>cluster模块</code>允许设立一个主进程和若干个worker进程，由主进程监控和协调<code>worker</code>进程的运行。</li>
+<li><code>worker</code>之间采用进程间通信交换消息，<code>cluster模块</code>内置一个负载均衡器，采用<code>Round-robin</code>算法协调各个worker进程之间的负载。</li>
+<li>运行时，所有新建立的链接都由主进程完成，然后主进程再把TCP连接分配给指定的worker进程。</li>
+</ul>
+<pre><code class="javascript">var cluster = require(&#39;cluster&#39;);
+var os = require(&#39;os&#39;);
+
+if (cluster.isMaster)&#123;
+  for (var i = 0, n = os.cpus().length; i &lt; n; i += 1)&#123;
+    cluster.fork();
+  &#125;
+&#125; else &#123;
+  http.createServer(function(req, res) &#123;
+    res.writeHead(200);
+    res.end(&quot;hello world\n&quot;);
+  &#125;).listen(8000);
+&#125;
+</code></pre>
+<p>上面代码先判断当前进程是否为<code>主进程（cluster.isMaster）</code>，如果是的，就按照<code>CPU的核数</code>，新建若干个<code>worker进程</code>；如果不是，说明当前进程是<code>worker进程</code>，则在该进程启动一个服务器程序。<br>上面这段代码有一个缺点，就是一旦work进程挂了，主进程无法知道。<br>为了解决这个问题，可以在主进程部署<code>online事件</code>和<code>exit事件</code>的<code>监听函数</code>。</p>
+<pre><code class="javascript">var cluster = require(&#39;cluster&#39;);
+if(cluster.isMaster) &#123;
+  var numWorkers = require(&#39;os&#39;).cpus().length;
+  console.log(&#39;Master cluster setting up &#39; + numWorkers + &#39; workers...&#39;);
+  for(var i = 0; i &lt; numWorkers; i++) &#123;
+    cluster.fork();
+  &#125;
+ cluster.on(&#39;online&#39;, function(worker) &#123;
+    console.log(&#39;Worker &#39; + worker.process.pid + &#39; is online&#39;);
+  &#125;);
+cluster.on(&#39;exit&#39;, function(worker, code, signal) &#123;
+    console.log(&#39;Worker &#39; + worker.process.pid + &#39; died with code: &#39; + code + &#39;, and signal: &#39; + signal);
+    console.log(&#39;Starting a new worker&#39;);
+    cluster.fork();
+  &#125;);
+&#125;
+</code></pre>
+<p>上面代码中，主进程一旦监听到<code>worker</code>进程的<code>exit</code>事件，就会重启一个<code>worker</code>进程。worker进程一旦启动成功，可以正常运行了，就会发出<code>online</code>事件。</p>
+<h2 id="cluster模块的属性与方法"><a href="#cluster模块的属性与方法" class="headerlink" title="cluster模块的属性与方法"></a>cluster模块的属性与方法</h2><h4 id="isMaster，isWorker"><a href="#isMaster，isWorker" class="headerlink" title="isMaster，isWorker"></a>isMaster，isWorker</h4><p><code>isMaster</code>属性返回一个<code>布尔值</code>，表示当前进程<code>是否为主进程</code>。这个属性由<code>process.env.NODE_UNIQUE_ID</code>决定，如果process.env.NODE_UNIQUE_ID为未定义，就表示该进程是主进程。<br><code>isWorker</code>属性返回一个<code>布尔值</code>，表示当前进程<code>是否为work进程</code>。它<code>与isMaster属性的值正好相反</code>。</p>
+<h4 id="fork"><a href="#fork" class="headerlink" title="fork()"></a>fork()</h4><p><code>fork方法</code>用于<code>新建</code>一个<code>worker进程</code>，上下文都复制主进程。只有主进程才能调用这个方法。<br>该方法返回一个<code>worker</code>对象。</p>
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill()"></a>kill()</h4><p><code>kill方法</code>用于<code>终止worker进程</code>。它可以接受一个参数，表示系统信号。</p>
+<ul>
+<li>如果当前是主进程，就会终止与<code>worker.process</code>的联络，然后将系统信号法发向worker进程。</li>
+<li>如果当前是<code>worker进程</code>，就会终止与主进程的通信，然后退出，返回0。</li>
+<li>在以前的版本中，该方法也叫做 <code>worker.destroy()</code> 。</li>
+</ul>
+<h3 id="listening事件"><a href="#listening事件" class="headerlink" title="listening事件"></a>listening事件</h3><p><code>worker</code>进程调用<code>listen</code>方法以后，<code>“listening”</code>就传向该进程的服务器，然后传向主进程。<br>该事件的回调函数接受两个参数，一个是当前<code>worker对象</code>，另一个是<code>地址对象</code>，包含网址、端口、地址类型（IPv4、IPv6、Unix socket、UDP）等信息。这对于那些服务多个网址的Node应用程序非常有用。</p>
+<pre><code class="javascript">cluster.on(&#39;listening&#39;, function(worker, address) &#123;
+  console.log(&quot;A worker is now connected to &quot; + address.address + &quot;:&quot; + address.port);
+&#125;);
+</code></pre>
+<h2 id="worker对象"><a href="#worker对象" class="headerlink" title="worker对象"></a>worker对象</h2><p><code>worker对象</code>是<code>cluster.fork()</code>的返回值，代表一个<code>worker进程</code>。<br>它的属性和方法如下</p>
+<h3 id="worker-id"><a href="#worker-id" class="headerlink" title="worker.id"></a>worker.id</h3><p><code>work.id</code>返回当前<code>worker</code>的独一无二的进程编号。这个编号也是<code>cluster.workers</code>中指向当前进程的索引值。</p>
+<h3 id="worker-process"><a href="#worker-process" class="headerlink" title="worker.process"></a>worker.process</h3><p>所有的<code>worker</code>进程都是用<code>child_process.fork()</code>生成的。<code>child_process.fork()</code>返回的对象，就被保存在<code>worker.process</code>之中。<br>通过这个属性，可以获取<code>worker</code>所在的进程对象。</p>
+<h3 id="worker-send"><a href="#worker-send" class="headerlink" title="worker.send()"></a>worker.send()</h3><p>该方法用于在主进程中，向子进程发送信息。</p>
+<pre><code class="javascript">if (cluster.isMaster) &#123;
+  var worker = cluster.fork();
+  worker.send(&#39;hi there&#39;);
+&#125; else if (cluster.isWorker) &#123;
+  process.on(&#39;message&#39;, function(msg) &#123;
+    process.send(msg);
+  &#125;);
+&#125;
+</code></pre>
+<p>上面代码的作用是，worker进程对主进程发出的每个消息，都做回声。<br>在worker进程中，要向主进程发送消息，使用<code>process.send(message)</code>；要监听主进程发出的消息，使用下面的代码。</p>
+<pre><code class="javascript">process.on(&#39;message&#39;, function(message) &#123;
+  console.log(message);
+&#125;);
+</code></pre>
+<p>发出的消息可以字符串，也可以是JSON对象。下面是一个发送JSON对象的例子。</p>
+<pre><code class="javascript">worker.send(&#123;
+  type: &#39;task 1&#39;,
+  from: &#39;master&#39;,
+  data: &#123;
+    // the data that you want to transfer
+  &#125;
+&#125;);
+</code></pre>
+<h2 id="cluster-workers对象"><a href="#cluster-workers对象" class="headerlink" title="cluster.workers对象"></a>cluster.workers对象</h2><p>该对象<code>只有主进程</code>才有，包含了所有<code>worker进程</code>。每个成员的键值就是一个<code>worker进程对象</code>，键名就是该<code>worker进程的worker.id属性</code>。</p>
+<pre><code class="javascript">function eachWorker(callback) &#123;
+  for (var id in cluster.workers) &#123;
+    callback(cluster.workers[id]);
+  &#125;
+&#125;
+eachWorker(function(worker) &#123;
+  worker.send(&#39;big announcement to all workers&#39;);
+&#125;);
+</code></pre>
+<p>上面代码用来遍历所有<code>worker</code>进程。<br>当前<code>socket</code>的<code>data</code>事件，也可以用<code>id</code>属性识别<code>worker</code>进程。</p>
+<pre><code class="javascript">socket.on(&#39;data&#39;, function(id) &#123;
+  var worker = cluster.workers[id];
+&#125;);
+</code></pre>
+<h2 id="PM2模块"><a href="#PM2模块" class="headerlink" title="PM2模块"></a>PM2模块</h2><p><code>PM2</code>模块是<code>cluster</code>模块的一个包装层。它的作用是尽量将<code>cluster</code>模块抽象掉，让用户像使用单进程一样，部署多进程Node应用。</p>
+<pre><code class="javascript">// app.js
+var http = require(&#39;http&#39;);
+http.createServer(function(req, res) &#123;
+  res.writeHead(200);
+  res.end(&quot;hello world&quot;);
+&#125;).listen(8080);
+</code></pre>
+<p>上面代码是标准的Node架设Web服务器的方式，然后用<code>PM2</code>从命令行启动这段代码。</p>
+<pre><code>$ pm2 start app.js -i 4
+</code></pre>
+<p>上面代码的<code>i</code>参数告诉<code>PM2</code>，这段代码应该在<code>cluster_mode</code>启动，且新建<code>worker</code>进程的数量是4个。<br>如果<code>i</code>参数的值是0，那么当前机器有几个CPU内核，PM2就会启动几个worker进程。<br>如果一个<code>worker</code>进程由于某种原因挂掉了，会立刻重启该worker进程。</p>
+<pre><code># 重启所有worker进程
+$ pm2 reload all
+</code></pre>
+<p>每个worker进程都有一个id，可以用下面的命令查看单个worker进程的详情。</p>
+<pre><code>$ pm2 show &lt;worker id&gt;
+</code></pre>
+<p>正确情况下，PM2采用<code>fork模式</code>新建worker进程，即主进程fork自身，产生一个worker进程。<br><code>pm2 reload</code>命令则会用<code>spawn</code>方式启动，即一个接一个启动worker进程，一个新的worker启动成功，再杀死一个旧的<code>worker</code>进程。<br>采用这种方式，重新部署新版本时，服务器就不会中断服务。</p>
+<pre><code>$ pm2 reload &lt;脚本文件名&gt;
+</code></pre>
+<p>关闭worker进程的时候，可以部署下面的代码，让worker进程监听<code>shutdown</code>消息。一旦收到这个消息，进行完毕收尾清理工作再关闭。</p>
+<pre><code class="javascript">process.on(&#39;message&#39;, function(msg) &#123;
+  if (msg === &#39;shutdown&#39;) &#123;
+    close_all_connections();
+    delete_logs();
+    server.close();
+    process.exit(0);
+  &#125;
+&#125;);
+</code></pre>
+<p><strong>cluster的内部实现原理是封装了一层child_process–fork，而child_process–fork 则是封装了unix 系统的fork 方法</strong></p>
+<p><a href="./child_process%E5%AD%90%E8%BF%9B%E7%A8%8B.md">child_process</a>  是 nodejs的子进程</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2021/01/28/nodejs/Sequelize/%E6%96%B9%E6%B3%95/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2021/01/28/react/%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAreact%E9%A1%B9%E7%9B%AE/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cluster%E6%A8%A1%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">cluster模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cluster%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">cluster模块的属性与方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#isMaster%EF%BC%8CisWorker"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">isMaster，isWorker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fork"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">fork()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">kill()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listening%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">listening事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#worker%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">worker对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#worker-id"><span class="nav-number">1.2.1.</span> <span class="nav-text">worker.id</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#worker-process"><span class="nav-number">1.2.2.</span> <span class="nav-text">worker.process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#worker-send"><span class="nav-number">1.2.3.</span> <span class="nav-text">worker.send()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cluster-workers%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.</span> <span class="nav-text">cluster.workers对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PM2%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.</span> <span class="nav-text">PM2模块</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangjinxin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

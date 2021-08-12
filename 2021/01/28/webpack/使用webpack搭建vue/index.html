@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="生成package.jsonnpm init  安装依赖npm i webpack vue vue-loader css-loader vue-template-compiler  新建文件夹src，创建文件app.vue&lt;template&gt;     &lt;div class&#x3D;&quot;text&quot;&gt;&amp;#123;&amp;#123;text&amp;#125;&amp;#125;&lt;&#x2F;d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wangjinxin的博客1">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/webpack/%E4%BD%BF%E7%94%A8webpack%E6%90%AD%E5%BB%BAvue/index.html">
+<meta property="og:site_name" content="wangjinxin的博客1">
+<meta property="og:description" content="生成package.jsonnpm init  安装依赖npm i webpack vue vue-loader css-loader vue-template-compiler  新建文件夹src，创建文件app.vue&lt;template&gt;     &lt;div class&#x3D;&quot;text&quot;&gt;&amp;#123;&amp;#123;text&amp;#125;&amp;#125;&lt;&#x2F;d">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-28T07:26:37.335Z">
+<meta property="article:modified_time" content="2021-01-28T07:26:37.335Z">
+<meta property="article:author" content="wangjinxin">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/webpack/使用webpack搭建vue/"/>
+
+
+
+
+
+  <title> | wangjinxin的博客1</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangjinxin的博客1</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">欢迎进入我的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/webpack/%E4%BD%BF%E7%94%A8webpack%E6%90%AD%E5%BB%BAvue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="生成package-json"><a href="#生成package-json" class="headerlink" title="生成package.json"></a>生成package.json</h3><pre><code class="shell">npm init
+</code></pre>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><pre><code class="shell">npm i webpack vue vue-loader css-loader vue-template-compiler
+</code></pre>
+<h3 id="新建文件夹src，创建文件app-vue"><a href="#新建文件夹src，创建文件app-vue" class="headerlink" title="新建文件夹src，创建文件app.vue"></a>新建文件夹src，创建文件app.vue</h3><pre><code class="javascript">&lt;template&gt;
+    &lt;div class=&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default &#123;
+    data()&#123;
+        return&#123;
+            text:&#39;abc&#39;
+        &#125;
+    &#125;
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+    .text&#123;
+        color:red;
+    &#125;
+&lt;/style&gt;
+</code></pre>
+<h3 id="创建webpack-config-js-（帮助打包前端资源）"><a href="#创建webpack-config-js-（帮助打包前端资源）" class="headerlink" title="创建webpack.config.js （帮助打包前端资源）"></a>创建webpack.config.js （帮助打包前端资源）</h3><pre><code class="javascript">// 打包前端资源
+const path = require(&#39;path&#39;)
+const VueLoaderPlugin = require(&quot;vue-loader/lib/plugin&quot;);
+
+module.exports = &#123;
+  entry: path.join(__dirname, &quot;src/index.js&quot;),
+  output: &#123;
+    filename: &quot;app.js&quot;,
+    path: path.join(__dirname, &quot;dist&quot;),
+  &#125;,
+  module: &#123;
+    rules: [
+      &#123;
+        test: /.vue$/,
+        loader: &quot;vue-loader&quot;,
+      &#125;,
+      &#123;
+        test: /\.css$/,
+        loader: &quot;css-loader&quot;,
+      &#125;
+    ],
+  &#125;,
+  plugins: [
+    // 请确保引入这个插件！
+    new VueLoaderPlugin(),
+  ],
+&#125;;
+</code></pre>
+<h3 id="在src目录中创建index-js-（入口文件）"><a href="#在src目录中创建index-js-（入口文件）" class="headerlink" title="在src目录中创建index.js （入口文件）"></a>在src目录中创建index.js （入口文件）</h3><pre><code class="javascript">// 入口文件
+import Vue from &#39;vue&#39;
+import App from &#39;./app.vue&#39;
+
+const root=document.createElement(&quot;div&quot;)
+document.body.appendChild(root)
+
+new Vue(&#123;
+    render:(h)=&gt;h(App)
+&#125;).$mount(root)
+</code></pre>
+<h3 id="在package-json中的scripts里添加一个命令"><a href="#在package-json中的scripts里添加一个命令" class="headerlink" title="在package.json中的scripts里添加一个命令"></a>在package.json中的scripts里添加一个命令</h3><pre><code>...
+&quot;build&quot;: &quot;webpack --config webpack.config.js&quot;
+...
+</code></pre>
+<h3 id="执行打包"><a href="#执行打包" class="headerlink" title="执行打包"></a>执行打包</h3><pre><code class="shell">npm run build
+</code></pre>
+<p>打包后会在dist目录生成打包好后的文件。</p>
+<h3 id="webpack插件-plugin"><a href="#webpack插件-plugin" class="headerlink" title="webpack插件 - plugin"></a>webpack插件 - plugin</h3><p>plugin是用于扩展webpack的功能，各种各样的plugin几乎可以让webpack做任何与构建相关的事情。<br>plugin的配置很简单，plugins配置项接收一个数组，数组里的每一项都是一个要使用的plugin的实例，plugin需要的参数通过构造函数传入。</p>
+<p>举个例子</p>
+<pre><code class="javascript">const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;)
+  plugins: [
+    new HtmlWebpackPlugin(&#123; // 打包输出HTML
+      title: &#39;Hello World app&#39;,
+      minify: &#123; // 压缩HTML文件
+        removeComments: true, // 移除HTML中的注释
+        collapseWhitespace: true, // 删除空白符与换行符
+        minifyCSS: true// 压缩内联css
+      &#125;,
+      filename: &#39;index.html&#39;,
+      template: &#39;index.html&#39;
+    &#125;),
+  ]
+</code></pre>
+<p>使用plugin的难点在于plugin本身的配置项，而不是如何在webpack中引入plugin，几乎所有webpack无法直接实现的功能，都能找到开源的plugin去解决，我们要做的就是去找更据自己的需要找出相应的plugin。</p>
+<h3 id="HTMLPlugin"><a href="#HTMLPlugin" class="headerlink" title="HTMLPlugin"></a>HTMLPlugin</h3><p>虽然现在可以打包了，但是只生成了js文件，并没有生成html文件，我们需要引入一个插件 HTMLPlugin。</p>
+<p>在webpack.config.js中加入以下代码：</p>
+<pre><code class="javascript">const HTMLPlugin = require(&#39;html-webpack-plugin&#39;);
+...
+// 在插件列表中声明引用了HTMLPlugin插件
+plugins: [
+    new VueLoaderPlugin(),
+    new HTMLPlugin(&#123;
+        title: &#39;Hello World app&#39;,
+    &#125;) // 处理html模版
+],
+...
+</code></pre>
+<p>现在执行npm run build可以打包出index.html了，双击这个文件是可以直接在浏览器中运行的。</p>
+<p>了解html-webpack-plugin的更多内容，详见  <a href="./HTMLPlugin.md">HTMLPlugin.md</a></p>
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><p>每次打包一次再运行实在是太麻烦了，我们希望能够在一个服务端口上运行这个项目，并且代码有改动时能够热更新，这个时候就需要webpack-dev-server。</p>
+<p>安装webpack-dev-server</p>
+<pre><code>npm install webpack-dev-server --save
+</code></pre>
+<p>修改 webpack.config.js</p>
+<pre><code class="javascript">// 打包前端资源
+const path = require(&#39;path&#39;)
+const VueLoaderPlugin = require(&quot;vue-loader/lib/plugin&quot;);
+const HTMLPlugin = require(&#39;html-webpack-plugin&#39;);
+const isDev = process.env.NODE_ENV === &#39;development&#39;;  // 判断当前环境是否为开发环境
+
+const config = &#123;
+  entry: path.join(__dirname, &quot;src/index.js&quot;),
+  output: &#123;
+    filename: &quot;app.js&quot;,
+    path: path.join(__dirname, &quot;dist&quot;),
+  &#125;,
+  module: &#123;
+    rules: [
+      &#123;
+        test: /.vue$/,
+        loader: &quot;vue-loader&quot;,
+      &#125;,
+      &#123;
+        test: /\.css$/,
+        loader: &quot;css-loader&quot;,
+      &#125;
+    ],
+  &#125;,
+  plugins: [
+    new VueLoaderPlugin(),
+    new HTMLPlugin(&#123;
+      title: &#39;使用webpack搭建一个vue应用&#39;
+    &#125;)
+  ],
+&#125;;
+
+if(isDev) &#123;
+  Object.assign(config, &#123;
+    // 调试代码时可以看到自己原本的代码，而不是编译后的
+    devtool: &#39;#cheap-module-eval-source-map&#39;,
+    devServer: &#123;
+      port: 8000,
+      host: &#39;0.0.0.0&#39;,
+      overlay: &#123;
+          errors: true // 将webpack编译的错误显示在网页上面
+      &#125;,
+      open: true, // 在启用webpack-dev-server时，自动打开浏览器
+      hot: true 
+    &#125;
+  &#125;)
+&#125;
+
+module.exports = config;
+</code></pre>
+<p>package.json中的scripts里添加一个命令</p>
+<pre><code class="javascript">...
+&quot;scripts&quot;: &#123;
+    ...
+    &quot;dev&quot;: &quot;webpack-dev-server --config webpack.config.js&quot;
+&#125;
+...
+</code></pre>
+<p>执行命令 <code>npm run dev</code> 就会启动一个8080端口，就可以在浏览器<code>http://localhost:8080</code> 访问到这个项目了。</p>
+<h3 id="图片的加载"><a href="#图片的加载" class="headerlink" title="图片的加载"></a>图片的加载</h3><p>目前的配置是不支持加载图片的，接下来我们让它支持加载图片。</p>
+<p>使用<code>file-loader</code>处理文件的导入</p>
+<pre><code class="shell">npm install file-loader --save-dev
+</code></pre>
+<p>在webpack.config.js中修改</p>
+<pre><code class="javascript">module: &#123;
+    rules: [
+        ...
+        &#123;
+            test: /\.(gif|jpg|jpeg|png|svg)$/, // 处理图片文件
+            use: &#123;
+              loader: &#39;file-loader&#39;,
+              options: &#123;
+                name: &#39;[name]_[hash].[ext]&#39;,
+              &#125;
+            &#125;
+        &#125;
+        ...
+      ]
+&#125;
+</code></pre>
+<p>经测试使用<code>file-loader</code>仅支持 <code>import img from &quot;./assets/logo.jpg&quot;;</code> 和 <code> background: url(&#39;./assets/logo.jpg&#39;);</code> 的引用，并不能支持 <code> &lt;img src=&quot;./assets/logo.jpg&quot; &gt;</code>，会将图片地址解析成<code>[object module]</code> ，查了资料后发现：</p>
+<p>默认情况下，file-loader生成使用ES模块语法的JS模块。在某些情况下，使用ES模块是有益的，比如在模块连接和树抖动的情况下。</p>
+<p>简而言之就是file-loader新版本默认使用了esModule语法，造成了引用图片文件时的方式和以前的版本不一样，通过查看其仓库的release会发现：在v4.3.0版本就引入这一新特性。</p>
+<p>解决方法是在webpack的file-loader配置项里，设置esModule为false</p>
+<pre><code class="javascript">module: &#123;
+    rules: [
+        ...
+        &#123;
+            test: /\.(gif|jpg|jpeg|png|svg)$/, // 处理图片文件
+            use: &#123;
+              loader: &#39;file-loader&#39;,
+              options: &#123;
+                name: &#39;[name]_[hash].[ext]&#39;,
+                esModule: false  
+              &#125;
+            &#125;
+        &#125;
+       ...
+      ]
+&#125;
+</code></pre>
+<p>除了file-loader还可以使用url-loader，url-loader是在file-loader的基础上做了一层封装，能够让较小的图片打包成base64</p>
+<pre><code class="shell">npm install url-loader --save-dev
+</code></pre>
+<pre><code class="javascript">// 将file-loader换成url-loader，并加入    limit 属性
+use: &#123;
+    loader: &#39;url-loader&#39;,
+    options: &#123;
+        name: &#39;[name]_[hash].[ext]&#39;,
+        esModule: false,
+        limit: 4096088  // 表示小于这个大小的图片的地址都会转化成base64
+      &#125;
+&#125;
+</code></pre>
+<h3 id="支持less"><a href="#支持less" class="headerlink" title="支持less"></a>支持less</h3><p>less是css的预处理语言，它扩展了css语言，下面让我们的webpack支持less</p>
+<p>安装less相关依赖</p>
+<pre><code class="shell">npm i less-loader less --save-dev
+</code></pre>
+<p>在webpack.config.js中加入less的对应规则</p>
+<pre><code class="javascript">&#123;
+  test: /\.less$/,
+    use: [
+      &#123;
+        loader: &#39;style-loader&#39;
+      &#125;,
+      &#123;
+        loader: &#39;css-loader&#39;
+      &#125;,
+      &#123;
+        loader: &#39;less-loader&#39;
+      &#125;
+    ]
+&#125;
+</code></pre>
+<p>至此一个简单的vue脚手架就搭建好啦，如果你想更完善一点，后续可以添加更多的功能。</p>
+<h3 id="支持typescript"><a href="#支持typescript" class="headerlink" title="支持typescript"></a>支持typescript</h3><p>typescript是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JavaScript">JavaScript</a>的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B">面向对象编程</a>。</p>
+<p>安装依赖</p>
+<pre><code class="shell">npm install typescript ts-loader --save-dev
+</code></pre>
+<p>将入口文件文件名index.js改成index.ts</p>
+<p>修改webpack配置</p>
+<pre><code class="javascript">...
+// 入口文件地址改一下
+entry: path.join(__dirname, &quot;src/index.ts&quot;),
+...
+
+// 加入对ts文件的处理规则
+...
+&#123;
+  test: /\.tsx?$/,
+  loader: &#39;ts-loader&#39;,
+  exclude: /node_modules/,
+  options: &#123;
+      appendTsSuffixTo: [/\.vue$/]
+  &#125;
+&#125;
+...
+</code></pre>
+<p>创建typescript配置文件，tsconfig.json，这里的配置可以根据实际要求进行配置</p>
+<pre><code class="json">&#123;
+  &quot;compilerOptions&quot;: &#123;
+    &quot;target&quot;: &quot;esnext&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;strict&quot;: true,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;importHelpers&quot;: true,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;sourceMap&quot;: true,
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;paths&quot;: &#123;
+      &quot;@/*&quot;: [
+        &quot;src/*&quot;
+      ]
+    &#125;,
+    &quot;lib&quot;: [
+      &quot;esnext&quot;,
+      &quot;dom&quot;,
+      &quot;dom.iterable&quot;,
+      &quot;scripthost&quot;
+    ]
+  &#125;,
+  &quot;include&quot;: [
+    &quot;src/**/*.ts&quot;,
+    &quot;src/**/*.tsx&quot;,
+    &quot;src/**/*.vue&quot;,
+    &quot;tests/**/*.ts&quot;,
+    &quot;tests/**/*.tsx&quot;
+  ],
+  &quot;exclude&quot;: [
+    &quot;node_modules&quot;
+  ]
+&#125;
+</code></pre>
+<p>添加对vue的声明，在src目录下创建文件<code>shims-vue.d.ts</code></p>
+<pre><code class="typescript">declare module &quot;*.vue&quot; &#123;
+  import Vue from &quot;vue&quot;
+  export default Vue
+&#125;
+</code></pre>
+<p>需要注意的是如果在Vue原型当中添加了属性，也需要添加对应的声明，但是由于vue-router和vuex这种是作为Vue插件来使用的 (也就是按<code>Vue.use(Router)</code>这种方式来使用)，并且都已经支持TypeScript，所以并不需要单独来编写声明了。但是像axios这种并不是按Vue插件使用，需要用下面的方式添加到Vue原型当中</p>
+<pre><code class="javascript">Vue.prototype.$http = axios
+</code></pre>
+<p>那么使用了TypeScript之后，就需要对该属性进行声明<br>否则ts编译的过程就会认为该属性不存在</p>
+<p>在src目录下创建<code>index.d.ts</code></p>
+<pre><code class="typescript">import &#123; AxiosInstance &#125; from &#39;axios&#39;
+
+declare module &#39;vue/types/vue&#39; &#123;
+  interface Vue &#123;
+    $http: AxiosInstance
+  &#125;
+&#125;
+</code></pre>
+<h3 id="vue-class-component和vue-property-decorator"><a href="#vue-class-component和vue-property-decorator" class="headerlink" title="vue-class-component和vue-property-decorator"></a>vue-class-component和vue-property-decorator</h3><p><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/vuejs/vue-class-component%5D(https://github.com/vuejs/vue-class-component)">vue-class-component</a> 是官方推出的vue对typescript支持的装饰器(库)，可以将Vue中的组件用类的方式编写，<strong>vue-property-decorator</strong>是<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/vuejs/vue-class-component%5D(https://github.com/vuejs/vue-class-component)">vue-class-component</a> 的超集，下面我们来学习一下<strong>vue-property-decorator</strong>。</p>
+<p>安装依赖包</p>
+<pre><code class="shell">npm install vue-property-decorator vue-class-component --save
+</code></pre>
+<p>组件就可以这么写了</p>
+<pre><code class="typescript">&lt;script lang=&quot;ts&quot;&gt;
+import &#123; Vue, Component &#125; from &#39;vue-property-decorator&#39;
+@Component(&#123;
+  filters: &#123;
+    toFixed: (num: number, fix: number = 2) =&gt; &#123;
+      return num.toFixed(fix)
+    &#125;
+  &#125;
+&#125;)
+export default class MyComponent extends Vue &#123;
+  public list: number[] = [0, 1, 2, 3, 4]
+  get evenList() &#123;
+    return this.list.filter((item: number) =&gt; item % 2 === 0)
+  &#125;
+&#125;
+&lt;/script&gt;
+</code></pre>
+<h3 id="集成eslint"><a href="#集成eslint" class="headerlink" title="集成eslint"></a>集成eslint</h3><p>安装</p>
+<pre><code class="shell">npm install --save-dev eslint-loader eslint
+</code></pre>
+<p>在 <code>webpack.config.js</code> 中添加如下代码：</p>
+<pre><code class="css">&#123;
+    test: /\.js$/,
+    loader: &#39;eslint-loader&#39;,
+    enforce: &quot;pre&quot;,
+    include: [path.resolve(__dirname, &#39;src&#39;)], // 指定检查的目录
+    options: &#123; // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
+        formatter: require(&#39;eslint-friendly-formatter&#39;) // 指定错误报告的格式规范
+    &#125;
+&#125;
+</code></pre>
+<p>最后，项目想要使用那些eslin规则，可以创建一个配置项文件 ‘.eslintrc.js’，代码如下:</p>
+<pre><code class="java">module.exports = &#123;
+    root: true, 
+    parserOptions: &#123;
+        sourceType: &#39;module&#39;
+    &#125;,
+    env: &#123;
+        browser: true,
+    &#125;,
+    rules: &#123;
+        &quot;indent&quot;: [&quot;error&quot;, 2],
+        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;],
+        &quot;semi&quot;: [&quot;error&quot;, &quot;always&quot;],
+        &quot;no-console&quot;: &quot;error&quot;,
+        &quot;arrow-parens&quot;: 0
+    &#125;
+&#125;
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2021/01/28/vue/vue%E7%9A%84model%E9%80%89%E9%A1%B9/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2021/01/28/webpack/%E5%AD%A6%E4%B9%A0webpack/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90package-json"><span class="nav-number">1.</span> <span class="nav-text">生成package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">2.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9src%EF%BC%8C%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6app-vue"><span class="nav-number">3.</span> <span class="nav-text">新建文件夹src，创建文件app.vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAwebpack-config-js-%EF%BC%88%E5%B8%AE%E5%8A%A9%E6%89%93%E5%8C%85%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">创建webpack.config.js （帮助打包前端资源）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8src%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%88%9B%E5%BB%BAindex-js-%EF%BC%88%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">在src目录中创建index.js （入口文件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8package-json%E4%B8%AD%E7%9A%84scripts%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">在package.json中的scripts里添加一个命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%89%93%E5%8C%85"><span class="nav-number">7.</span> <span class="nav-text">执行打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack%E6%8F%92%E4%BB%B6-plugin"><span class="nav-number">8.</span> <span class="nav-text">webpack插件 - plugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTMLPlugin"><span class="nav-number">9.</span> <span class="nav-text">HTMLPlugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-dev-server"><span class="nav-number">10.</span> <span class="nav-text">webpack-dev-server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">11.</span> <span class="nav-text">图片的加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81less"><span class="nav-number">12.</span> <span class="nav-text">支持less</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81typescript"><span class="nav-number">13.</span> <span class="nav-text">支持typescript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-class-component%E5%92%8Cvue-property-decorator"><span class="nav-number">14.</span> <span class="nav-text">vue-class-component和vue-property-decorator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E6%88%90eslint"><span class="nav-number">15.</span> <span class="nav-text">集成eslint</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangjinxin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

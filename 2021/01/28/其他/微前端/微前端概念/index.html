@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="微前端概述   微前端概念是ThoughtWorks在2016年提出来的，它将微服务理念扩展到前端开发，解决中台微服务化后，前端由于仍为单体而存在的逻辑繁杂和臃肿的问题。微前端是按照前端设计方法在前端同时构建多个可以独立部署、完全自治、松耦合的页面组合，其中每个组合只负责特定的 UI 元素和功能。    微前端与微服务都是希望将单体应用，按照一定的规则拆分为多个可以独立运行、独立开发、独立部署、独">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wangjinxin的博客1">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="wangjinxin的博客1">
+<meta property="og:description" content="微前端概述   微前端概念是ThoughtWorks在2016年提出来的，它将微服务理念扩展到前端开发，解决中台微服务化后，前端由于仍为单体而存在的逻辑繁杂和臃肿的问题。微前端是按照前端设计方法在前端同时构建多个可以独立部署、完全自治、松耦合的页面组合，其中每个组合只负责特定的 UI 元素和功能。    微前端与微服务都是希望将单体应用，按照一定的规则拆分为多个可以独立运行、独立开发、独立部署、独">
+<meta property="og:locale">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15900223-a20d080f834be4cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1093/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15900223-cd23699fd1993068.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/736/format/webp">
+<meta property="article:published_time" content="2021-01-28T07:26:37.338Z">
+<meta property="article:modified_time" content="2021-01-28T07:26:37.338Z">
+<meta property="article:author" content="wangjinxin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15900223-a20d080f834be4cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1093/format/webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/其他/微前端/微前端概念/"/>
+
+
+
+
+
+  <title> | wangjinxin的博客1</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangjinxin的博客1</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">欢迎进入我的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="微前端概述"><a href="#微前端概述" class="headerlink" title="微前端概述"></a>微前端概述</h2><p>   微前端概念是ThoughtWorks在2016年提出来的，它将微服务理念扩展到前端开发，解决中台微服务化后，前端由于仍为单体而存在的逻辑繁杂和臃肿的问题。微前端是按照前端设计方法在前端同时构建多个可以独立部署、完全自治、松耦合的页面组合，其中每个组合只负责特定的 UI 元素和功能。</p>
+<p>   微前端与微服务都是希望将单体应用，按照一定的规则拆分为多个可以独立运行、独立开发、独立部署、独立运维的微服务或者页面聚合，从而满足业务快速变化及分布式多团队并行开发的需求。</p>
+<p>   微前端除了可以实现前端页面的解耦外，还可实现前端页面的复用，做到“<strong>一次开发，多端复用</strong>”，这也与中台服务共享理念是一脉相承。</p>
+<h2 id="从单体前端到微前端"><a href="#从单体前端到微前端" class="headerlink" title="从单体前端到微前端"></a>从单体前端到微前端</h2><p>​    传统的软件项目往往采用单体式架构，前端往往由一个团队创建并维护一个 Web 应用程序，通过API网关从微服务调用服务。随着时间的推移，前端往往会越来越臃肿，越来越难维护。</p>
+<p>   随着5G技术的应用，企业活动将进一步移动化和线上化，过去企业的通常做法是为不同的应用开发出很多独立的APP。但是用户来并不想装那么多APP！为了提高用户体验，实现统一运营，很多企业开始缩减APP的数量，通过一个APP集成所有应用功能。</p>
+<p>   试想如果将企业内所有前端页面、流程设计以及前端与后端集成的工作都交给前端项目，将原来独立和分散的应用，展示在一个巴掌大的手机屏幕上。前端项目将会面对无数的中台项目和成千上万不太熟悉的API接口，这绝对会是一场灾难。</p>
+<p>   相对互联网企业而言，传统企业的渠道应用更多样化，有面向内部人员的柜台类应用、面向外部客户的互联网电商及移动APP类应用，还有面向商业生态圈的第三方API集成。由于渠道的差异，传统企业前端设计将会更多样化和复杂化。</p>
+<p>   传统企业在实施中台战略时，为满足前端和中台多渠道共享和复用，部分场景还应有别于阿里巴巴的中台战略。传统企业除了要像阿里巴巴一样进行通用共享服务（主要提供共享API）的中台化建设外，还需要对核心专属业务（除API外，还存在大量面向用户的页面）进行中台化建设，以满足不同渠道的业务复用的需求。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15900223-a20d080f834be4cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1093/format/webp" alt="img"></p>
+<p>从单体前端到微前端</p>
+<p>   如何实现前端复用，降低前端集成的复杂度？</p>
+<p>   在前端设计时，我们可以参考微服务设计方法，遵循单一职责和共享原则，按照领域模型和微服务边界，将前端页面进行拆分和组合形成微前端，与中台微服务组合成业务单元。</p>
+<p>   <strong>业务单元定义：</strong>在前后端分离架构模式下，微前端页面与中台微服务共同组成一个业务单元。在同一个业务单元内，从前端页面、中台微服务到后端数据可以独立开发、测试、部署和运维，在业务单元内自包含完成中台领域内的部分或全部业务功能。</p>
+<p>   <strong>项目职责和系统边界</strong></p>
+<p>   1）前端项目主要负责前端页面的集成、页面风格设计和流程控制，以及与微前端集成相关的微前端加载、微前端注册、页面路由以及数据共享。</p>
+<p>   2）后端中台项目负责业务单元内中台微服务以及微服务对应微前端开发和集成。</p>
+<p>   通用和专属中台项目既面向第三方生态圈提供API服务，也面向前端集成主页面提供微前端页面复用。微前端和中台微服务组合成业务单元为多渠道业务提供从前端到后台的页面和业务逻辑复用。在面向多渠道业务页面复用时，微前端需要做好页面风格适配，以满足不同渠道界面风格的要求。</p>
+<p>   通过职责分工和应用边界的清晰划分，前端项目专注于微前端集成，后端项目专职做好本业务领域内中台微服务开发和微前端集成，确保领域内前端页面和后端业务逻辑作为一个业务单元整体高可用。</p>
+<p>   由于微前端和微服务之间的API集成已由中台项目完成，前端项目可基于微前端实现<strong>拼图</strong>式开发，在实现前后端复用的同时，大大降低前端集成复杂度。   </p>
+<h2 id="微前端与微服务组合的几种形态"><a href="#微前端与微服务组合的几种形态" class="headerlink" title="微前端与微服务组合的几种形态"></a>微前端与微服务组合的几种形态</h2><p>​    微前端与微服务可以有多种组合方式，以实现不同的业务目标。</p>
+<p>​    一个虚框内微前端、中台微服务共同组成一个业务单元（如下图）。虚框内组件可以按照业务单元分前端和后端进行独立部署。</p>
+<p>​    微前端页面包括业务操作必需的页面要素，不含页面导航等要素，页面导航功能位于前端集成主页面内。</p>
+<p>​    微前端页面稍加改造就可以完成简单的单一场景业务，也可根据页面路由动态加载到前端集成主页面完成复杂组合场景业务。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15900223-cd23699fd1993068.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/736/format/webp" alt="img"></p>
+<p>微前端的几种形态</p>
+<p>   微前端与微服务的组合主要有以下几类形式。</p>
+<p>   1）单一类微前端：一个微前端和一个中台微服务组成一个业务单元。微前端完成业务单元内页面流程和前端操作，中台微服务完成后端业务逻辑，业务单元功能独立且自包含。微前端可按照页面路由动态加载至前端集成主页面。</p>
+<p>   2）组合类微前端：一个微前端与多个中台微服务组成业务单元。微前端通过对多个中台微服务进行服务编排和组合，完成业务单元内较复杂的页面流程和前端操作。业务逻辑由后端多个微服务组合完成，如：可由专属业务中台与通用中台微服务组合，也可由同一领域内多个微服务组合。在微前端设计时，微前端对应的组合微服务的数量要均衡考虑，否则很容易将微前端开发成单体前端。同时业务单元的领域边界要清晰，避免由于功能交叉而导致单元与单元之间的耦合，影响项目团队职责边界，进而影响到部署、测试以及运维等。</p>
+<p>   3）通用共享类微前端：一个微前端与一个或多个通用中台微服务组成共享类业务单元。通用共享类微前端一般通过前端集成主页面，以共享页面的模式与其他微前端页面组合，共同完成业务流程。该类微前端通常对应通用中台共享类微服务。</p>
+<h2 id="微前端的价值"><a href="#微前端的价值" class="headerlink" title="微前端的价值"></a>微前端的价值</h2><p>微前端架构具备以下几个核心价值：</p>
+<ul>
+<li>技术栈无关 主框架不限制接入应用的技术栈，子应用具备完全自主权</li>
+<li>独立开发、独立部署 子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新</li>
+<li>独立运行时 每个子应用之间状态隔离，运行时状态不共享</li>
+</ul>
+<p>微前端架构旨在解决单体应用在一个相对长的时间跨度下，由于参与的人员、团队的增多、变迁，从一个普通应用演变成一个巨石应用(<a href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=pU1gXA0rfwc">Frontend Monolith</a>)后，随之而来的应用不可维护的问题。这类问题在企业级 Web 应用中尤其常见。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/%E4%BD%BF%E7%94%A8Jest%E5%AF%B9Vue%E7%BB%84%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">微前端概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E4%BD%93%E5%89%8D%E7%AB%AF%E5%88%B0%E5%BE%AE%E5%89%8D%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">从单体前端到微前端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BB%84%E5%90%88%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BD%A2%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">微前端与微服务组合的几种形态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">微前端的价值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangjinxin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

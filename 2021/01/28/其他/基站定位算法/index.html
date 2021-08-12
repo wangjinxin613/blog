@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="手机基站 &amp; 蜂窝网络基站：基站即公用移动通信基站是无线电台站的一种形式，是指在一定的无线电覆盖区中，通过移动通信交换中心，与移动电话终端之间进行信息传递的无线电收发信电台。 基站定位一般应用于手机用户，手机基站定位服务又叫做移动位置服务（LBS——Location Based Service），它是通过电信移动运营商的网络（如GSM网）获取移动终端用户的位置信息（经纬度坐标），在电子地图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wangjinxin的博客1">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="wangjinxin的博客1">
+<meta property="og:description" content="手机基站 &amp; 蜂窝网络基站：基站即公用移动通信基站是无线电台站的一种形式，是指在一定的无线电覆盖区中，通过移动通信交换中心，与移动电话终端之间进行信息传递的无线电收发信电台。 基站定位一般应用于手机用户，手机基站定位服务又叫做移动位置服务（LBS——Location Based Service），它是通过电信移动运营商的网络（如GSM网）获取移动终端用户的位置信息（经纬度坐标），在电子地图">
+<meta property="og:locale">
+<meta property="og:image" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/..%5Cimg%5Cimage-20200825164145365.png">
+<meta property="article:published_time" content="2021-01-28T07:26:37.338Z">
+<meta property="article:modified_time" content="2021-01-28T07:26:37.338Z">
+<meta property="article:author" content="wangjinxin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/..%5Cimg%5Cimage-20200825164145365.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/其他/基站定位算法/"/>
+
+
+
+
+
+  <title> | wangjinxin的博客1</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangjinxin的博客1</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">欢迎进入我的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%AB%99%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="手机基站-amp-蜂窝网络基站："><a href="#手机基站-amp-蜂窝网络基站：" class="headerlink" title="手机基站 &amp; 蜂窝网络基站："></a>手机基站 &amp; 蜂窝网络基站：</h3><p>基站即公用移动通信基站是无线电台站的一种形式，是指在一定的无线电覆盖区中，通过移动通信交换中心，与移动电话终端之间进行信息传递的无线电收发信电台。</p>
+<p>基站定位一般应用于手机用户，手机基站定位服务又叫做移动位置服务（LBS——Location Based Service），它是通过电信移动运营商的网络（如GSM网）获取移动终端用户的位置信息（经纬度坐标），在电子地图平台的支持下，为用户提供相应服务的一种增值业务，例如目前中国移动动感地带提供的动感位置查询服务等。</p>
+<p>1.1  COO（Cell of Origin）定位：COO定位是一种单基站定位，即根据设备当前连接的蜂窝基站的位置来确定设备的位置。</p>
+<p>1.2  AOA定位：AOA(Angle of Arrival到达角度)定位是一种两基站定位方法，基于信号的入射角度进行定位。</p>
+<p>1.3  TOA/TDOA定位：TOA(Time of Arrival到达时间)、TDOA(Time Difference of Arrival到达时间差)都是基于电波传播时间的定位方法。也都是三基站定位方法，二者的定位都需要同时有三个位置已知的基站合作才能进行。<br>基站定位的大致原理为：移动电话测量不同基站的下行导频信号，得到不同基站下行导频的TOA（Time of Arrival，到达时刻）或TDOA(Time Difference of Arrival，到达时间差)，根据该测量结果并结合基站的坐标，一般采用三角公式估计算法，就能够计算出移动电话的位置。实际的位置估计算法需要考虑多基站(3个或3个以上)定位的情况，因此算法要复杂很多。一般而言，移动台测量的基站数目越多，测量精度越高，定位性能改善越明显。</p>
+<h3 id="什么是MNC-LAC-Cell-ID"><a href="#什么是MNC-LAC-Cell-ID" class="headerlink" title="什么是MNC/LAC/Cell ID"></a>什么是MNC/LAC/Cell ID</h3><ul>
+<li>Mobile Network Code(MNC)<br>移动网号码，中国联通CDMA系统的MNC为03，中国移动的为00。</li>
+<li>Mobile Country Code(MCC)<br>移动用户所属国家代号：460</li>
+<li>Location Area Code(LAC)<br>地区区域码，用来划分区域，一般一个小地方就一个LAC，大地方就</li>
+<li>Cell Tower ID(Cell ID)<br>CellID代表一个移动基站，如果你有基站数据，查CellID你就可以知道这个基站在哪里，移动公司或者警察通过这个知道你是在哪个基站范围打的移动电话。</li>
+</ul>
+<p>　这些信息有什么用呢？ 通过这些信息可以知道你的手机是从哪个国家，区域和哪个基站接入移动网络的。所以有些防盗手机丢失后，会发一些类 似”MCC:460;MNC:01;LAC:7198:CELLID:24989”内容的短信到你指定号码就是这个用途，通过这些信息可以从移动查到你的 被盗手机在哪里出现过。不过知道了也没用，中国人口这么密集，就是在你身边你也不知道谁是小偷：） </p>
+<h1 id="Trilateration三边测量定位算法"><a href="#Trilateration三边测量定位算法" class="headerlink" title="Trilateration三边测量定位算法"></a>Trilateration三边测量定位算法</h1><p>Trilateration（三边测量）是一种常用的定位算法：</p>
+<ol>
+<li>已知三点位置 (x1, y1), (x2, y2), (x3, y3)</li>
+<li>已知未知点 (x0, y0) 到三点距离 d1, d2, d3</li>
+</ol>
+<p>以 d1, d2, d3 为半径作三个圆，根据毕达哥拉斯定理，得出交点即未知点的位置计算公式：</p>
+<pre><code>( x1 - x0 )2 + ( y1 - y0 )2 = d12
+( x2 - x0 )2 + ( y2 - y0 )2 = d22
+( x3 - x0 )2 + ( y3 - y0 )2 = d32
+</code></pre>
+<p><img src="..%5Cimg%5Cimage-20200825164145365.png" alt="image-20200825164145365"></p>
+<p>设未知点位置为 (x, y)， 令其中的第一个球形 P1 的球心坐标为 (0, 0)，P2 处于相同纵坐标，球心坐标为 (d, 0)，P3 球心坐标为 (i, j)，三个球形半径分别为 r1, r2, r3，z为三球形相交点与水平面高度。则有：</p>
+<pre><code>r12 = x2 + y2 + z2
+r22 = (x - d)2 + y2 + z2
+r32 = (x - i)2 + (y - j)2 + z2
+</code></pre>
+<p>当 z = 0 时， 即为三个圆在水平面上相交为一点，首先解出 x:</p>
+<pre><code>x = (r12 - r22 + d2) / 2d
+</code></pre>
+<p>将公式二变形，将公式一的 z2 代入公式二，再代入公式三得到 y 的计算公式：</p>
+<pre><code>y = (r12 - r32 - x2 + (x - i)2 + j2) / 2j
+</code></pre>
+<h2 id="javascript算法实现"><a href="#javascript算法实现" class="headerlink" title="javascript算法实现"></a>javascript算法实现</h2><pre><code class="javascript">function trilateration(x1, y1, d1, x2, y2, d2, x3, y3, d3) &#123;
+  var d = [0.0, 0.0];
+  var a11 = 2 * (x1 - x3);
+  var a12 = 2 * (y1 - y3);
+  var b1 = Math.pow(x1, 2) - Math.pow(x3, 2) + Math.pow(y1, 2) - Math.pow(y3, 2) + Math.pow(d3, 2) - Math.pow(d1, 2);
+  var a21 = 2 * (x2 - x3);
+  var a22 = 2 * (y2 - y3);
+  var b2 = Math.pow(x2, 2) - Math.pow(x3, 2) + Math.pow(y2, 2) - Math.pow(y3, 2) + Math.pow(d3, 2) - Math.pow(d2, 2);
+  d[0] = (b1 * a22 - a12 * b2) / (a11 * a22 - a12 * a21);
+  d[1] = (a11 * b2 - b1 * a21) / (a11 * a22 - a12 * a21);
+  return d;
+&#125;
+var area = trilateration(12641371.971, 4138703.5211, 6, 12641381.9026, 4138706.4714, 6, 12641370.7839, 4138708.7705, 6);
+console.log(area.join(&#39;,&#39;));
+</code></pre>
+<h2 id="D3-js实现"><a href="#D3-js实现" class="headerlink" title="D3.js实现"></a>D3.js实现</h2><p>定义三个圆的坐标及半径，计算    出交点的坐标 (obj_x, obj_y).</p>
+<pre><code>var x_0 = 150, y_0 = 150;
+var x_1 = x_0, y_1 = y_0, d = 150, x_2 = x_0 + d, x_3 = 225, y_3 = 315, r = 100;
+var i = x_3 - x_0, j = y_3 - y_0;
+var x = (Math.pow(r, 2) - Math.pow(r, 2) + Math.pow(d, 2)) / (2 * d) + x_0;
+var obj_x = x + x_0;
+var y = (Math.pow(r, 2) - Math.pow(r, 2) - Math.pow(x, 2) + Math.pow((x - i), 2)
+    + Math.pow(j, 2)) / (2 * j);
+var obj_y = y + y_0;
+</code></pre>
+<p>绘出圆形及交点：</p>
+<pre><code>svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, x_1)
+    .attr(&quot;cy&quot;, y_1).attr(&quot;r&quot;, r)
+    .style(&quot;fill&quot;, &quot;blue&quot;).style(&quot;opacity&quot;, 0.3);
+svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, x_2)
+    .attr(&quot;cy&quot;, y_0).attr(&quot;r&quot;, r)
+    .style(&quot;fill&quot;, &quot;red&quot;).style(&quot;opacity&quot;, 0.4);
+svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, x_3)
+    .attr(&quot;cy&quot;, y_3).style(&quot;opacity&quot;, 0.5)
+    .attr(&quot;r&quot;, r).style(&quot;fill&quot;, &quot;yellow&quot;);
+svg.append(&quot;circle&quot;).attr(&quot;cx&quot;, obj_x)
+    .attr(&quot;cy&quot;, obj_y).attr(&quot;r&quot;, 3)
+    .style(&quot;fill&quot;, &quot;red&quot;);
+</code></pre>
+<p>多于用实现定位算法，与之相同的也许还可以采用K-Means或Overlap聚类算法，后两者在地图标注上使用比较广。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2021/01/28/%E5%85%B6%E4%BB%96/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2021/01/28/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/vue-next/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E6%9C%BA%E5%9F%BA%E7%AB%99-amp-%E8%9C%82%E7%AA%9D%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%AB%99%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">手机基站 &amp; 蜂窝网络基站：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMNC-LAC-Cell-ID"><span class="nav-number">2.</span> <span class="nav-text">什么是MNC&#x2F;LAC&#x2F;Cell ID</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Trilateration%E4%B8%89%E8%BE%B9%E6%B5%8B%E9%87%8F%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">Trilateration三边测量定位算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number"></span> <span class="nav-text">javascript算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D3-js%E5%AE%9E%E7%8E%B0"><span class="nav-number"></span> <span class="nav-text">D3.js实现</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangjinxin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

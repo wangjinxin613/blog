@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 介绍Jest是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。 2. 安装 通过 npm 添加依赖：   npm install --save-dev jest babel-jest babel-core babel-preset-env regenerator-runtim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wangjinxin的博客1">
+<meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/Jest%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="wangjinxin的博客1">
+<meta property="og:description" content="1. 介绍Jest是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。 2. 安装 通过 npm 添加依赖：   npm install --save-dev jest babel-jest babel-core babel-preset-env regenerator-runtim">
+<meta property="og:locale">
+<meta property="og:image" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/Jest%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/media/15983636140540.jpg">
+<meta property="article:published_time" content="2021-01-28T07:26:37.336Z">
+<meta property="article:modified_time" content="2021-01-28T07:26:37.336Z">
+<meta property="article:author" content="wangjinxin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangjinxin613.github.io/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/Jest%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/media/15983636140540.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjinxin613.github.io/blog/2021/01/28/其他/Jest/Jest入门笔记/"/>
+
+
+
+
+
+  <title> | wangjinxin的博客1</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangjinxin的博客1</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">欢迎进入我的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjinxin613.github.io/blog/blog/2021/01/28/%E5%85%B6%E4%BB%96/Jest/Jest%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangjinxin的博客1">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-28T15:26:37+08:00">
+                2021-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h5><p>Jest是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。</p>
+<h5 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h5><ul>
+<li>通过 npm 添加依赖：</li>
+</ul>
+<pre><code class="shell"> npm install --save-dev jest babel-jest babel-core babel-preset-env regenerator-runtime
+</code></pre>
+<p>babel-jest、 babel-core、 regenerator-runtime、babel-preset-env这几个依赖是为了让我们可以使用ES6的语法特性进行单元测试，ES6提供的 import 来导入模块的方式，Jest本身W是不支持的。</p>
+<ul>
+<li>添加.babelrc文件</li>
+</ul>
+<p> 在项目的根目录下添加.babelrc文件，并在文件复制如下内容:</p>
+<pre><code class="json">&#123;
+  &quot;presets&quot;: [&quot;env&quot;]
+&#125;
+</code></pre>
+<ul>
+<li>修改package.json中的test脚本</li>
+</ul>
+<p>打开package.json文件，将script下的test的值修改为jest：</p>
+<pre><code class="bash">&quot;scripts&quot;: &#123;
+  &quot;test&quot;: &quot;jest&quot;
+&#125;
+</code></pre>
+<p>如果在typescript中使用需要安装ts-jest</p>
+<pre><code class="shell">npm install ts-jest --save-dev
+</code></pre>
+<p>在项目根目录新建 <code>jest.config.js</code> 文件，如下：</p>
+<pre><code class="js">module.exports = &#123;
+    roots: [
+        &quot;&lt;rootDir&gt;/test&quot;
+    ],
+    testRegex: &#39;test/(.+)\\.test\\.(jsx?|tsx?)$&#39;,
+    transform: &#123;
+        &quot;^.+\\.tsx?$&quot;: &quot;ts-jest&quot;
+    &#125;,
+    moduleFileExtensions: [&#39;ts&#39;, &#39;tsx&#39;, &#39;js&#39;, &#39;jsx&#39;, &#39;json&#39;, &#39;node&#39;],
+&#125;;
+</code></pre>
+<h5 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h5><ul>
+<li>sum.js</li>
+</ul>
+<pre><code class="jsx">import axios from &#39;axios&#39;;
+
+function sum (a, b) &#123;
+  return a+b;
+&#125;
+function add (a, b) &#123;
+  return a+b;
+&#125;
+function fetchUser() &#123;
+  return axios.get(&#39;http://jsonplaceholder.typicode.com/users/1&#39;)
+    .then(res =&gt; res.data)
+    .catch(error =&gt; console.log(error));
+&#125;
+export &#123;
+    sum,
+  fetchUser
+&#125;
+</code></pre>
+<ul>
+<li>sun.test.js</li>
+</ul>
+<pre><code class="tsx">import &#123;sum , fetchUser&#125;  from &#39;./sum&#39;;
+// const fetchUser = require(&#39;./sum&#39;)
+
+// 1. 相等判断：toBe 使用 Object.is 来判断相等，
+// toEqual 会递归判断 Object 的每一个字段，
+// 对数值来说 toBe 和 toEqual 相同；
+test(&quot;两个数字相加&quot;, () =&gt; &#123;
+  expect(sum(1,2)).not.toBe(2);
+&#125;)
+
+test(&#39;object assignment&#39;, () =&gt; &#123;
+  const data = &#123;one: 1&#125;;
+  data[&#39;two&#39;] = 2;
+  expect(data).toEqual(&#123;one: 1, two: 2&#125;);
+&#125;);
+
+// 2. 判断符点数：可使用 toBeCloseTo 来解决 JS 浮点精度带来的问题，如下示例；
+test(&#39;adding floating point numbers&#39;, () =&gt; &#123;
+  const value = 0.1 + 0.2; // 0.30000000000000004
+  expect(value).toBeCloseTo(0.3); // 测试通过
+&#125;);
+
+test(&#39;fetchUser() 可以请求到一个含有name属性值为Leanne Graham的对象&#39;, () =&gt; &#123;
+  expect.assertions(1);
+  return fetchUser()
+    .then(data =&gt; &#123;
+      expect(data.name).toBe(&#39;Leanne Graham&#39;);
+    &#125;);
+&#125;);
+//上面调用了expect.assertions(1)，它能确保在异步的测试用例中，
+//有一个断言会在回调函数中被执行。这在进行异步代码的测试中十分有效。
+
+test(&#39;mock&#39;, () =&gt; &#123;
+  const mockCallback = jest.fn(x =&gt; 42 + x);
+  [0, 1].forEach(mockCallback);
+  console.log(mockCallback.mock.calls,&#39;mockCallback.mock.calls&#39;)
+  // Mock函数被调用两次
+  expect(mockCallback.mock.calls.length).toBe(2);
+  // 第一次调用Mock函数时，第一个参数为0
+  expect(mockCallback.mock.calls[0][0]).toBe(0);
+  // 第二次调用Mock函数时，第一个参数为1
+  expect(mockCallback.mock.calls[1][0]).toBe(1);
+  // 第一次调用Mock函数的返回值为42
+  expect(mockCallback.mock.results[0].value).toBe(42);
+
+  // const myMock = jest.fn();
+  // const a = new myMock();
+  // const b = &#123;&#125;;
+  // const bound = myMock.bind(b);
+  // bound();
+  // console.log(myMock.mock.instances);
+  // // &gt; [ &lt;a&gt;, &lt;b&gt; ]
+
+  // Mock 函数还可以通过工具函数模拟返回值。
+  const myMock = jest.fn();
+  console.log(myMock());
+  // &gt; undefined
+  myMock
+  .mockReturnValueOnce(10)
+  .mockReturnValueOnce(&#39;x&#39;)
+  .mockReturnValue(true);
+  console.log(myMock(), myMock(), myMock(), myMock());
+  // &gt; 10, &#39;x&#39;, true, true
+&#125;);
+</code></pre>
+<h5 id="4-常用断点"><a href="#4-常用断点" class="headerlink" title="4. 常用断点"></a>4. 常用断点</h5><pre><code class="kotlin">expect(&#123;a:1&#125;).toBe(&#123;a:1&#125;)//判断两个对象是否相等
+expect(&#123;a:1&#125;).toEqual(&#123;a:1&#125;)//归检查对象或数组的每个字段是否相等
+expect(1).not.toBe(2)//判断不等
+expect(n).toBeNull(); //判断是否为null
+expect(n).toBeUndefined(); //判断是否为undefined
+expect(n).toBeDefined(); //判断结果与toBeUndefined相反
+expect(n).toBeTruthy(); //判断结果为true
+expect(n).toBeFalsy(); //判断结果为false
+expect(value).toBeGreaterThan(3); //大于3
+expect(value).toBeGreaterThanOrEqual(3.5); //大于等于3.5
+expect(value).toBeLessThan(5); //小于5
+expect(value).toBeLessThanOrEqual(4.5); //小于等于4.5
+expect(value).toBeCloseTo(0.3); // 浮点数判断相等
+expect(&#39;Christoph&#39;).toMatch(/stop/); //正则表达式判断
+expect([&#39;one&#39;,&#39;two&#39;]).toContain(&#39;one&#39;); //不解释
+
+function compileAndroidCode() &#123;
+  throw new ConfigError(&#39;you are using the wrong JDK&#39;);
+&#125;
+
+test(&#39;compiling android goes as expected&#39;, () =&gt; &#123;
+  expect(compileAndroidCode).toThrow();
+  expect(compileAndroidCode).toThrow(ConfigError); //判断抛出异常
+&#125;）
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://jestjs.io/docs/en/expect.html">了解更多断点</a></p>
+<h5 id="5-运行测试"><a href="#5-运行测试" class="headerlink" title="5. 运行测试"></a>5. 运行测试</h5><ul>
+<li><p>运行测试<br> <code>npm test</code></p>
+</li>
+<li><p>使用 –watch 参数可以启动一个监控界面，当文件发生变化时，会便会运行相关的测试。<br> <code>npm test --watch</code></p>
+</li>
+<li><p>使用 –coverage 参数，测试结束时还会得到一份测试覆盖度报告，如下图。</p>
+<pre><code>npm test --coverage
+</code></pre>
+<p><img src="media/15983636140540.jpg"></p>
+</li>
+</ul>
+<h1 id="Jest-单元测试术语解析：describe、it、expect、test"><a href="#Jest-单元测试术语解析：describe、it、expect、test" class="headerlink" title="Jest 单元测试术语解析：describe、it、expect、test"></a>Jest 单元测试术语解析：describe、it、expect、test</h1><h5 id="jest测试代码片段"><a href="#jest测试代码片段" class="headerlink" title="jest测试代码片段"></a><code>jest</code>测试代码片段</h5><pre><code class="javascript">describe(&quot;number test&quot;, ()=&gt;&#123;
+    it(&#39;1 is true&#39;, ()=&gt;&#123;
+        expect(1).toBeTruthy()
+    &#125;)
+    test(&#39;2 is true&#39;,()=&gt;&#123;
+        expect(2).toBeTruthy()
+    &#125;)
+&#125;)
+12345678
+</code></pre>
+<ul>
+<li><strong>describe</strong> 描述, <code>decribe</code>会形成一个作用域</li>
+<li><strong>it</strong> 断言</li>
+<li><strong>expect</strong> 期望</li>
+<li><strong>test</strong> 测试，类似<code>it</code></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2021/01/28/webpack/webpack-dev-server/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2021/01/28/%E4%BA%A7%E5%93%81/%E4%B8%AD%E8%80%81%E5%B9%B4%E7%A4%BE%E4%BA%A4%E4%BA%A7%E5%93%81/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">1. 介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">2. 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">3. 使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%B8%B8%E7%94%A8%E6%96%AD%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">4. 常用断点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">5. 运行测试</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%9C%AF%E8%AF%AD%E8%A7%A3%E6%9E%90%EF%BC%9Adescribe%E3%80%81it%E3%80%81expect%E3%80%81test"><span class="nav-number"></span> <span class="nav-text">Jest 单元测试术语解析：describe、it、expect、test</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jest%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text">jest测试代码片段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangjinxin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
