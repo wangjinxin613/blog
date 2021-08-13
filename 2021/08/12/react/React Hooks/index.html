@@ -79,19 +79,21 @@
 
 
 
-<meta name="description" content="React Hooks什么是react 的 hook 以及 react hooks 的由来官网解释：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 linter 插件来强制执行这些规则：">
+<meta name="description" content="React Hooks1. hooks总览 什么是react 的 hook 以及 react hooks 的由来官网解释：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 linter 插件来强制执行这些规则：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Hooks">
 <meta property="og:url" content="https://wangjinxin613.github.io/blog/2021/08/12/react/React%20Hooks/index.html">
 <meta property="og:site_name" content="小王的博客">
-<meta property="og:description" content="React Hooks什么是react 的 hook 以及 react hooks 的由来官网解释：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 linter 插件来强制执行这些规则：">
+<meta property="og:description" content="React Hooks1. hooks总览 什么是react 的 hook 以及 react hooks 的由来官网解释：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 linter 插件来强制执行这些规则：">
 <meta property="og:locale">
+<meta property="og:image" content="https://wangjinxin613.github.io/blog/2021/08/12/react/img/webp.png">
 <meta property="article:published_time" content="2021-08-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-08-12T07:11:38.339Z">
+<meta property="article:modified_time" content="2021-08-12T13:06:24.804Z">
 <meta property="article:author" content="wangjinxin">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="React Hooks">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangjinxin613.github.io/blog/2021/08/12/react/img/webp.png">
 
 
 
@@ -323,10 +325,826 @@
       
 
       
-        <h1 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h1><h6 id="什么是react-的-hook-以及-react-hooks-的由来"><a href="#什么是react-的-hook-以及-react-hooks-的由来" class="headerlink" title="什么是react 的 hook 以及 react hooks 的由来"></a>什么是react 的 hook 以及 react hooks 的由来</h6><p>官网解释：<em>Hook</em> 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://www.npmjs.com/package/eslint-plugin-react-hooks">linter 插件</a>来强制执行这些规则：</p>
+        <h1 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h1><h3 id="1-hooks总览"><a href="#1-hooks总览" class="headerlink" title="1. hooks总览"></a>1. hooks总览</h3><p><img src="../img/webp.png" alt="img"></p>
+<h6 id="什么是react-的-hook-以及-react-hooks-的由来"><a href="#什么是react-的-hook-以及-react-hooks-的由来" class="headerlink" title="什么是react 的 hook 以及 react hooks 的由来"></a>什么是react 的 hook 以及 react hooks 的由来</h6><p>官网解释：<em>Hook</em> 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://www.npmjs.com/package/eslint-plugin-react-hooks">linter 插件</a>来强制执行这些规则：</p>
 <span id="more"></span>
 
-<p>888</p>
+<p>说白了就是对于函数组件的加强，增加了对于函数组件的一些特性，像class组件那样使用</p>
+<h3 id="2-useState-使用状态"><a href="#2-useState-使用状态" class="headerlink" title="2.useState 使用状态"></a>2.useState 使用状态</h3><pre><code class="js">const [n,setN] = React.useState(0)
+const [user,setUser] = React.useState(&#123;name:&#39;F&#39;&#125;)
+</code></pre>
+<p>注意事项1：不可局部更新</p>
+<ul>
+<li>如果state是一个对象，不可以局部setState</li>
+<li>因为 setState 不会帮我们合并属性</li>
+<li>useReducer 也不会合并</li>
+</ul>
+<p>注意事项2：地址要变</p>
+<ul>
+<li>setState(obi)如果obj地址不变，那么 React 就认为数据没有变化</li>
+</ul>
+<p>useState 可以接受函数</p>
+<pre><code class="js">const [state,setState] = useState(()=&gt;&#123;
+    return initialState
+&#125;)
+</code></pre>
+<p>该函数返回初始state，且只执行一次，相比于传入对象可以减少计算过程</p>
+<h6 id="setState-接受函数"><a href="#setState-接受函数" class="headerlink" title="setState 接受函数"></a>setState 接受函数</h6><pre><code class="js">function App() &#123;   // App函数组件
+    const [n, setN] = useState(0)
+    const onClick = () =&gt; &#123;
+        setN(n + 1);
+        setN(n + 1);
+    &#125;
+    return (
+        &lt;div className=&#39;App&#39;&gt;
+            &lt;h1&gt;n:&#123;n&#125;&lt;/h1&gt;
+            &lt;button onClick=&#123;onClick&#125;&gt;n+1&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<p>当我点击按钮，只会加一，而不会加二</p>
+<pre><code class="js">function App() &#123;   // App函数组件
+    const [n, setN] = useState(0)
+    const onClick = () =&gt; &#123;
+        setN(x =&gt; x + 1);      // 改成函数写法
+        setN(n =&gt; n + 1);
+    &#125;
+    return (
+        &lt;div className=&#39;App&#39;&gt;
+            &lt;h1&gt;n:&#123;n&#125;&lt;/h1&gt;
+            &lt;button onClick=&#123;onClick&#125;&gt;n+1&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<p>函数写法最后会执行加2操作，因此要尽可能使用函数的写法</p>
+<h3 id="3-useReducer"><a href="#3-useReducer" class="headerlink" title="3. useReducer"></a>3. useReducer</h3><p>使用步骤：</p>
+<ol>
+<li>创建初始值 initialState</li>
+<li>创建所有操作reducer(state,action)</li>
+<li>传给useReducer，得到读和写API</li>
+<li>调用写 ({type:’操作类型’})</li>
+</ol>
+<p>总得来说<u>useReducer是useState的复杂版</u></p>
+<p>示例代码：</p>
+<pre><code class="js">const initial = &#123;
+    n: 0
+&#125;
+const reducer = (state, action) =&gt; &#123;
+    if (action.type === &#39;add&#39;) &#123;
+        return &#123;n: state.n + action.number&#125;
+    &#125; else if (action.type === &#39;multi&#39;) &#123;
+        return &#123;n: state.n * 2&#125;
+    &#125; else &#123;
+        throw new Error(&#39;unknown type&#39;)
+    &#125;
+&#125;
+
+function App() &#123;
+    const [state, dispatch] = useReducer(reducer, initial)
+    const &#123;n&#125; = state
+    const onClick = () =&gt; &#123;
+        dispatch(&#123;
+            type: &#39;add&#39;, number: 1
+        &#125;)
+    &#125;
+    const onClick2 = () =&gt; &#123;
+        dispatch(&#123;
+            type: &#39;add&#39;, number: 2
+        &#125;)
+    &#125;
+    return (
+        &lt;div className=&#39;App&#39;&gt;
+            &lt;h1&gt;n:&#123;n&#125;&lt;/h1&gt;
+            &lt;button onClick=&#123;onClick&#125;&gt;+1&lt;/button&gt;
+            &lt;button onClick=&#123;onClick2&#125;&gt;+2&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<p>简单点说就是把操作汇总在一起了</p>
+<h6 id="一个适合使用-useReducer-的场景："><a href="#一个适合使用-useReducer-的场景：" class="headerlink" title="一个适合使用 useReducer 的场景："></a>一个适合使用 useReducer 的场景：</h6><pre><code class="jsx">import React, &#123; useReducer &#125; from &quot;react&quot;;
+import ReactDOM from &quot;react-dom&quot;;
+
+const initFormData = &#123;
+  name: &quot;&quot;,
+  age: 18,
+  nationality: &quot;汉族&quot;
+&#125;;
+
+function reducer(state, action) &#123;
+  switch (action.type) &#123;
+    case &quot;patch&quot;:
+      return &#123; ...state, ...action.formData &#125;;
+    case &quot;reset&quot;:
+      return initFormData;
+    default:
+      throw new Error();
+  &#125;
+&#125;
+
+function App() &#123;
+  const [formData, dispatch] = useReducer(reducer, initFormData);
+  // const patch = (key, value)=&gt;&#123;
+  //   dispatch(&#123; type: &quot;patch&quot;, formData: &#123; [key]: value &#125; &#125;)
+  // &#125;
+  const onSubmit = () =&gt; &#123;&#125;;
+  const onReset = () =&gt; &#123;
+    dispatch(&#123; type: &quot;reset&quot; &#125;);
+  &#125;;
+  return (
+    &lt;form onSubmit=&#123;onSubmit&#125; onReset=&#123;onReset&#125;&gt;
+      &lt;div&gt;
+        &lt;label&gt;
+          姓名
+          &lt;input
+            value=&#123;formData.name&#125;
+            onInput=&#123;(e) =&gt;
+              dispatch(&#123; type: &quot;patch&quot;, formData: &#123; name: e.target.value &#125; &#125;)
+            &#125;
+          /&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label&gt;
+          年龄
+          &lt;input
+            value=&#123;formData.age&#125;
+            onChange=&#123;(e) =&gt;
+              dispatch(&#123; type: &quot;patch&quot;, formData: &#123; age: e.target.value &#125; &#125;)
+            &#125;
+          /&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label&gt;
+          民族
+          &lt;input
+            value=&#123;formData.nationality&#125;
+            onChange=&#123;(e) =&gt;
+              dispatch(&#123;
+                type: &quot;patch&quot;,
+                formData: &#123; nationality: e.target.value &#125;
+              &#125;)
+            &#125;
+          /&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+        &lt;button type=&quot;reset&quot;&gt;重置&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;hr /&gt;
+      &#123;JSON.stringify(formData)&#125;
+    &lt;/form&gt;
+  );
+&#125;
+
+const rootElement = document.getElementById(&quot;root&quot;);
+ReactDOM.render(&lt;App /&gt;, rootElement);
+</code></pre>
+<h4 id="如何使用-useReducer-代替-Redux"><a href="#如何使用-useReducer-代替-Redux" class="headerlink" title="如何使用 useReducer 代替 Redux"></a>如何使用 useReducer 代替 Redux</h4><p>步骤：</p>
+<ol>
+<li>将数据集中在一个store对象</li>
+<li>将所有操作集中在reducer</li>
+<li>创建一个Context</li>
+<li>创建对数据的读写API</li>
+<li>将第四步的内容放到第三步的Context</li>
+<li>用Context.Provider将Context提供给所有组件</li>
+<li>各个组件用useContext 获取读写API</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="jsx">import React, &#123; useReducer, useContext, useEffect &#125; from &quot;react&quot;;
+import ReactDOM from &quot;react-dom&quot;;
+
+const store = &#123;
+  user: null,
+  books: null,
+  movies: null
+&#125;;
+
+function reducer(state, action) &#123;
+  switch (action.type) &#123;
+    case &quot;setUser&quot;:
+      return &#123; ...state, user: action.user &#125;;
+    case &quot;setBooks&quot;:
+      return &#123; ...state, books: action.books &#125;;
+    case &quot;setMovies&quot;:
+      return &#123; ...state, movies: action.movies &#125;;
+    default:
+      throw new Error();
+  &#125;
+&#125;
+
+const Context = React.createContext(null);
+
+function App() &#123;
+  const [state, dispatch] = useReducer(reducer, store);
+
+  const api = &#123; state, dispatch &#125;;
+  return (
+      &lt;Context.Provider value=&#123;api&#125;&gt;
+        &lt;User /&gt;
+        &lt;hr /&gt;
+        &lt;Books /&gt;
+        &lt;Movies /&gt;
+      &lt;/Context.Provider&gt;
+  );
+&#125;
+
+function User() &#123;
+  const &#123; state, dispatch &#125; = useContext(Context);
+  useEffect(() =&gt; &#123;
+    ajax(&quot;/user&quot;).then(user =&gt; &#123;
+      dispatch(&#123; type: &quot;setUser&quot;, user: user &#125;);
+    &#125;);
+  &#125;, []);
+  return (
+      &lt;div&gt;
+        &lt;h1&gt;个人信息&lt;/h1&gt;
+        &lt;div&gt;name: &#123;state.user ? state.user.name : &quot;&quot;&#125;&lt;/div&gt;
+      &lt;/div&gt;
+  );
+&#125;
+
+function Books() &#123;
+  const &#123; state, dispatch &#125; = useContext(Context);
+  useEffect(() =&gt; &#123;
+    ajax(&quot;/books&quot;).then(books =&gt; &#123;
+      dispatch(&#123; type: &quot;setBooks&quot;, books: books &#125;);
+    &#125;);
+  &#125;, []);
+  return (
+      &lt;div&gt;
+        &lt;h1&gt;我的书籍&lt;/h1&gt;
+        &lt;ol&gt;
+          &#123;state.books ? state.books.map(book =&gt; &lt;li key=&#123;book.id&#125;&gt;&#123;book.name&#125;&lt;/li&gt;) : &quot;加载中&quot;&#125;
+        &lt;/ol&gt;
+      &lt;/div&gt;
+  );
+&#125; 
+
+function Movies() &#123;
+  const &#123; state, dispatch &#125; = useContext(Context);
+  useEffect(() =&gt; &#123;
+    ajax(&quot;/movies&quot;).then(movies =&gt; &#123;
+      dispatch(&#123; type: &quot;setMovies&quot;, movies: movies &#125;);
+    &#125;);
+  &#125;, []);
+  return (
+      &lt;div&gt;
+        &lt;h1&gt;我的电影&lt;/h1&gt;
+        &lt;ol&gt;
+          &#123;state.movies
+              ? state.movies.map(movie =&gt; &lt;li key=&#123;movie.id&#125;&gt;&#123;movie.name&#125;&lt;/li&gt;)
+              : &quot;加载中&quot;&#125;
+        &lt;/ol&gt;
+      &lt;/div&gt;
+  );
+&#125;
+
+// 假 ajax
+// 两秒钟后，根据 path 返回一个对象，必定成功不会失败
+function ajax(path) &#123;
+  return new Promise((resolve, reject) =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+      if (path === &quot;/user&quot;) &#123;
+        resolve(&#123;
+          id: 1,
+          name: &quot;Frank&quot;
+        &#125;);
+      &#125; else if (path === &quot;/books&quot;) &#123;
+        resolve([
+          &#123;
+            id: 1,
+            name: &quot;JavaScript 高级程序设计&quot;
+          &#125;,
+          &#123;
+            id: 2,
+            name: &quot;JavaScript 精粹&quot;
+          &#125;
+        ]);
+      &#125; else if (path === &quot;/movies&quot;) &#123;
+        resolve([
+          &#123;
+            id: 1,
+            name: &quot;爱在黎明破晓前&quot;
+          &#125;,
+          &#123;
+            id: 2,
+            name: &quot;恋恋笔记本&quot;
+          &#125;
+        ]);
+      &#125;
+    &#125;, 2000);
+  &#125;);
+&#125;
+export default App
+</code></pre>
+<h3 id="4-useContext"><a href="#4-useContext" class="headerlink" title="4. useContext"></a>4. useContext</h3><ul>
+<li>全局变量是全局的上下文</li>
+<li>上下文是局部的全局变量</li>
+</ul>
+<h6 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h6><ol>
+<li>使用 C = createContext( initial ) 创建上下文</li>
+<li>使用 &lt; C.provider &gt;圈定作用域</li>
+<li>在作用域内使用 useContext ( C ) 来使用上下文</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="jsx">const Context = React.createContext(null);
+
+function App() &#123;
+  const [state, dispatch] = useReducer(reducer, store);
+
+  const api = &#123; state, dispatch &#125;;
+  return (
+      &lt;Context.Provider value=&#123;api&#125;&gt;
+        &lt;User /&gt;
+        &lt;hr /&gt;
+        &lt;Books /&gt;
+        &lt;Movies /&gt;
+      &lt;/Context.Provider&gt;
+  );
+&#125;
+
+function User() &#123;
+  const &#123; state, dispatch &#125; = useContext(Context);
+  useEffect(() =&gt; &#123;
+    ajax(&quot;/user&quot;).then(user =&gt; &#123;
+      dispatch(&#123; type: &quot;setUser&quot;, user: user &#125;);
+    &#125;);
+  &#125;, []);
+  return (
+      &lt;div&gt;
+        &lt;h1&gt;个人信息&lt;/h1&gt;
+        &lt;div&gt;name: &#123;state.user ? state.user.name : &quot;&quot;&#125;&lt;/div&gt;
+      &lt;/div&gt;
+  );
+&#125;
+</code></pre>
+<h3 id="5-useEffect"><a href="#5-useEffect" class="headerlink" title="5. useEffect"></a>5. useEffect</h3><p>effect 是副作用的意思，实际上叫做 afterRender 更好一些 ，每次render 后运行，模仿生命周期函数</p>
+<p>用途：</p>
+<ol>
+<li>作为componentDidMount使用，[ ] (空数组)作第二个参数</li>
+</ol>
+<pre><code class="jsx">function App() &#123;
+    const [n, setN] = useState(0)
+    const onClick = function () &#123;
+        setN(i =&gt; i + 1)
+    &#125;
+
+    const afterRender = useEffect
+    afterRender(() =&gt; &#123;
+        console.log(&#39;第一次渲染执行这几句话&#39;)
+    &#125;, [])    // 第一次渲染执行
+
+    return (
+        &lt;div&gt;
+            n:&#123;n&#125;
+            &lt;button onClick=&#123;onClick&#125;&gt;+1&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<ol>
+<li>作为componentDidUpdate使用，可指定依赖</li>
+</ol>
+<pre><code class="jsx">function App() &#123;
+    const [n, setN] = useState(0)
+    const onClick = function () &#123;
+        setN(i =&gt; i + 1)
+    &#125;
+
+    const afterRender = useEffect
+    afterRender(() =&gt; &#123;
+        console.log(&#39;n变化时执行这句话&#39;)  
+    &#125;, [n])    // n变化时执行这句话
+    
+    const afterRender = useEffect
+    afterRender(() =&gt; &#123;
+        console.log(&#39;任何 state 变化时执行这句话&#39;)  
+    &#125;)    // 任何 state 变化时 执行这句话
+
+    return (
+        &lt;div&gt;
+            n:&#123;n&#125;
+            &lt;button onClick=&#123;onClick&#125;&gt;+1&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<ol>
+<li>作为componentWillUnmount使用，通过 return</li>
+</ol>
+<pre><code class="jsx">function App() &#123;
+    const [n, setN] = useState(0)
+    const onClick = function () &#123;
+        setN(i =&gt; i + 1)
+    &#125;
+
+    useEffect(() =&gt; &#123;
+        const id = setInterval(() =&gt; &#123;
+            console.log(&#39;hi&#39;)
+        &#125;, 1000)
+        return () =&gt; &#123;
+            window.clearInterval(id)
+        &#125;
+    &#125;, [])
+
+    return (
+        &lt;div&gt;
+            n:&#123;n&#125;
+            &lt;button onClick=&#123;onClick&#125;&gt;+1&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<h6 id="以上三种用途可同时存在"><a href="#以上三种用途可同时存在" class="headerlink" title="以上三种用途可同时存在"></a>以上三种用途可同时存在</h6><p>特点：</p>
+<ul>
+<li>如果同时存在多个useEffect，会按照出现次序执行</li>
+</ul>
+<h4 id="useLayoutEffect"><a href="#useLayoutEffect" class="headerlink" title="useLayoutEffect"></a>useLayoutEffect</h4><h6 id="布局副作用："><a href="#布局副作用：" class="headerlink" title="布局副作用："></a>布局副作用：</h6><ul>
+<li><p>useEffect在浏览器渲染完成后执行</p>
+</li>
+<li><p>useLayoutEffect 在浏览器渲染前执行</p>
+</li>
+</ul>
+<h6 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h6><ul>
+<li>useLayoutEffect总是比useEffect先执行</li>
+<li>useLayoutEffect 里的任务最好影响了Layout</li>
+</ul>
+<h6 id="经验："><a href="#经验：" class="headerlink" title="经验："></a>经验：</h6><ul>
+<li>为了用户体验，优先使用useEffect (优先渲染)</li>
+</ul>
+<h3 id="6-useMemo"><a href="#6-useMemo" class="headerlink" title="6. useMemo"></a>6. useMemo</h3><p>首先认识一下 React.memo</p>
+<ul>
+<li>React 默认有多余的 render</li>
+</ul>
+<pre><code class="jsx">function App() &#123;
+  const [n, setN] = React.useState(0);
+  const [m, setM] = React.useState(0);
+  const onClick = () =&gt; &#123;
+    setN(n + 1);
+  &#125;;
+
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;div&gt;
+        &lt;button onClick=&#123;onClick&#125;&gt;update n &#123;n&#125;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;Child data=&#123;m&#125;/&gt;
+      &#123;/* &lt;Child2 data=&#123;m&#125;/&gt; */&#125;
+    &lt;/div&gt;
+  );
+&#125;
+
+function Child(props) &#123;
+  console.log(&quot;child 执行了&quot;);
+  console.log(&#39;假设这里有大量代码&#39;)
+  return &lt;div&gt;child: &#123;props.data&#125;&lt;/div&gt;;
+&#125;   
+</code></pre>
+<p>以上代码运行时，点击按钮会打印 20 21 行的log，这假设 Child 组件里面有大量的逻辑代码，会浪费性能</p>
+<p>改进：</p>
+<pre><code class="jsx">function App() &#123;
+  const [n, setN] = React.useState(0);
+  const [m, setM] = React.useState(0);
+  const onClick = () =&gt; &#123;
+    setN(n + 1);
+  &#125;;
+
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;div&gt;
+        &lt;button onClick=&#123;onClick&#125;&gt;update n &#123;n&#125;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;Child2 data=&#123;m&#125;/&gt;
+    &lt;/div&gt;
+  );
+&#125;
+
+function Child(props) &#123;
+  console.log(&quot;child 执行了&quot;);
+  console.log(&#39;假设这里有大量代码&#39;)
+  return &lt;div&gt;child: &#123;props.data&#125;&lt;/div&gt;;
+&#125;
+
+const Child2 = React.memo(Child);    // 这样在不改变 Child 组件内部数据的情况下就不会执行函数
+
+// 还可以直接写成
+const Child2 = React.memo(props=&gt;&#123;
+  console.log(&quot;child 执行了&quot;);
+  console.log(&#39;假设这里有大量代码&#39;)
+  return &lt;div&gt;child: &#123;props.data&#125;&lt;/div&gt;;
+&#125;)
+</code></pre>
+<p>但是这样会有问题：当我们在 App 组件内部传给 child 组件一个事件监听函数的时候 ，当App的内部值变化时，child 组件函数还是会执行，因为 App 函数执行的同时，会产生新的函数，相当于函数对象换了地址，就会导致 child 组件函数的执行，解决方法就是使用 useMomo</p>
+<h3 id="useMemo："><a href="#useMemo：" class="headerlink" title="useMemo："></a>useMemo：</h3><p>缓存一些不希望重新生成的 value value可以是任何数据类型</p>
+<p>特点：</p>
+<ul>
+<li>第一个参数是 () =&gt; { }</li>
+<li>第二个参数是依赖[ m,n ]</li>
+<li>只有当依赖变化时,才会计算出新的 value</li>
+<li>如果依赖不变，那么就重用之前的value</li>
+<li>是不是跟 vue 2 的 computed 很相似</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>如果你的value是个函数,那么你就要写成 useMemo ( ( )=&gt; (×) =&gt; console.log(×) )</li>
+<li>这是一个返回函数的函数</li>
+<li>这很难用，于是 useCallback 出现了</li>
+</ul>
+<h5 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback:"></a>useCallback:</h5><p>用法：</p>
+<ul>
+<li>useCallback( x =&gt; log(x),[ m ] ) 等价于</li>
+<li>useMemo ( ( )=&gt; x =&gt; log( x ) ,[ m ])</li>
+<li>实际上就是缓存函数时的一个语法糖</li>
+</ul>
+<p>使用 useMemo 解决上述的 React.memo 的函数复用的问题，示例代码：</p>
+<pre><code class="jsx">function App() &#123;
+  const [n, setN] = React.useState(0);
+  const [m, setM] = React.useState(0);
+  const onClick = () =&gt; &#123;
+    setN(n + 1);
+  &#125;;
+  const onClick2 = () =&gt; &#123;
+    setM(m + 1);
+  &#125;;
+  const onClickChild = useMemo(() =&gt; &#123;
+    const fn = div =&gt; &#123;
+      console.log(&quot;on click child, m: &quot; + m);
+      console.log(div);
+    &#125;;
+    return fn;
+  &#125;, [m]); // 这里呃 [m] 改成 [n] 就会打印出旧的 m
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;div&gt;
+        &lt;button onClick=&#123;onClick&#125;&gt;update n &#123;n&#125;&lt;/button&gt;
+        &lt;button onClick=&#123;onClick2&#125;&gt;update m &#123;m&#125;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;Child2 data=&#123;m&#125; onClick=&#123;onClickChild&#125; /&gt;
+    &lt;/div&gt;
+  );
+&#125;
+
+function Child(props) &#123;
+  console.log(&quot;child 执行了&quot;);
+  console.log(&quot;假设这里有大量代码&quot;);
+  return &lt;div onClick=&#123;e =&gt; props.onClick(e.target)&#125;&gt;child: &#123;props.data&#125;&lt;/div&gt;;
+&#125;
+
+const Child2 = React.memo(Child);
+</code></pre>
+<h3 id="7-useRef"><a href="#7-useRef" class="headerlink" title="7. useRef"></a>7. useRef</h3><p>目的：</p>
+<ul>
+<li>如果你需要一个值，在组件不断 render 时保持不变</li>
+<li>初始化:const count = useRef ( 0 )</li>
+<li>读取 : count.current</li>
+<li>为什么要 current ? 为了保证两次的 useRef 是同一个值(只有引用能做到)</li>
+</ul>
+<h6 id="能否做到变化时自动-render-？"><a href="#能否做到变化时自动-render-？" class="headerlink" title="能否做到变化时自动 render ？"></a>能否做到变化时自动 render ？</h6><ul>
+<li>不能</li>
+<li>为什么不能 ？ 因为这不符合React的理念</li>
+<li>React 的理念是 UI= f(data)</li>
+<li>你如果想要这个功能，完全可以自己加</li>
+<li>监听 ref ,当ref.current 变化时，调用 setX 即可</li>
+</ul>
+<h4 id="forwardRef"><a href="#forwardRef" class="headerlink" title="forwardRef"></a>forwardRef</h4><p>由于 useRef 可以用来引用 DOM 对象，也可以用来引用普通对象，由于 props 不包括 ref，所以需要使用 forwardRed</p>
+<p>使用示例：</p>
+<pre><code class="jsx">function App() &#123;
+  const buttonRef = useRef(null);
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;Button3 ref=&#123;buttonRef&#125;&gt;按钮&lt;/Button3&gt;
+    &lt;/div&gt;
+  );
+&#125;
+
+const Button3 = React.forwardRef((props, ref) =&gt; &#123;   // 这样才可以传递 ref DOM 引用
+  return &lt;button className=&quot;red&quot; ref=&#123;ref&#125; &#123;...props&#125; /&gt;;
+&#125;);
+</code></pre>
+<h4 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a>useImperativeHandle</h4><p>实际上应该叫做 setRef，他的作用就是设置当前 Ref 为另一个东西</p>
+<pre><code class="jsx">function App() &#123;
+  const buttonRef = useRef(null);
+  useEffect(() =&gt; &#123;
+    console.log(buttonRef.current);
+  &#125;);
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;Button2 ref=&#123;buttonRef&#125;&gt;按钮&lt;/Button2&gt;
+      &lt;button
+        className=&quot;close&quot;
+        onClick=&#123;() =&gt; &#123;
+          console.log(buttonRef);
+          buttonRef.current.x();
+        &#125;&#125;
+      &gt;
+        x
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;
+
+const Button2 = React.forwardRef((props, ref) =&gt; &#123;
+  const realButton = createRef(null);
+  const setRef = useImperativeHandle;    // 函数本身
+  setRef(ref, () =&gt; &#123;
+    return &#123;     // 把真正的 ref 变身了
+      x: () =&gt; &#123;
+        realButton.current.remove();
+      &#125;,
+      realButton: realButton
+    &#125;;
+  &#125;);
+  return &lt;button ref=&#123;realButton&#125; &#123;...props&#125; /&gt;;
+&#125;);
+</code></pre>
+<h3 id="8-自定义-hook"><a href="#8-自定义-hook" class="headerlink" title="8. 自定义 hook"></a>8. 自定义 hook</h3><p>主要用于封装数据操作</p>
+<p>示例代码：</p>
+<pre><code class="jsx">const useList = () =&gt; &#123;    // 自定义的hook
+  const [list, setList] = useState(null);
+  useEffect(() =&gt; &#123;
+    ajax(&quot;/list&quot;).then(list =&gt; &#123;
+      setList(list);
+    &#125;);
+  &#125;, []); // [] 确保只在第一次运行
+  return &#123;
+    list: list,
+    setList: setList
+  &#125;;
+&#125;;
+export default useList;
+
+function ajax() &#123;    // 假的 ajax
+  return new Promise((resolve, reject) =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+      resolve([
+        &#123; id: 1, name: &quot;Frank&quot; &#125;,
+        &#123; id: 2, name: &quot;Jack&quot; &#125;,
+        &#123; id: 3, name: &quot;Alice&quot; &#125;,
+        &#123; id: 4, name: &quot;Bob&quot; &#125;
+      ]);
+    &#125;, 2000);
+  &#125;);
+&#125;
+
+function App() &#123;  
+  const &#123; list, setList &#125; = useList();   // 组件中直接使用 非常方便灵活
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;h1&gt;List&lt;/h1&gt;
+      &#123;list ? (
+        &lt;ol&gt;
+          &#123;list.map(item =&gt; (
+            &lt;li key=&#123;item.id&#125;&gt;&#123;item.name&#125;&lt;/li&gt;
+          ))&#125;
+        &lt;/ol&gt;
+      ) : (
+        &quot;加载中...&quot;
+      )&#125;
+    &lt;/div&gt;
+  );
+&#125;
+</code></pre>
+<h3 id="9-stale-closures-过时闭包"><a href="#9-stale-closures-过时闭包" class="headerlink" title="9. stale closures 过时闭包"></a>9. stale closures 过时闭包</h3><p>实际上描述了我们在使用 hook 函数的时候 函数中使用的 旧的引用值的问题</p>
+<p>看例子：</p>
+<pre><code class="js">function createIncrement(incBy) &#123;
+  let value = 0;
+
+  function increment() &#123;
+    value += incBy;
+    console.log(value);
+  &#125;
+
+  const message = `Current value is $&#123;value&#125;`;
+  function log() &#123;
+    console.log(message);
+  &#125;
+  
+  return [increment, log];
+&#125;
+
+const [increment, log] = createIncrement(1);
+increment(); // logs 1
+increment(); // logs 2
+increment(); // logs 3
+// Does not work!
+log();       // logs &quot;Current value is 0&quot;  旧的引用
+</code></pre>
+<p>上面代码在调用 log() 时只会打印 旧的值，因为 log 函数保存了 产生这个函数时的 value的值，闭包原理</p>
+<p>改进：</p>
+<pre><code class="js">function createIncrement(incBy) &#123;
+  let value = 0;
+
+  function increment() &#123;
+    value += incBy;
+    console.log(value);
+  &#125;
+
+  function log() &#123;
+    const message = `Current value is $&#123;value&#125;`;    // 直接使用 value
+    console.log(message);
+  &#125;
+  
+  return [increment, log];
+&#125;
+
+const [increment, log] = createIncrement(1);
+increment(); // logs 1
+increment(); // logs 2
+increment(); // logs 3
+// Works!
+log();       // logs &quot;Current value is 3&quot;
+</code></pre>
+<h6 id="React-中的体现-————-useEffect"><a href="#React-中的体现-————-useEffect" class="headerlink" title="React 中的体现   ———— useEffect()"></a>React 中的体现   ———— useEffect()</h6><pre><code class="jsx">function WatchCount() &#123;
+  const [count, setCount] = useState(0);
+
+  useEffect(function() &#123;
+    setInterval(function log() &#123;
+      console.log(`Count is: $&#123;count&#125;`);
+    &#125;, 2000);
+  &#125;, []);    // 只会打印 0 
+
+  return (
+    &lt;div&gt;
+      &#123;count&#125;
+      &lt;button onClick=&#123;() =&gt; setCount(count + 1) &#125;&gt;
+        Increase
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;
+</code></pre>
+<p>使用依赖改进</p>
+<pre><code class="jsx">function WatchCount() &#123;
+  const [count, setCount] = useState(0);
+
+  useEffect(function() &#123;
+    const id = setInterval(function log() &#123;
+      console.log(`Count is: $&#123;count&#125;`);
+    &#125;, 2000);
+    return function() &#123;
+      clearInterval(id);    // 必须清除定时器
+    &#125;
+  &#125;, [count]);  // 依赖改进
+
+  return (
+    &lt;div&gt;
+      &#123;count&#125;
+      &lt;button onClick=&#123;() =&gt; setCount(count + 1) &#125;&gt;
+        Increase
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;
+</code></pre>
+<h6 id="React-中的体现-————-useState"><a href="#React-中的体现-————-useState" class="headerlink" title="React 中的体现   ———— useState()"></a>React 中的体现   ———— useState()</h6><pre><code class="jsx">function DelayedCount() &#123;
+  const [count, setCount] = useState(0);
+
+  function handleClickAsync() &#123;
+    setTimeout(function delay() &#123;
+      setCount(count + 1);
+    &#125;, 1000);
+  &#125;
+
+  return (
+    &lt;div&gt;
+      &#123;count&#125;
+      &lt;button onClick=&#123;handleClickAsync&#125;&gt;Increase async&lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;
+</code></pre>
+<p>每次点击时，<code>setTimeout(delay, 1000)</code>计划<code>delay()</code>在1秒后执行。<code>delay()</code>将变量捕获<code>count</code>为<code>0</code>。</p>
+<p>两个<code>delay()</code>闭包（因为已经进行了 2 次点击）都将状态更新为相同的值：<code>setCount(count + 1) = setCount(0 + 1) = setCount(1)</code>。</p>
+<p>全部是因为<code>delay()</code>第二次点击的关闭已捕获了过时的<code>count</code>变量as <code>0</code>。</p>
+<p>改进：</p>
+<pre><code class="jsx">function DelayedCount() &#123;
+  const [count, setCount] = useState(0);
+
+  function handleClickAsync() &#123;
+    setTimeout(function delay() &#123;
+      setCount(count =&gt; count + 1);
+    &#125;, 1000);
+  &#125;
+
+  function handleClickSync() &#123;
+    setCount(count + 1);
+  &#125;
+
+  return (
+    &lt;div&gt;
+      &#123;count&#125;
+      &lt;button onClick=&#123;handleClickAsync&#125;&gt;Increase async&lt;/button&gt;
+      &lt;button onClick=&#123;handleClickSync&#125;&gt;Increase sync&lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;   // 单击快速增加异步2次。在counter显示正确的值2。
+</code></pre>
+<p>解决陈旧闭包的有效方法是正确设置 React 钩子的依赖项。或者，在状态陈旧的情况下，使用函数方式来更新状态。</p>
 
       
     </div>
@@ -519,7 +1337,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Hooks"><span class="nav-number">1.</span> <span class="nav-text">React Hooks</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFreact-%E7%9A%84-hook-%E4%BB%A5%E5%8F%8A-react-hooks-%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">什么是react 的 hook 以及 react hooks 的由来</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Hooks"><span class="nav-number">1.</span> <span class="nav-text">React Hooks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-hooks%E6%80%BB%E8%A7%88"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. hooks总览</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFreact-%E7%9A%84-hook-%E4%BB%A5%E5%8F%8A-react-hooks-%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="nav-number">1.0.1.0.0.1.</span> <span class="nav-text">什么是react 的 hook 以及 react hooks 的由来</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-useState-%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%80%81"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.useState 使用状态</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#setState-%E6%8E%A5%E5%8F%97%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.2.0.0.1.</span> <span class="nav-text">setState 接受函数</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-useReducer"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. useReducer</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E9%80%82%E5%90%88%E4%BD%BF%E7%94%A8-useReducer-%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="nav-number">1.0.3.0.0.1.</span> <span class="nav-text">一个适合使用 useReducer 的场景：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-useReducer-%E4%BB%A3%E6%9B%BF-Redux"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">如何使用 useReducer 代替 Redux</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-useContext"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. useContext</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.0.4.0.0.1.</span> <span class="nav-text">使用方法：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-useEffect"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. useEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8A%E4%B8%89%E7%A7%8D%E7%94%A8%E9%80%94%E5%8F%AF%E5%90%8C%E6%97%B6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.0.5.0.0.1.</span> <span class="nav-text">以上三种用途可同时存在</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#useLayoutEffect"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">useLayoutEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E5%89%AF%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="nav-number">1.0.5.1.0.1.</span> <span class="nav-text">布局副作用：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.0.5.1.0.2.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%8F%E9%AA%8C%EF%BC%9A"><span class="nav-number">1.0.5.1.0.3.</span> <span class="nav-text">经验：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-useMemo"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. useMemo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useMemo%EF%BC%9A"><span class="nav-number">1.0.7.</span> <span class="nav-text">useMemo：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#useCallback"><span class="nav-number">1.0.7.0.1.</span> <span class="nav-text">useCallback:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-useRef"><span class="nav-number">1.0.8.</span> <span class="nav-text">7. useRef</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%83%BD%E5%90%A6%E5%81%9A%E5%88%B0%E5%8F%98%E5%8C%96%E6%97%B6%E8%87%AA%E5%8A%A8-render-%EF%BC%9F"><span class="nav-number">1.0.8.0.0.1.</span> <span class="nav-text">能否做到变化时自动 render ？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forwardRef"><span class="nav-number">1.0.8.1.</span> <span class="nav-text">forwardRef</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#useImperativeHandle"><span class="nav-number">1.0.8.2.</span> <span class="nav-text">useImperativeHandle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E8%87%AA%E5%AE%9A%E4%B9%89-hook"><span class="nav-number">1.0.9.</span> <span class="nav-text">8. 自定义 hook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-stale-closures-%E8%BF%87%E6%97%B6%E9%97%AD%E5%8C%85"><span class="nav-number">1.0.10.</span> <span class="nav-text">9. stale closures 过时闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#React-%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0-%E2%80%94%E2%80%94%E2%80%94%E2%80%94-useEffect"><span class="nav-number">1.0.10.0.0.1.</span> <span class="nav-text">React 中的体现   ———— useEffect()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#React-%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0-%E2%80%94%E2%80%94%E2%80%94%E2%80%94-useState"><span class="nav-number">1.0.10.0.0.2.</span> <span class="nav-text">React 中的体现   ———— useState()</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
