@@ -13,16 +13,16 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://wangjinxin613.github.io/blog
-permalink: :year/:month/:day/:title/
+url: http://127.0.0.1:5500
+permalink: /post/:title
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
-# source_dir: ../../document/wangjinxin613
-source_dir: ../../document
+source_dir: ../wangjinxin613
+
 public_dir: public
 tag_dir: tag
 archive_dir: archives
@@ -32,11 +32,15 @@ i18n_dir: :lang
 skip_render: 
   - _posts/readme.md
   - _posts/记录.md
-  - '_posts/webpack/*'
+  - _posts/webpack/*
+  - _posts/工作记录/*
+  - _posts/年终总结/*
+  - _posts/小迟学习笔记/*
+  - _posts/img/*
 
 # Writing
 new_post_name: :title.md # File name of new posts
-default_layout: post
+# default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
@@ -44,7 +48,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -76,7 +80,7 @@ tag_map:
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
-meta_generator: true
+meta_generator: false
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -101,7 +105,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: aurora
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
