@@ -109,19 +109,19 @@ site_meta:
 #! ---------------------------------------------------------------
 
 # For local development only!
-# gitalk:
-#   enable: false
-#   autoExpand: true
-#   clientID: ''
-#   clientSecret: ''
-#   repo: '' ## dev-blo-comments
-#   owner: '' ## owner name
-#   admin: [''] ## ['admin_name']
-#   id: uid
-#   language: en
-#   distractionFreeMode: true
-#   recentComment: true
-#   proxy: ''
+gitalk:
+  enable: false
+  autoExpand: true
+  clientID: ''
+  clientSecret: ''
+  repo: '' ## dev-blo-comments
+  owner: '' ## owner name
+  admin: ['小王'] ## ['admin_name']
+  id: uid
+  language: cn
+  distractionFreeMode: true
+  recentComment: true
+  proxy: ''
 
 # Valine comment plugin (recommended!)
 # see https://valine.js.org/quickstart.html
@@ -132,7 +132,7 @@ valine:
   avatar: 'wavatar'
   placeholder: Leave your thoughts behind~
   visitor: true
-  lang: cn
+  lang: en
   avatarForce: false
   meta: ['nick', 'mail']
   requiredFields: []
@@ -153,7 +153,7 @@ twikoo:
 # Waline comment plugin
 # see https://waline.js.org/guide/get-started/
 waline:
-  enable: true
+  enable: false
   recentComment: true
   reaction: false
   login: 'disable'
@@ -163,7 +163,13 @@ waline:
   wordLimit: 0
   imageUploader: false
   pageSize: 10
-  serverURL: 'https://nflcfcx2.api.lncldglobal.com' # 填写服务端地址
+  serverURL: 'https://w9dshcjs.lc-cn-n1-shared.com' # 填写服务端地址
+  app_id: 'w9DsHCJSdZeHUKnuePDqkI1T-gzGzoHsz'
+  app_key: '6yITp1ychJJYM4oRaUwOVCIc'
+  avatar: 'wavatar'
+  placeholder: Leave your thoughts behind~
+  visitor: true
+  lang: cn
 
 # Enable Busuanzi statistic plugin
 # see http://ibruce.info/2015/04/04/busuanzi/
